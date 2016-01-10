@@ -23,6 +23,22 @@
   },
   "homepage": "https://github.com/atom/electron-quick-start#readme",
   "devDependencies": {
-    "electron-prebuilt": "^0.36.0"
+    "electron-prebuilt": "^0.36.0",
+    "jspm": "^0.16.20"
+  },
+  "jspm": {
+    "dependencies": {
+      "classnames": "npm:classnames@^2.2.3",
+      "lodash": "npm:lodash@^3.10.1",
+      "merge": "npm:merge@^1.2.0",
+      "react": "npm:react@^0.14.6",
+      "react-dom": "npm:react-dom@^0.14.6",
+      "reactcss": "github:casesandberg/reactcss@1.0.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }
