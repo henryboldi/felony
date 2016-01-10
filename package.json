@@ -4,7 +4,8 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "node devServer",
+    "start-cold": "electron ."
   },
   "repository": {
     "type": "git",
@@ -23,11 +24,13 @@
   },
   "homepage": "https://github.com/atom/electron-quick-start#readme",
   "devDependencies": {
+    "chokidar-socket-emitter": "^0.3.0",
     "electron-prebuilt": "^0.36.0",
     "jspm": "^0.16.20"
   },
   "jspm": {
     "dependencies": {
+      "capaj/systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@^0.5.1",
       "classnames": "npm:classnames@^2.2.3",
       "lodash": "npm:lodash@^3.10.1",
       "merge": "npm:merge@^1.2.0",
