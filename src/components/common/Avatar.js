@@ -7,13 +7,18 @@ export class Avatar extends Component {
   classes() {
     return {
       'default': {
-
+        avatar: {
+          width: '100%',
+          paddingBottom: '100%',
+          borderRadius: '50%',
+          background: '#aeee00',
+        },
       },
     };
   }
 
   render() {
-    return <div></div>;
+    return <div is="avatar" />;
   }
 }
 
