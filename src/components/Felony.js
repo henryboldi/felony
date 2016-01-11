@@ -11,6 +11,8 @@ export class Felony extends Component {
       'default': {
         app: {
           WebkitFontSmoothing: 'antialiased',
+          Absolute: '0 0 0 0',
+          background: '#EEF1F8',
         },
       },
     };
@@ -19,6 +21,12 @@ export class Felony extends Component {
   render() {
     return (
       <div is="app">
+        <style>{`
+          body, html {
+            -webkit-overflow-scrolling: touch;
+            overflow: hidden;
+          }
+        `}</style>
         <Header />
       </div>
     );
