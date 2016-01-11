@@ -1,3 +1,4 @@
+require('babel-register');
 var proc = require('child_process');
 
 // Emit File Events For JSPM to Hot Reload
