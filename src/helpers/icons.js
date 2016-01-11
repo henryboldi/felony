@@ -13,5 +13,5 @@ const store = {
 };
 
 export const getIcon = (name) => {
-  return store[name] || 'n/a';
+  return store.hasOwnProperty(name) ? store[name] : 'n/a';
 };
