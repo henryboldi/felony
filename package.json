@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node devServer",
     "start-cold": "electron .",
-    "install": "jspm install"
+    "felony-install": "jspm install && npm install "
   },
   "repository": {
     "type": "git",
