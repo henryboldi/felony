@@ -1,28 +1,23 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
-  "main": "main.js",
+  "name": "Felony",
+  "version": "0.1.0",
+  "description": "The elegant PGP app",
+  "main": "index.js",
   "scripts": {
     "start": "node devServer",
-    "start-cold": "electron ."
+    "start-cold": "electron .",
+    "install": "jspm install"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atom/electron-quick-start.git"
   },
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "keywords": [],
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/atom/electron-quick-start/issues"
+    "url": "https://github.com/9o/felony/issues"
   },
-  "homepage": "https://github.com/atom/electron-quick-start#readme",
+  "homepage": "https://github.com/9o/relony",
   "devDependencies": {
     "chokidar-socket-emitter": "^0.3.0",
     "electron-prebuilt": "^0.36.0",
