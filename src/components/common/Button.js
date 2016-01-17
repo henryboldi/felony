@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
-export class Button extends Component {
+class Button extends Component {
   classes() {
     return {
       'default': {

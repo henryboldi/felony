@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
-export class HeaderMoreMenu extends Component {
+class HeaderMoreMenu extends Component {
   classes() {
     return {
       'default': {

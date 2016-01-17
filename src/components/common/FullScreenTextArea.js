@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
-export class FullScreenTextArea extends Component {
+class FullScreenTextArea extends Component {
   classes() {
     return {
       'default': {

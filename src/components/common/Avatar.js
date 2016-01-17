@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
-export class Avatar extends Component {
+class Avatar extends Component {
   classes() {
     return {
       'default': {

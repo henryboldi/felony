@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 import { getIcon } from '../../helpers/icons';
 
-export class Icon extends Component {
+class Icon extends Component {
   classes() {
     return {
       'default': {

@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
-export class Decrypt extends Component {
+class Decrypt extends Component {
   classes() {
     return {
       'default': {

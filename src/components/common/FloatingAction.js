@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
-export class FloatingAction extends Component {
+class FloatingAction extends Component {
   classes() {
     return {
       'default': {

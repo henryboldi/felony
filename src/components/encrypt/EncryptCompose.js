@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
-export class EncryptCompose extends Component {
+class EncryptCompose extends Component {
   classes() {
     return {
       'default': {

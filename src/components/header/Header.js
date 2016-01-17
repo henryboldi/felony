@@ -5,7 +5,7 @@ import ReactCSS from 'reactcss';
 
 import { User, Button, Icon } from '../common/index';
 
-export class Header extends Component {
+class Header extends Component {
   classes() {
     return {
       'default': {

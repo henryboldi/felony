@@ -5,7 +5,7 @@ import ReactCSS from 'reactcss';
 
 import Avatar from './Avatar';
 
-export class User extends Component {
+class User extends Component {
   classes() {
     return {
       'default': {
