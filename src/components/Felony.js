@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 import 'normalize.css';
+import '../fonts/work-sans/WorkSans.css!';
+import '../styles/felony.css!';
 
 import Header from './header/Header';
 
@@ -22,12 +24,6 @@ export class Felony extends Component {
   render() {
     return (
       <div is="app">
-        <style>{`
-          body, html {
-            -webkit-overflow-scrolling: touch;
-            overflow: hidden;
-          }
-        `}</style>
         <Header />
       </div>
     );
