@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
+import 'normalize.css';
 
 import Header from './header/Header';
 
