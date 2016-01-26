@@ -2,6 +2,8 @@
 
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
+
+import colors from '../styles/variables/colors';
 import 'normalize.css';
 import '../fonts/work-sans/WorkSans.css!';
 import '../styles/felony.css!';
@@ -13,9 +15,8 @@ export class Felony extends Component {
     return {
       'default': {
         app: {
-          WebkitFontSmoothing: 'antialiased',
           Absolute: '0 0 0 0',
-          background: '#EEF1F8',
+          background: colors.bgLight,
         },
       },
     };
