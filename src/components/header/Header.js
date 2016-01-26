@@ -3,6 +3,9 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
+import colors from '../../styles/variables/colors';
+import { spacing } from '../../styles/variables/utils';
+
 import { User, Button, Icon } from '../common/index';
 
 class Header extends Component {
@@ -10,23 +13,22 @@ class Header extends Component {
     return {
       'default': {
         header: {
-          height: '58px',
-          paddingTop: '16px',
-          background: '#48505C',
+          background: colors.bgDark,
           display: 'flex',
           justifyContent: 'space-between',
+          padding: `${spacing.m + spacing.statusBarHeight }px ${spacing.m}px ${spacing.m}px`,
         },
         user: {
           color: '#fff',
+          flex: '1',
         },
         actions: {
-          padding: '14px 12px',
           display: 'flex',
           alignItems: 'center',
         },
         Decrypt: {
-          background: '#F4C97A',
-          color: '#48505C',
+          background: colors.primary,
+          color: colors.bgDark,
         },
       },
     };
@@ -36,7 +38,7 @@ class Header extends Component {
     return (
       <div is="header">
         <div is="user">
-          <User name="Henry" />
+          <User name="Cali-Connection" />
         </div>
         <div is="actions">
           <Icon name="more" color="#F4C97A"/>
