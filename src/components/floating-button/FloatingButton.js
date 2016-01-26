@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
-class FloatingAction extends Component {
+class FloatingButton extends Component {
   classes() {
     return {
       'default': {
@@ -13,8 +13,10 @@ class FloatingAction extends Component {
   }
 
   render() {
-    return <div></div>;
+    return <div>
+      <button>Item</button>
+    </div>;
   }
 }
 
-export default ReactCSS(FloatingAction);
+export default ReactCSS(FloatingButton);
