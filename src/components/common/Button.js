@@ -3,17 +3,18 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
+import { spacing } from '../../styles/variables/utils';
+
 class Button extends Component {
   classes() {
     return {
       'default': {
         button: {
           height: '30px',
-          padding: '0 10px',
+          padding: `0 ${spacing.s}px`,
           borderRadius: '4px',
           backgroundColor: this.props.background,
           color: this.props.color || 'inherit',
-          fontWeight: '600',
           display: 'flex',
           alignItems: 'center',
         },
