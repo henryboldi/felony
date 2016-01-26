@@ -9,6 +9,7 @@ import '../fonts/work-sans/WorkSans.css!';
 import '../styles/felony.css!';
 
 import Header from './header/Header';
+import FloatingButtonToggle from './floating-button/FloatingButtonToggle';
 
 export class Felony extends Component {
   classes() {
@@ -26,6 +27,7 @@ export class Felony extends Component {
     return (
       <div is="app">
         <Header />
+        <FloatingButtonToggle />
       </div>
     );
   }
