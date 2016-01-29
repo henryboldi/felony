@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
-import { spacing } from '../../styles/variables/utils';
+import { spacing, sizing } from '../../styles/variables/utils';
 
 import Avatar from './Avatar';
 
@@ -16,13 +16,12 @@ class User extends Component {
           alignItems: 'center',
         },
         avatar: {
-          width: '34px',
+          width: sizing.avatar,
         },
         name: {
           flex: '1',
           marginLeft: spacing.s,
           fontSize: '16px',
-          fontWeight: '500',
           whiteSpace: 'nowrap',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
