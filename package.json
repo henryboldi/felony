@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node devServer",
     "start-cold": "electron .",
-    "felony-install": "jspm install && npm install "
+    "felony-install": "jspm install && npm install"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,9 @@
       "openpgp": "npm:openpgp@^1.4.1",
       "react": "npm:react@^0.14.6",
       "react-dom": "npm:react-dom@^0.14.6",
-      "reactcss": "github:casesandberg/reactcss@1.0.0"
+      "react-redux": "npm:react-redux@^4.1.2",
+      "reactcss": "github:casesandberg/reactcss@1.0.0",
+      "redux": "npm:redux@^3.1.4"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
