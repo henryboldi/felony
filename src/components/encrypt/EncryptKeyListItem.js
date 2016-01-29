@@ -26,7 +26,12 @@ class EncryptKeyListItem extends Component {
   }
 
   render() {
-    return <div></div>;
+    return <div>
+      <div is="user">
+        <User name={ this.props.name } />
+      </div>
+      <div is="spaceLine"/>
+    </div>;
   }
 }
 
