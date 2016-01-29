@@ -21,6 +21,7 @@ class Header extends Component {
         user: {
           color: '#fff',
           flex: '1',
+          fontWeight: '500',
         },
         actions: {
           display: 'flex',
