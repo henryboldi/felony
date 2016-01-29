@@ -9,6 +9,7 @@ import '../fonts/work-sans/WorkSans.css!';
 import '../styles/felony.css!';
 
 import Header from './header/Header';
+import EncryptKeyList from './encrypt/EncryptKeyList';
 import FloatingButtonToggle from './floating-button/FloatingButtonToggle';
 
 export class Felony extends Component {
@@ -19,6 +20,20 @@ export class Felony extends Component {
           Absolute: '0 0 0 0',
           background: colors.bgLight,
         },
+        header: {
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+        },
+        encryptKeyList: {
+          position: 'fixed',
+          top: 78,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          overflowY: 'scroll', // TODO: elastic scroll
+        },
       },
     };
   }
@@ -26,7 +41,12 @@ export class Felony extends Component {
   render() {
     return (
       <div is="app">
-        <Header />
+        <div is="header">
+          <Header />
+        </div>
+        <div is="encryptKeyList">
+          <EncryptKeyList />
+        </div>
         <FloatingButtonToggle />
       </div>
     );
