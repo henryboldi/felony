@@ -4,3 +4,7 @@ export const spacing = {
   l: 16,
   statusBarHeight: 20,
 };
+
+export const sizing = {
+  avatar: 34,
+};
