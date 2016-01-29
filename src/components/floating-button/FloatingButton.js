@@ -12,9 +12,11 @@ class FloatingButton extends Component {
     };
   }
 
+  handleClick = () => this.props.onClick && this.props.onClick();
+
   render() {
-    return <div>
-      <button>Item</button>
+    return <div onClick={ this.handleClick }>
+      <a is="floatingButton">Item</a>
     </div>;
   }
 }
