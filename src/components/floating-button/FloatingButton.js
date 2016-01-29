@@ -3,11 +3,27 @@
 import React, { Component } from 'react';
 import ReactCSS from 'reactcss';
 
+import colors from '../../styles/variables/colors';
+import { spacing, sizing } from '../../styles/variables/utils';
+
 class FloatingButton extends Component {
   classes() {
     return {
       'default': {
-
+        floatingButton: {
+          height: '34px',
+          width: '34px', // TODO: use utils for sizing
+          borderRadius: '100%',
+          backgroundColor: '#fff',
+          display: 'flex',
+          alignItems: 'center',
+          boxShadow: '0px 2px 9px 0px rgba(0,0,0,0.21)',
+        },
+      },
+      hover: {
+        floatingButton: {
+          boxShadow: '0 8px 17px 0 rgba(34, 32, 32, 0.28)',
+        },
       },
     };
   }
@@ -21,4 +37,4 @@ class FloatingButton extends Component {
   }
 }
 
-export default ReactCSS(FloatingButton);
+export default ReactCSS.Hover(ReactCSS(FloatingButton));
