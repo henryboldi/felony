@@ -5,16 +5,13 @@ import ReactCSS from 'reactcss';
 
 import { spacing } from '../../styles/variables/utils';
 
+import { Overlay } from '../common/index';
 import FloatingButton from './FloatingButton';
 
 class FloatingButtonToggle extends Component {
   state = {
     isShowingActions: false,
   };
-
-  handleOpen = () => this.setState({ isShowingActions: true });
-
-  handleClose = () => this.setState({ isShowingActions: false });
 
   classes() {
     return {
@@ -24,20 +21,31 @@ class FloatingButtonToggle extends Component {
           right: spacing.m,
           bottom: spacing.m,
         },
+        floatingButtons: {
+          zIndex: '9990',
+          position: 'relative',
+        },
       },
     };
   }
+
+  handleOpen = () => this.setState({ isShowingActions: true });
+
+  handleClose = () => this.setState({ isShowingActions: false });
 
   render() {
     return <div is="button">
       {
         this.state.isShowingActions ?
         <div>
-          <FloatingButton />
-          <button onClick={this.handleClose}>Close</button>
+          <div is="floatingButtons">
+            <FloatingButton />
+            <FloatingButton onClick={this.handleClose}/>
+          </div>
+          <Overlay onClick={this.handleClose}/>
         </div>
         :
-        <button onClick={this.handleOpen}>Open</button>
+        <FloatingButton onClick={this.handleOpen}/>
       }
     </div>;
   }
