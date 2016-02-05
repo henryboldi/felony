@@ -10,9 +10,14 @@ import '../styles/felony.css!';
 
 import Header from './header/Header';
 import EncryptKeyList from './encrypt/EncryptKeyList';
+import EncryptCompose from './encrypt/EncryptCompose';
 import FloatingButtonToggle from './floating-button/FloatingButtonToggle';
 
 export class Felony extends Component {
+  state = {
+    selected: [], // replaced with redux
+  };
+
   classes() {
     return {
       'default': {
@@ -38,16 +43,25 @@ export class Felony extends Component {
     };
   }
 
+  // this will be replaced with Redux
+  handleAddToSelected = (selected) => {
+    this.setState({
+      selected: this.state.selected.concat([selected]),
+    });
+  };
+
   render() {
     return (
       <div is="app">
-        <div is="header">
+        <div is="header"
+          onClick={ this.handleAddToSelected }>
           <Header />
         </div>
         <div is="encryptKeyList">
           <EncryptKeyList />
         </div>
         <FloatingButtonToggle />
+        <EncryptCompose display={ this.state.selected.length > 0 } />
       </div>
     );
   }
