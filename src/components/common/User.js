@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
 
-import { spacing, sizing } from '../../styles/variables/utils';
+import { spacing, sizing } from '../../styles/variables/utils'
 
-import Avatar from './Avatar';
+import Avatar from './Avatar'
 
 class User extends Component {
   classes() {
@@ -27,7 +27,7 @@ class User extends Component {
           textOverflow: 'ellipsis',
         },
       },
-    };
+    }
   }
 
   render() {
@@ -40,8 +40,8 @@ class User extends Component {
           { this.props.name }
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default ReactCSS(User);
+export default ReactCSS(User)

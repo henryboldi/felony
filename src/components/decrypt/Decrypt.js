@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
 
 class Decrypt extends Component {
   classes() {
@@ -9,12 +9,12 @@ class Decrypt extends Component {
       'default': {
 
       },
-    };
+    }
   }
 
   render() {
-    return <div></div>;
+    return <div></div>
   }
 }
 
-export default ReactCSS(Decrypt);
+export default ReactCSS(Decrypt)

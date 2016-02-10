@@ -1,8 +1,9 @@
 const colors = {
-  bgDark: '#48505C',
-  bgLight: '#EEF1F8',
+  bgDark: '#2B272C',
+  bgLight: '#37373C',
   offBgLight: '#DEE3ED',
-  primary: '#F4C97A',
-};
+  primary: '#E4212A',
+  primaryGradient: 'linear-gradient(to left bottom, #E4212A 0%, #B61E4F 100%)',
+}
 
-export default colors;
+export default colors
