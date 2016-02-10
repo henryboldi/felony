@@ -1,17 +1,17 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
 
-import { spacing } from '../../styles/variables/utils';
+import { spacing } from '../../styles/variables/utils'
 
-import { Overlay } from '../common/index';
-import FloatingButton from './FloatingButton';
+import { Overlay } from '../common/index'
+import FloatingButton from './FloatingButton'
 
 class FloatingButtonToggle extends Component {
   state = {
     isShowingActions: false,
-  };
+  }
 
   classes() {
     return {
@@ -26,17 +26,16 @@ class FloatingButtonToggle extends Component {
           position: 'relative',
         },
       },
-    };
+    }
   }
 
-  handleOpen = () => this.setState({ isShowingActions: true });
+  handleOpen = () => this.setState({ isShowingActions: true })
 
-  handleClose = () => this.setState({ isShowingActions: false });
+  handleClose = () => this.setState({ isShowingActions: false })
 
   render() {
     return <div is="button">
-      {
-        this.state.isShowingActions ?
+      { this.state.isShowingActions ?
         <div>
           <div is="floatingButtons">
             <FloatingButton />
@@ -47,8 +46,8 @@ class FloatingButtonToggle extends Component {
         :
         <FloatingButton onClick={this.handleOpen}/>
       }
-    </div>;
+    </div>
   }
 }
 
-export default ReactCSS(FloatingButtonToggle);
+export default ReactCSS(FloatingButtonToggle)

@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
 
 class FullScreenTextArea extends Component {
   classes() {
@@ -9,12 +9,12 @@ class FullScreenTextArea extends Component {
       'default': {
 
       },
-    };
+    }
   }
 
   render() {
-    return <div></div>;
+    return <div></div>
   }
 }
 
-export default ReactCSS(FullScreenTextArea);
+export default ReactCSS(FullScreenTextArea)
