@@ -21,6 +21,7 @@ System.config({
     "classnames": "npm:classnames@2.2.3",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
+    "immutable": "npm:immutable@3.7.6",
     "lodash": "npm:lodash@3.10.1",
     "merge": "npm:merge@1.2.0",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
