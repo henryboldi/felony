@@ -6,9 +6,9 @@ import ReactCSS from 'reactcss'
 import { spacing } from '../../styles/variables/utils'
 
 import { Overlay } from '../common/index'
-import FloatingButton from './FloatingButton'
+import FloatingButtonItem from './FloatingButtonItem'
 
-class FloatingButtonToggle extends Component {
+class FloatingButton extends Component {
   state = {
     isShowingActions: false,
   }
@@ -38,16 +38,16 @@ class FloatingButtonToggle extends Component {
       { this.state.isShowingActions ?
         <div>
           <div is="floatingButtons">
-            <FloatingButton />
-            <FloatingButton onClick={this.handleClose}/>
+            <FloatingButtonItem />
+            <FloatingButtonItem onClick={this.handleClose}/>
           </div>
           <Overlay onClick={this.handleClose}/>
         </div>
         :
-        <FloatingButton onClick={this.handleOpen}/>
+        <FloatingButtonItem onClick={this.handleOpen}/>
       }
     </div>
   }
 }
 
-export default ReactCSS(FloatingButtonToggle)
+export default ReactCSS(FloatingButton)
