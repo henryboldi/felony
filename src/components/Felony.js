@@ -9,7 +9,7 @@ import '../styles/felony.css!'
 import colors  from '../styles/variables/colors'
 
 import EncryptKeyListContainer  from '../containers/EncryptKeyListContainer'
-import FloatingButtonToggle  from './floating-button/FloatingButtonToggle'
+import FloatingButton  from './floating-button/FloatingButton'
 import Header  from './header/Header'
 
 export class Felony extends Component {
@@ -17,8 +17,13 @@ export class Felony extends Component {
     return {
       'default': {
         app: {
-          absolute: '0 0 0 0',
+
+          // NOTE: Set here and not in felony.css in order to use color variable
           background: colors.bgLight,
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          color: 'white',
         },
         header: {
           position: 'fixed',
@@ -47,7 +52,7 @@ export class Felony extends Component {
         <div is="encryptKeyList">
           <EncryptKeyListContainer />
         </div>
-        <FloatingButtonToggle />
+        <FloatingButton />
       </div>
     )
   }

@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
 
 class Overlay extends Component {
   classes() {
@@ -13,17 +13,17 @@ class Overlay extends Component {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'rgba(225, 225, 225, 0.7)', // TODO: color package for hex code opacity
+          background: 'rgba(0, 0, 0, 0.7)', // TODO: color package for hex code opacity
         },
       },
-    };
+    }
   }
 
-  handleClick = () => this.props.onClick && this.props.onClick();
+  handleClick = () => this.props.onClick && this.props.onClick()
 
   render() {
-    return <div is="overlay" onClick={ this.handleClick } />;
+    return <div is="overlay" onClick={ this.handleClick } />
   }
 }
 
-export default ReactCSS(Overlay);
+export default ReactCSS(Overlay)

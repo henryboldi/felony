@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
 
-import { User } from '../common/index';
+import { User } from '../common/index'
 
-import colors from '../../styles/variables/colors';
-import { spacing, sizing } from '../../styles/variables/utils';
+import colors from '../../styles/variables/colors'
+import { spacing, sizing } from '../../styles/variables/utils'
 
 class EncryptKeyListItem extends Component {
   classes() {
@@ -17,12 +17,12 @@ class EncryptKeyListItem extends Component {
           display: 'flex',
         },
         spaceLine: {
-          borderBottom: `solid 1px ${colors.offBgLight}`,
+          borderBottom: `solid 1px ${colors.bgDark}`,
           margin: `0px ${spacing.m}px 0px ${spacing.m + sizing.avatar + spacing.s}px`,
           item: 1,
         },
       },
-    };
+    }
   }
 
   render() {
@@ -31,8 +31,8 @@ class EncryptKeyListItem extends Component {
         <User name={ this.props.name } />
       </div>
       <div is="spaceLine"/>
-    </div>;
+    </div>
   }
 }
 
-export default ReactCSS(EncryptKeyListItem);
+export default ReactCSS(EncryptKeyListItem)
