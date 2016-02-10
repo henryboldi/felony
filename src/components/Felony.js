@@ -1,23 +1,23 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import 'normalize.css'
+import React, { Component } from 'react'
+import ReactCSS  from 'reactcss'
 
-import colors from '../styles/variables/colors';
-import 'normalize.css';
-import '../fonts/work-sans/WorkSans.css!';
-import '../styles/felony.css!';
+import '../fonts/work-sans/WorkSans.css!'
+import '../styles/felony.css!'
+import colors  from '../styles/variables/colors'
 
-import Header from './header/Header';
-import EncryptKeyList from './encrypt/EncryptKeyList';
-import FloatingButtonToggle from './floating-button/FloatingButtonToggle';
+import EncryptKeyListContainer  from '../containers/EncryptKeyListContainer'
+import FloatingButtonToggle  from './floating-button/FloatingButtonToggle'
+import Header  from './header/Header'
 
 export class Felony extends Component {
   classes() {
     return {
       'default': {
         app: {
-          Absolute: '0 0 0 0',
+          absolute: '0 0 0 0',
           background: colors.bgLight,
         },
         header: {
@@ -35,7 +35,7 @@ export class Felony extends Component {
           overflowY: 'scroll', // TODO: elastic scroll
         },
       },
-    };
+    }
   }
 
   render() {
@@ -45,12 +45,12 @@ export class Felony extends Component {
           <Header />
         </div>
         <div is="encryptKeyList">
-          <EncryptKeyList />
+          <EncryptKeyListContainer />
         </div>
         <FloatingButtonToggle />
       </div>
-    );
+    )
   }
 }
 
-export default ReactCSS(Felony);
+export default ReactCSS(Felony)
