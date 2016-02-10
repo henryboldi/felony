@@ -1,11 +1,18 @@
-'use strict';
+'use strict'
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from './reducers/index'
 
-import Felony from './components/Felony';
+import Felony from './components/Felony'
 
-ReactDOM.render(
-  React.createElement(Felony),
+let store = createStore(rootReducer)
+
+render(
+  <Provider store={store}>
+    <Felony />
+  </Provider>,
   document.getElementById('root')
-);
+)
