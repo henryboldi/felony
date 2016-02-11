@@ -3,6 +3,8 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
+import colors from '../../styles/variables/colors'
+
 import EncryptKeyListItem from './EncryptKeyListItem'
 
 class EncryptKeyList extends Component {
