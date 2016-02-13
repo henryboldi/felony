@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
-import { getIcon } from '../../helpers/icons';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
+import { getIcon } from '../../helpers/icons'
 
 class Icon extends Component {
   classes() {
@@ -13,12 +13,12 @@ class Icon extends Component {
           display: 'inline-block',
         },
       },
-    };
+    }
   }
 
   render() {
-    return <div is="icon" dangerouslySetInnerHTML={{ __html: getIcon(this.props.name) }} />;
+    return <div is="icon" dangerouslySetInnerHTML={{ __html: getIcon(this.props.name) }} />
   }
 }
 
-export default ReactCSS(Icon);
+export default ReactCSS(Icon)

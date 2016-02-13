@@ -1,40 +1,57 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
 
-import colors from '../../styles/variables/colors';
-import { spacing, sizing } from '../../styles/variables/utils';
+import { spacing } from '../../styles/variables/utils'
+
+import { Overlay, Icon } from '../common/index'
+import FloatingButtonItem from './FloatingButtonItem'
 
 class FloatingButton extends Component {
+  state = {
+    isShowingActions: false,
+  }
+
   classes() {
     return {
       'default': {
-        floatingButton: {
-          height: '34px',
-          width: '34px', // TODO: use utils for sizing
-          borderRadius: '100%',
-          backgroundColor: '#fff',
-          display: 'flex',
-          alignItems: 'center',
-          boxShadow: '0px 2px 9px 0px rgba(0,0,0,0.21)',
+        button: {
+          position: 'fixed',
+          right: spacing.m,
+          bottom: spacing.m,
+        },
+        floatingButtons: {
+          zIndex: '9990',
+          position: 'relative',
         },
       },
-      hover: {
-        floatingButton: {
-          boxShadow: '0 8px 17px 0 rgba(34, 32, 32, 0.28)',
-        },
-      },
-    };
+    }
   }
 
-  handleClick = () => this.props.onClick && this.props.onClick();
+  handleOpen = () => this.setState({ isShowingActions: true })
+
+  handleClose = () => this.setState({ isShowingActions: false })
 
   render() {
-    return <div onClick={ this.handleClick }>
-      <a is="floatingButton">Item</a>
-    </div>;
+    return <div is="button">
+      { this.state.isShowingActions ?
+        <div>
+          <div is="floatingButtons">
+            <FloatingButtonItem />
+            <FloatingButtonItem onClick={this.handleClose}/>
+          </div>
+          <Overlay onClick={this.handleClose}/>
+        </div>
+        :
+        <div>
+            <FloatingButtonItem onClick={this.handleOpen}>
+                <Icon name="compose" />
+            </FloatingButtonItem>
+        </div>
+      }
+    </div>
   }
 }
 
-export default ReactCSS.Hover(ReactCSS(FloatingButton));
+export default ReactCSS(FloatingButton)

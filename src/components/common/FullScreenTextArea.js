@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
-class Encrypt extends Component {
+class FullScreenTextArea extends Component {
   classes() {
     return {
       'default': {
@@ -17,4 +17,4 @@ class Encrypt extends Component {
   }
 }
 
-export default ReactCSS(Encrypt)
+export default ReactCSS(FullScreenTextArea)

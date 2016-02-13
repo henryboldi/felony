@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
 
 class FullScreenTextArea extends Component {
   static defaultProps = {
     position: 'fixed',
-  };
+  }
 
   classes() {
     return {
@@ -47,7 +47,7 @@ class FullScreenTextArea extends Component {
           display: 'none',
         },
       },
-    };
+    }
   }
 
   render() {
@@ -60,8 +60,8 @@ class FullScreenTextArea extends Component {
           <a href="#">Encrypt</a>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default ReactCSS(FullScreenTextArea);
+export default ReactCSS(FullScreenTextArea)

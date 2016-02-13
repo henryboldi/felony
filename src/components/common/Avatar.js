@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
 
 class Avatar extends Component {
   classes() {
@@ -14,12 +14,12 @@ class Avatar extends Component {
           background: '#aeee00',
         },
       },
-    };
+    }
   }
 
   render() {
-    return <div is="avatar" />;
+    return <div is="avatar" />
   }
 }
 
-export default ReactCSS(Avatar);
+export default ReactCSS(Avatar)

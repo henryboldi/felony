@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
 
-import colors from '../../styles/variables/colors';
-import { spacing } from '../../styles/variables/utils';
+import colors from '../../styles/variables/colors'
+import { spacing } from '../../styles/variables/utils'
 
-import { User, Button, Icon } from '../common/index';
+import { User, Button, Icon } from '../common/index'
 
 class Header extends Component {
   classes() {
@@ -28,11 +28,11 @@ class Header extends Component {
           alignItems: 'center',
         },
         Decrypt: {
-          background: colors.primary,
+          background: colors.primaryGradient, // TODO: File issue as this should work
           color: colors.bgDark,
         },
       },
-    };
+    }
   }
 
   render() {
@@ -46,8 +46,8 @@ class Header extends Component {
           <Button is="Decrypt"><Icon name="unlock" /> Decrypt</Button>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default ReactCSS(Header);
+export default ReactCSS(Header)

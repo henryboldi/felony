@@ -1,14 +1,14 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import React, { Component } from 'react'
+import ReactCSS from 'reactcss'
 
-import { FullScreenCompose } from '../common/index';
+import { FullScreenCompose } from '../common/index'
 
 class EncryptCompose extends Component {
   state = {
     'full-screen-compose': false,
-  };
+  }
 
   classes() {
     return {
@@ -47,28 +47,28 @@ class EncryptCompose extends Component {
           actions: 'true',
         },
       },
-    };
+    }
   }
 
   activations() {
     return {
       'full-screen-compose': this.state['full-screen-compose'],
-    };
+    }
   }
 
   handleExpandCompose = () => {
     this.setState({
       'full-screen-compose': true,
-    });
-  };
+    })
+  }
 
   render() {
     return (
       <div is="compose" onClick={ this.handleExpandCompose }>
         <FullScreenCompose is="Compose" />
       </div>
-    );
+    )
   }
 }
 
-export default ReactCSS(EncryptCompose);
+export default ReactCSS(EncryptCompose)

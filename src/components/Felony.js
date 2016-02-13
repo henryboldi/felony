@@ -1,29 +1,34 @@
-'use strict';
+'use strict'
 
-import React, { Component } from 'react';
-import ReactCSS from 'reactcss';
+import 'normalize.css'
+import React, { Component } from 'react'
+import ReactCSS  from 'reactcss'
 
-import colors from '../styles/variables/colors';
-import 'normalize.css';
-import '../fonts/work-sans/WorkSans.css!';
-import '../styles/felony.css!';
+import '../fonts/work-sans/WorkSans.css!'
+import '../styles/felony.css!'
+import colors  from '../styles/variables/colors'
 
-import Header from './header/Header';
-import EncryptKeyList from './encrypt/EncryptKeyList';
-import EncryptCompose from './encrypt/EncryptCompose';
-import FloatingButtonToggle from './floating-button/FloatingButtonToggle';
+import EncryptKeyListContainer  from '../containers/EncryptKeyListContainer'
+import FloatingButton  from './floating-button/FloatingButton'
+import Header  from './header/Header'
+import EncryptCompose from './encrypt/EncryptCompose'
 
 export class Felony extends Component {
   state = {
     selected: [], // replaced with redux
-  };
+  }
 
   classes() {
     return {
       'default': {
         app: {
-          Absolute: '0 0 0 0',
+
+          // NOTE: Set here and not in felony.css in order to use color variable
           background: colors.bgLight,
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          color: 'white',
         },
         header: {
           position: 'fixed',
@@ -40,15 +45,15 @@ export class Felony extends Component {
           overflowY: 'scroll', // TODO: elastic scroll
         },
       },
-    };
+    }
   }
 
   // this will be replaced with Redux
   handleAddToSelected = (selected) => {
     this.setState({
       selected: this.state.selected.concat([selected]),
-    });
-  };
+    })
+  }
 
   render() {
     return (
@@ -58,13 +63,13 @@ export class Felony extends Component {
           <Header />
         </div>
         <div is="encryptKeyList">
-          <EncryptKeyList />
+          <EncryptKeyListContainer />
         </div>
-        <FloatingButtonToggle />
+        <FloatingButton />
         <EncryptCompose display={ this.state.selected.length > 0 } />
       </div>
-    );
+    )
   }
 }
 
-export default ReactCSS(Felony);
+export default ReactCSS(Felony)
