@@ -5,7 +5,7 @@ import ReactCSS from 'reactcss'
 
 import { spacing } from '../../styles/variables/utils'
 
-import { Overlay } from '../common/index'
+import { Overlay, Icon } from '../common/index'
 import FloatingButtonItem from './FloatingButtonItem'
 
 class FloatingButton extends Component {
@@ -44,7 +44,11 @@ class FloatingButton extends Component {
           <Overlay onClick={this.handleClose}/>
         </div>
         :
-        <FloatingButtonItem onClick={this.handleOpen}/>
+        <div>
+            <FloatingButtonItem onClick={this.handleOpen}>
+                <Icon name="compose" />
+            </FloatingButtonItem>
+        </div>
       }
     </div>
   }

@@ -32,7 +32,7 @@ class FloatingButtonItem extends Component {
 
   render() {
     return <div onClick={ this.handleClick }>
-      <a is="floatingButton">Item</a>
+      <a is="floatingButton">{ this.props.children }</a>
     </div>
   }
 }
