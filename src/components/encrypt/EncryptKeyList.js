@@ -19,7 +19,7 @@ class EncryptKeyList extends Component {
   componentDidMount() {
     setInterval(() => {
       this.props.onTestAdd('Case')
-    }, 1000)
+    }, 50000)
   }
 
   render() {
