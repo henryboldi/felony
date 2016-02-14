@@ -38,20 +38,45 @@ class FloatingButton extends Component {
   handleClose = () => this.setState({ isShowingActions: false })
 
   render() {
-    return <div is="button">
+    return <div
+      is="wrap"
+      onMouseLeave={ this.handleClose }
+    >
       { this.state.isShowingActions ?
         <div>
-          <div is="floatingButtons">
-            <FloatingButtonItem />
-            <FloatingButtonItem onClick={this.handleClose}/>
+          <div is="buttons">
+            <div is="item">
+              <FloatingButtonItem label="Add Key">
+                <Icon name="add-key" />
+              </FloatingButtonItem>
+            </div>
+            <div is="item">
+              <FloatingButtonItem label="Verify">
+                <Icon name="verify" />
+              </FloatingButtonItem>
+            </div>
+            <div is="item">
+              <FloatingButtonItem label="Sign">
+                <Icon name="sign" />
+              </FloatingButtonItem>
+            </div>
+            <div is="item">
+              <FloatingButtonItem label="Decrypt" >
+                <Icon name="decrypt" />
+              </FloatingButtonItem>
+            </div>
+            <div is="item">
+              <FloatingButtonItem size="large" label="Encrypt" >
+                <Icon name="encrypt" />
+              </FloatingButtonItem>
+            </div>
           </div>
-          <Overlay onClick={this.handleClose}/>
         </div>
         :
-        <div>
-            <FloatingButtonItem onClick={this.handleOpen}>
-                <Icon name="compose" />
-            </FloatingButtonItem>
+        <div onMouseEnter={this.handleOpen}>
+          <FloatingButtonItem size="large">
+            <Icon name="plus" />
+          </FloatingButtonItem>
         </div>
       }
     </div>
