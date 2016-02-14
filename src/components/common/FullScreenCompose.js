@@ -33,13 +33,14 @@ class FullScreenTextArea extends Component {
           border: 'none',
           outline: 'none',
           width: '87%',
+          color: '#333',
         },
         actions: {
           marginTop: '-10px',
           height: '40px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'flex-end',
+          justifyContent: 'space-between',
         },
       },
       'actions-false': {
@@ -50,13 +51,24 @@ class FullScreenTextArea extends Component {
     }
   }
 
+  handleClick = () => {
+    this.props.onCancel && this.props.onCancel()
+  }
+
+  handleKeyDown = (e) => {
+    if (e.keyCode === 27) { // escape key
+      this.handleClick()
+    }
+  }
+
   render() {
     return (
       <div is="wrap">
         <div is="text">
-          <textarea is="textarea" placeholder="Write a Message" onKeyDown={ this.props.handleKeyDown } />
+          <textarea is="textarea" placeholder="Write a Message" onKeyDown={ this.handleKeyDown } />
         </div>
         <div is="actions">
+          <a href="#" onClick={ this.handleClick }>Cancel</a>
           <a href="#">Encrypt</a>
         </div>
       </div>

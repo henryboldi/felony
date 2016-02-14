@@ -11,7 +11,7 @@ import colors  from '../styles/variables/colors'
 import EncryptKeyListContainer  from '../containers/EncryptKeyListContainer'
 import FloatingButton  from './floating-button/FloatingButton'
 import Header  from './header/Header'
-import EncryptCompose from './encrypt/EncryptCompose'
+import EncryptComposeContainer from '../containers/EncryptComposeContainer'
 
 export class Felony extends Component {
   state = {
@@ -66,7 +66,7 @@ export class Felony extends Component {
           <EncryptKeyListContainer />
         </div>
         <FloatingButton />
-        <EncryptCompose display={ this.state.selected.length > 0 } />
+        <EncryptComposeContainer />
       </div>
     )
   }

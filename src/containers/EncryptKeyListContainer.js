@@ -4,7 +4,7 @@ import { addKey } from '../actions/index'
 import EncryptKeyList from '../components/encrypt/EncryptKeyList'
 
 const mapStateToProps = (state) => {
-  console.log('state', state)
+  // console.log('state', state)
   return {
     keys: state.keys,
   }

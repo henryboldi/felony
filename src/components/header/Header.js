@@ -43,7 +43,6 @@ class Header extends Component {
         </div>
         <div is="actions">
           <Icon name="more" color="#F4C97A"/>
-          <Button is="Decrypt"><Icon name="unlock" /> Decrypt</Button>
         </div>
       </div>
     )

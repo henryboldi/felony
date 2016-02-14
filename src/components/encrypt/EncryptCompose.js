@@ -6,10 +6,6 @@ import ReactCSS from 'reactcss'
 import { FullScreenCompose } from '../common/index'
 
 class EncryptCompose extends Component {
-  state = {
-    'full-screen-compose': false,
-  }
-
   classes() {
     return {
       'default': {
@@ -30,10 +26,13 @@ class EncryptCompose extends Component {
           display: 'block',
           outline: 'none',
         },
-
         Compose: {
           actions: 'false',
           position: 'absolute',
+        },
+        cover: {
+          Absolute: '0 0 0 0',
+          zIndex: '11',
         },
       },
       'display': {
@@ -41,31 +40,26 @@ class EncryptCompose extends Component {
           display: 'block',
         },
       },
-      'full-screen-compose': {
+      'expanded': {
         Compose: {
           position: 'fixed',
           actions: 'true',
+        },
+        cover: {
+          display: 'none',
         },
       },
     }
   }
 
-  activations() {
-    return {
-      'full-screen-compose': this.state['full-screen-compose'],
-    }
-  }
-
-  handleExpandCompose = () => {
-    this.setState({
-      'full-screen-compose': true,
-    })
+  handleClick = () => {
+    (!this.props.expanded) && this.props.handleToggleEncrypt()
   }
 
   render() {
     return (
-      <div is="compose" onClick={ this.handleExpandCompose }>
-        <FullScreenCompose is="Compose" />
+      <div is="compose" onClick={ this.handleClick }>
+        <FullScreenCompose is="Compose" onCancel={ this.props.handleToggleEncrypt } />
       </div>
     )
   }

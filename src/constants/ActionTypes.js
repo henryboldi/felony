@@ -1,1 +1,2 @@
 export const ADD_KEY = 'ADD_KEY'
+export const TOGGLE_ENCRYPT_COMPOSE = 'TOGGLE_ENCRYPT_COMPOSE'
