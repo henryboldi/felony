@@ -16,11 +16,11 @@ class EncryptKeyList extends Component {
     }
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      this.props.onTestAdd('Case')
-    }, 50000)
-  }
+  // componentDidMount() {
+  //   setInterval(() => {
+  //     this.props.onTestAdd('Case')
+  //   }, 50000)
+  // }
 
   render() {
     return (
