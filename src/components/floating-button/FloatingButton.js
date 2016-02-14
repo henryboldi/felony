@@ -9,21 +9,25 @@ import { Overlay, Icon } from '../common/index'
 import FloatingButtonItem from './FloatingButtonItem'
 
 class FloatingButton extends Component {
-  state = {
-    isShowingActions: false,
-  }
+  state = { isShowingActions: false }
 
   classes() {
     return {
       'default': {
-        button: {
+        wrap: {
           position: 'fixed',
           right: spacing.m,
           bottom: spacing.m,
         },
-        floatingButtons: {
+        buttons: {
           zIndex: '9990',
-          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          marginTop: '10px',
+        },
+        item: {
+          marginTop: '10px',
         },
       },
     }
