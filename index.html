@@ -15,14 +15,15 @@
     <script type="text/javascript">
       var readyForMainLoad
       if (location.origin.match(/localhost|file/)) {
-        System.trace = true;
-        readyForMainLoad = System.import('capaj/systemjs-hot-reloader').then(function(HotReloader){
-          new HotReloader.default('http://localhost:1111');
-        });
+        System.trace = true
+        readyForMainLoad = System.import('capaj/systemjs-hot-reloader').then(function (HotReloader) {
+          new HotReloader.default('http://localhost:1111')
+        })
       }
+
       Promise.resolve(readyForMainLoad).then(() => {
-        System.import('./src/main');
-      });
+        System.import('./src/main')
+      })
     </script>
   </body>
 </html>
