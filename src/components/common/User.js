@@ -27,6 +27,11 @@ class User extends Component {
           textOverflow: 'ellipsis',
         },
       },
+      'active': {
+        avatar: {
+          background: '#aeee00',
+        },
+      },
     }
   }
 

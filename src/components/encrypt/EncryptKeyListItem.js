@@ -25,10 +25,14 @@ class EncryptKeyListItem extends Component {
     }
   }
 
+  handleClick = () => {
+    this.props.onSelect && this.props.onSelect(this.props.id)
+  }
+
   render() {
-    return <div>
+    return <div onClick={ this.handleClick }>
       <div is="user">
-        <User name={ this.props.name } />
+        <User name={ this.props.name } active={ this.props.active } />
       </div>
       <div is="spaceLine"/>
     </div>

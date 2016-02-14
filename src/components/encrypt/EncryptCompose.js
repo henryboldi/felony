@@ -16,8 +16,7 @@ class EncryptCompose extends Component {
           left: '0',
           boxShadow: '0 0 14px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.10)',
           height: '50px',
-
-          // display: 'none',
+          display: 'none',
         },
         textarea: {
           width: '94%',
@@ -35,7 +34,7 @@ class EncryptCompose extends Component {
           zIndex: '11',
         },
       },
-      'display': {
+      'isVisible': {
         compose: {
           display: 'block',
         },
