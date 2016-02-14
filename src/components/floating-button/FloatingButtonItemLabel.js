@@ -10,15 +10,30 @@ class FloatingButtonItemLabel extends Component {
   classes() {
     return {
       'default': {
-
+        wrap: {
+          display: 'flex',
+          alignItems: 'center',
+          position: 'absolute',
+          top: '0',
+          bottom: '0',
+          right: '0'
+        },
+        label: {
+          backgroundColor: 'rgba(255,255,255,0.59)',
+          borderRadius: '3px',
+          padding: '3px',
+          color: colors.bgDark,
+          whiteSpace: 'nowrap',
+          fontSize: '14px',
+        },
       },
     }
   }
 
   render() {
     return (
-        <div>
-            <span>{ this.props.label }</span>
+        <div is="wrap">
+            <span is="label">{ this.props.label }</span>
         </div>
     )
   }
