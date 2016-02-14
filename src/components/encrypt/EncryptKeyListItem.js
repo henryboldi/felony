@@ -15,6 +15,7 @@ class EncryptKeyListItem extends Component {
         user: {
           padding: `${spacing.m}px ${spacing.m}px ${spacing.m}px`,
           display: 'flex',
+          cursor: 'pointer',
         },
         spaceLine: {
           borderBottom: `solid 1px ${colors.bgDark}`,
