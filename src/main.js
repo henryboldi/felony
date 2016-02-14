@@ -16,3 +16,7 @@ render(
   </Provider>,
   document.getElementById('root')
 )
+
+export function __reload() {
+  console.clear()
+}
