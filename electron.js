@@ -13,7 +13,7 @@ function createWindow() {
     'title-bar-style': 'hidden',
     title: 'Felony',
   })
-  mainWindow.loadURL('file://' + __dirname + '/index.html')
+  mainWindow.loadURL('file://' + __dirname + '/src/index.html')
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()

@@ -2,9 +2,9 @@
   "name": "Felony",
   "version": "0.1.0",
   "description": "The elegant PGP app",
-  "main": "index.js",
+  "main": "electron.js",
   "scripts": {
-    "start": "node devServer",
+    "start": "node server",
     "start-cold": "electron .",
     "felony-install": "jspm install && npm install"
   },
