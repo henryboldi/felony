@@ -22,6 +22,7 @@
     "babel-register": "^6.3.13",
     "chokidar-socket-emitter": "^0.3.0",
     "electron-prebuilt": "^0.36.0",
+    "electron-window-state": "^2.0.0",
     "jspm": "^0.16.20"
   },
   "jspm": {
