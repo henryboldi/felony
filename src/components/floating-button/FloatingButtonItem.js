@@ -1,7 +1,9 @@
 'use strict'
 
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import ReactCSS from 'reactcss'
+import dynamics from 'dynamics.js'
 
 import colors from '../../styles/variables/colors'
 import { spacing, sizing } from '../../styles/variables/utils'
@@ -55,6 +57,25 @@ class FloatingButtonItem extends Component {
         },
       },
     }
+  }
+
+  componentDidMount = () => {
+    // Animate this node once it is mounted
+    const node = ReactDOM.findDOMNode(this)
+
+    if (document.body.style.transform == undefined) {
+      node.style.WebkitTransform = 'scale(0.5)'
+    } else {
+      node.style.transform = 'scale(0.5)'
+    }
+
+    dynamics.animate(node, {
+      scale: 1,
+    }, {
+      type: dynamics.spring,
+      duration: 500,
+      friction: 400,
+    })
   }
 
   render() {
