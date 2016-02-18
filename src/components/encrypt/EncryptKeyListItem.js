@@ -12,6 +12,10 @@ class EncryptKeyListItem extends Component {
   classes() {
     return {
       'default': {
+        item: {
+          color: '#aaa',
+          transition: 'color 200ms linear',
+        },
         user: {
           padding: `${spacing.m}px ${spacing.m}px ${spacing.m}px`,
           display: 'flex',
@@ -23,6 +27,11 @@ class EncryptKeyListItem extends Component {
           item: 1,
         },
       },
+      'active': {
+        item: {
+          color: '#fff',
+        },
+      },
     }
   }
 
@@ -31,7 +40,7 @@ class EncryptKeyListItem extends Component {
   }
 
   render() {
-    return <div onClick={ this.handleClick }>
+    return <div onClick={ this.handleClick } is="item">
       <div is="user">
         <User name={ this.props.name } active={ this.props.active } />
       </div>

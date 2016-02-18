@@ -29,7 +29,7 @@ class EncryptKeyList extends Component {
 
   render() {
     return (
-        <div>
+        <div is="list">
         { this.props.keys && this.props.keys.map((key, j) => {
           return <EncryptKeyListItem ref="input"
             key={ key.id } // TODO: come up with a better variable name than key
@@ -37,6 +37,7 @@ class EncryptKeyList extends Component {
             name={ key.name }
             onSelect={ this.props.selectKey }
             active={ this.props.active[key.id] }
+            untouched={ !this.props.active.length === 0 }
           />
         }) }
         </div>
