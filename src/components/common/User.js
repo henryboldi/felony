@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
 import { spacing, sizing } from '../../styles/variables/utils'
+import colors from '../../styles/variables/colors'
 
 import Avatar from './Avatar'
 
@@ -15,8 +16,18 @@ class User extends Component {
           display: 'flex',
           alignItems: 'center',
         },
-        avatar: {
+        'avatar-wrap': {
           width: sizing.avatar,
+          position: 'relative',
+        },
+        outline: {
+          Absolute: '0 0 0 0',
+          borderRadius: '50%',
+          border: `2px solid ${ colors.primary }`,
+        },
+        avatar: {
+          transform: 'scale(1)',
+          transition: 'transform 100ms ease-in-out',
         },
         name: {
           flex: '1',
@@ -29,7 +40,7 @@ class User extends Component {
       },
       'active': {
         avatar: {
-          background: '#aeee00',
+          transform: 'scale(.6)',
         },
       },
     }
@@ -38,8 +49,11 @@ class User extends Component {
   render() {
     return (
       <div is="user">
-        <div is="avatar">
-          <Avatar />
+        <div is="avatar-wrap">
+          <div is="outline" />
+          <div is="avatar">
+            <Avatar />
+          </div>
         </div>
         <div is="name">
           { this.props.name }

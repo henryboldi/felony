@@ -9,7 +9,7 @@ import FloatingButtonItemLabel from './FloatingButtonItemLabel'
 
 class FloatingButtonItem extends Component {
   classes() {
-    const floatingButtonSize = 40;
+    const floatingButtonSize = 40
 
     return {
       'default': {

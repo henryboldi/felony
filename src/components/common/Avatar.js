@@ -11,7 +11,7 @@ class Avatar extends Component {
           width: '100%',
           paddingBottom: '100%',
           borderRadius: '50%',
-          background: '#aeee00',
+          background: '#999',
         },
       },
     }
