@@ -15,8 +15,10 @@ class EncryptCompose extends Component {
           right: '0',
           left: '0',
           boxShadow: '0 0 14px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.10)',
-          height: '50px',
-          display: 'none',
+          maxHeight: '50px',
+          minHeight: '50px',
+          transform: 'translateY(50px)',
+          transition: 'transform 100ms ease-in-out',
         },
         textarea: {
           width: '94%',
@@ -36,12 +38,15 @@ class EncryptCompose extends Component {
       },
       'isVisible': {
         compose: {
-          display: 'block',
+          transform: 'translateY(0)',
         },
       },
       'expanded': {
+        compose: {
+          maxHeight: '100%',
+          top: '0',
+        },
         Compose: {
-          position: 'fixed',
           actions: 'true',
         },
         cover: {
