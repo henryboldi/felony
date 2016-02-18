@@ -52,7 +52,7 @@ class User extends Component {
         <div is="avatar-wrap">
           <div is="outline" />
           <div is="avatar">
-            <Avatar />
+            <Avatar href="images/avatar.png" />
           </div>
         </div>
         <div is="name">
