@@ -12,9 +12,14 @@ class EncryptKeyListItem extends Component {
   classes() {
     return {
       'default': {
+        item: {
+          color: '#aaa',
+          transition: 'color 200ms linear',
+        },
         user: {
           padding: `${spacing.m}px ${spacing.m}px ${spacing.m}px`,
           display: 'flex',
+          cursor: 'pointer',
         },
         spaceLine: {
           borderBottom: `solid 1px ${colors.bgDark}`,
@@ -22,13 +27,22 @@ class EncryptKeyListItem extends Component {
           item: 1,
         },
       },
+      'active': {
+        item: {
+          color: '#fff',
+        },
+      },
     }
   }
 
+  handleClick = () => {
+    this.props.onSelect && this.props.onSelect(this.props.id)
+  }
+
   render() {
-    return <div>
+    return <div onClick={ this.handleClick } is="item">
       <div is="user">
-        <User name={ this.props.name } />
+        <User name={ this.props.name } active={ this.props.active } />
       </div>
       <div is="spaceLine"/>
     </div>

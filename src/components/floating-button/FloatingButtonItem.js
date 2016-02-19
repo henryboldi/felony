@@ -41,6 +41,9 @@ class FloatingButtonItem extends Component {
         buttonContent: {
           width: '24px',
         },
+        buttonContent: {
+          width: '24px',
+        },
       },
       hover: {
         button: {
@@ -51,9 +54,10 @@ class FloatingButtonItem extends Component {
         button: {
           height: floatingButtonSize * 1.3,
           width: floatingButtonSize * 1.3,
+          right: '900px',
         },
         label: {
-          right: '67px', // TODO: make this a calculated distance
+          right: '67px',
         },
       },
     }

@@ -11,8 +11,13 @@ import colors  from '../styles/variables/colors'
 import EncryptKeyListContainer  from '../containers/EncryptKeyListContainer'
 import FloatingButton  from './floating-button/FloatingButton'
 import Header  from './header/Header'
+import EncryptComposeContainer from '../containers/EncryptComposeContainer'
 
 export class Felony extends Component {
+  state = {
+    selected: [], // replaced with redux
+  }
+
   classes() {
     return {
       'default': {
@@ -43,16 +48,25 @@ export class Felony extends Component {
     }
   }
 
+  // this will be replaced with Redux
+  handleAddToSelected = (selected) => {
+    this.setState({
+      selected: this.state.selected.concat([selected]),
+    })
+  }
+
   render() {
     return (
       <div is="app">
-        <div is="header">
+        <div is="header"
+          onClick={ this.handleAddToSelected }>
           <Header />
         </div>
         <div is="encryptKeyList">
           <EncryptKeyListContainer />
         </div>
         <FloatingButton />
+        <EncryptComposeContainer />
       </div>
     )
   }

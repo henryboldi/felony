@@ -27,6 +27,9 @@ class Header extends Component {
           display: 'flex',
           alignItems: 'center',
         },
+        icon: {
+          width: '24px',
+        },
         Decrypt: {
           background: colors.primaryGradient, // TODO: File issue as this should work
           color: colors.bgDark,
@@ -42,8 +45,9 @@ class Header extends Component {
           <User name="Cali-Connection" />
         </div>
         <div is="actions">
-          <Icon name="more" color="#F4C97A"/>
-          <Button is="Decrypt"><Icon name="unlock" /> Decrypt</Button>
+          <div is="icon">
+            <Icon name="more" color="#F4C97A"/>
+          </div>
         </div>
       </div>
     )
