@@ -1,7 +1,9 @@
 'use strict'
 
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import ReactCSS from 'reactcss'
+import dynamics from 'dynamics.js'
 
 import colors from '../../styles/variables/colors'
 import { spacing, sizing } from '../../styles/variables/utils'
@@ -20,7 +22,7 @@ class FloatingButtonItem extends Component {
         },
         label: {
           position: 'absolute',
-          right: '100px',
+          right: '60px',
           top: '0',
           bottom: '0',
         },
@@ -33,14 +35,19 @@ class FloatingButtonItem extends Component {
           alignItems: 'center',
           justifyContent: 'center',
           boxShadow: '0px 4px 10px 0px rgba(221, 33, 48, 0.33)',
+          transition: 'box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+          cursor: 'pointer',
+        },
+        buttonContent: {
+          width: '24px',
         },
         buttonContent: {
           width: '24px',
         },
       },
       hover: {
-        floatingButton: {
-          boxShadow: '0 8px 17px 0 rgba(221, 33, 48, 0.28)',
+        button: {
+          boxShadow: '0 8px 17px 0 rgba(221, 33, 48, 0.7)',
         },
       },
       'size-large': {
@@ -50,10 +57,29 @@ class FloatingButtonItem extends Component {
           right: '900px',
         },
         label: {
-          right: '105px',
+          right: '67px',
         },
       },
     }
+  }
+
+  componentDidMount = () => {
+    // Animate this node once it is mounted
+    const node = ReactDOM.findDOMNode(this)
+
+    if (document.body.style.transform == undefined) {
+      node.style.WebkitTransform = 'scale(0.5)'
+    } else {
+      node.style.transform = 'scale(0.5)'
+    }
+
+    dynamics.animate(node, {
+      scale: 1,
+    }, {
+      type: dynamics.spring,
+      duration: 500,
+      friction: 400,
+    })
   }
 
   render() {
@@ -62,6 +88,7 @@ class FloatingButtonItem extends Component {
         <div is="label">
           <FloatingButtonItemLabel
             label={ this.props.label }
+            hover={ this.props.hover }
           />
         </div>
       }

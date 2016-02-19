@@ -19,12 +19,19 @@ class FloatingButtonItemLabel extends Component {
           right: '0'
         },
         label: {
-          backgroundColor: 'rgba(255,255,255,0.59)',
+          backgroundColor: 'rgba(255,255,255,0.4)',
           borderRadius: '3px',
-          padding: '3px',
+          padding: '4px',
           color: colors.bgDark,
           whiteSpace: 'nowrap',
           fontSize: '14px',
+          boxShadow: `0px 1px 0px 0px ${colors.bgDark}`,
+          transition: `background-color 0.2s ease-in-out`,
+        },
+      },
+      hover: {
+        label: {
+          backgroundColor: 'rgba(255,255,255,0.7)',
         },
       },
     }
@@ -32,9 +39,9 @@ class FloatingButtonItemLabel extends Component {
 
   render() {
     return (
-        <div is="wrap">
-            <span is="label">{ this.props.label }</span>
-        </div>
+      <div is="wrap">
+        <span is="label">{ this.props.label }</span>
+      </div>
     )
   }
 }
