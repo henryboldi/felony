@@ -41,7 +41,7 @@ class EncryptCompose extends Component {
   }
 
   handleClick = () => {
-    (!this.props.expanded) && this.props.handleToggleEncrypt()
+    (!this.props.expanded) && this.props.handleToggleCompose()
   }
 
   componentWillReceiveProps(nextProps) {

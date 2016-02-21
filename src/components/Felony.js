@@ -8,11 +8,10 @@ import '../fonts/work-sans/WorkSans.css!'
 import '../styles/felony.css!'
 import colors  from '../styles/variables/colors'
 
-import EncryptKeyListContainer  from '../containers/EncryptKeyListContainer'
-import FloatingButton  from './floating-button/FloatingButton'
-import Header  from './header/Header'
-import EncryptComposeContainer from '../containers/EncryptComposeContainer'
+import Header from './header/Header'
+import FloatingButton from './floating-button/FloatingButton'
 import FullScreenComposeContainer from '../containers/FullScreenComposeContainer'
+import Encrypt from './encrypt/Encrypt'
 
 export class Felony extends Component {
   state = {
@@ -37,14 +36,6 @@ export class Felony extends Component {
           left: 0,
           right: 0,
         },
-        encryptKeyList: {
-          position: 'fixed',
-          top: 78,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          overflowY: 'scroll', // TODO: elastic scroll
-        },
       },
     }
   }
@@ -63,11 +54,10 @@ export class Felony extends Component {
           onClick={ this.handleAddToSelected }>
           <Header />
         </div>
-        <div is="encryptKeyList">
-          <EncryptKeyListContainer />
-        </div>
+
+        <Encrypt />
+
         <FloatingButton />
-        <EncryptComposeContainer />
         <FullScreenComposeContainer />
       </div>
     )

@@ -82,12 +82,12 @@ class FullScreenCompose extends Component {
   // }
 
   handleClick = () => {
-    this.props.handleToggleEncrypt()
+    this.props.handleToggleCompose()
   }
 
   handleKeyDown = (e) => {
     if (e.keyCode === 27 && this.props.expanded) { // escape key
-      this.props.handleToggleEncrypt()
+      this.props.handleToggleCompose()
     }
   }
 

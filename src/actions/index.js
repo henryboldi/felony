@@ -8,6 +8,6 @@ export function selectKey(id) {
   return { type: types.SELECT_KEY, id }
 }
 
-export function toggleEncryptCompose() {
-  return { type: types.TOGGLE_ENCRYPT_COMPOSE }
+export function toggleCompose() {
+  return { type: types.TOGGLE_COMPOSE }
 }
