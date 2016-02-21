@@ -2,34 +2,34 @@
 
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
+import dynamics from 'dynamics.js'
 
 import colors from '../../styles/variables/colors'
 
-class FullScreenTextArea extends Component {
-  static defaultProps = {
-    position: 'fixed',
-  }
-
+class FullScreenCompose extends Component {
   classes() {
     return {
       'default': {
         wrap: {
-          position: this.props.position,
+          position: 'fixed',
           top: '0',
           right: '0',
           bottom: '0',
           left: '0',
           zIndex: '10',
-          display: 'flex',
           flexDirection: 'column',
           background: colors.bgDark,
+          display: 'flex',
+          transform: 'translateY(100%)',
+          opacity: '0',
+          transition: 'all 100ms linear',
         },
         text: {
           flex: '1',
           position: 'relative',
         },
         textarea: {
-          Absolute: '10px 10px 10px 10px',
+          Absolute: '23px 10px 10px 10px',
           border: 'none',
           outline: 'none',
           width: '94%',
@@ -58,27 +58,42 @@ class FullScreenTextArea extends Component {
           color: colors.primary,
         },
       },
-      'actions-false': {
-        actions: {
-          display: 'none',
+      'expanded': {
+        wrap: {
+          transform: 'translateY(0)',
+          opacity: '1',
         },
       },
     }
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   if (!this.props.expanded && nextProps.expanded) {
+  //     dynamics.animate(this.refs.wrap, {
+  //       translateY: 0,
+  //       opacity: 1,
+  //     }, {
+  //       type: dynamics.spring,
+  //       duration: 100,
+  //       frequency: 110,
+  //       friction: 400,
+  //     })
+  //   }
+  // }
+
   handleClick = () => {
-    this.props.onCancel && this.props.onCancel()
+    this.props.handleToggleEncrypt()
   }
 
   handleKeyDown = (e) => {
-    if (e.keyCode === 27) { // escape key
-      this.handleClick()
+    if (e.keyCode === 27 && this.props.expanded) { // escape key
+      this.props.handleToggleEncrypt()
     }
   }
 
   render() {
     return (
-      <div is="wrap">
+      <div is="wrap" ref="wrap">
         <div is="text">
           <textarea is="textarea" placeholder="Write a Message" onKeyDown={ this.handleKeyDown } />
         </div>
@@ -91,4 +106,4 @@ class FullScreenTextArea extends Component {
   }
 }
 
-export default ReactCSS(FullScreenTextArea)
+export default ReactCSS(FullScreenCompose)

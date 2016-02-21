@@ -12,6 +12,7 @@ import EncryptKeyListContainer  from '../containers/EncryptKeyListContainer'
 import FloatingButton  from './floating-button/FloatingButton'
 import Header  from './header/Header'
 import EncryptComposeContainer from '../containers/EncryptComposeContainer'
+import FullScreenComposeContainer from '../containers/FullScreenComposeContainer'
 
 export class Felony extends Component {
   state = {
@@ -67,6 +68,7 @@ export class Felony extends Component {
         </div>
         <FloatingButton />
         <EncryptComposeContainer />
+        <FullScreenComposeContainer />
       </div>
     )
   }
