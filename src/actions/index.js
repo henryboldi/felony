@@ -11,3 +11,7 @@ export function selectKey(id) {
 export function toggleCompose() {
   return { type: types.TOGGLE_COMPOSE }
 }
+
+export function showComposeWithType(type) {
+  return { type: types.SHOW_COMPOSE_WITH_TYPE, data: type }
+}

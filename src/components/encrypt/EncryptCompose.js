@@ -14,19 +14,20 @@ class EncryptCompose extends Component {
       'default': {
         compose: {
           position: 'fixed',
+          zIndex: '12',
           bottom: '-10px',
           right: '0',
           left: '0',
           boxShadow: '0 0 14px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.10)',
-          height: '50px',
+          height: '55px',
           background: colors.bgDark,
           padding: '10px',
-          transform: 'translateY(60px)',
+          transform: 'translateY(64px)',
         },
         textarea: {
           background: '#fff',
-          height: '40px',
-          lineHeight: '40px',
+          height: '45px',
+          lineHeight: '45px',
           borderRadius: '2px',
           padding: '0 12px',
           color: '#aaa',
@@ -41,7 +42,7 @@ class EncryptCompose extends Component {
   }
 
   handleClick = () => {
-    (!this.props.expanded) && this.props.handleToggleCompose()
+    (!this.props.expanded) && this.props.showCompose('encrypt')
   }
 
   componentWillReceiveProps(nextProps) {

@@ -1,26 +1,24 @@
-import _ from 'lodash'
 import { connect } from 'react-redux'
 import { showComposeWithType } from '../actions/index'
-import EncryptCompose from '../components/encrypt/EncryptCompose'
+import FloatingButton from '../components/floating-button/FloatingButton'
 
 const mapStateToProps = (state) => {
   return {
-    isVisible: _.some(_.values(state.keys.get('active').toJS()), (value) => { return value }),
-    expanded: state.ui.get('expandedCompose'),
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     showCompose: (type) => {
+      console.log(type)
       dispatch(showComposeWithType(type))
     },
   }
 }
 
-const EncryptComposeContainer = connect(
+const FloatingButtonContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(EncryptCompose)
+)(FloatingButton)
 
-export default EncryptComposeContainer
+export default FloatingButtonContainer

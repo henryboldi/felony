@@ -9,7 +9,7 @@ import '../styles/felony.css!'
 import colors  from '../styles/variables/colors'
 
 import Header from './header/Header'
-import FloatingButton from './floating-button/FloatingButton'
+import FloatingButtonContainer from '../containers/FloatingButtonContainer'
 import FullScreenComposeContainer from '../containers/FullScreenComposeContainer'
 import Encrypt from './encrypt/Encrypt'
 
@@ -57,7 +57,7 @@ export class Felony extends Component {
 
         <Encrypt />
 
-        <FloatingButton />
+        <FloatingButtonContainer />
         <FullScreenComposeContainer />
       </div>
     )

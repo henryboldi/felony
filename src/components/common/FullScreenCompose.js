@@ -16,7 +16,7 @@ class FullScreenCompose extends Component {
           right: '0',
           bottom: '0',
           left: '0',
-          zIndex: '10',
+          zIndex: '13',
           flexDirection: 'column',
           background: colors.bgDark,
           display: 'flex',
@@ -50,6 +50,7 @@ class FullScreenCompose extends Component {
         },
         link: {
           textDecoration: 'none',
+          cursor: 'pointer',
         },
         cancel: {
           color: '#999',
@@ -81,25 +82,55 @@ class FullScreenCompose extends Component {
   //   }
   // }
 
-  handleClick = () => {
+  handleCancel = () => {
     this.props.handleToggleCompose()
   }
 
   handleKeyDown = (e) => {
-    if (e.keyCode === 27 && this.props.expanded) { // escape key
-      this.props.handleToggleCompose()
+    (e.keyCode === 27 && this.props.expanded) && this.handleCancel()
+  }
+
+  handleEncrypt = () => {
+    const text = this.refs.textarea.value
+    if (text) {
+      console.log('ENCRYPTING')
+    } else {
+      console.log('Please Write A Message')
     }
   }
 
   render() {
+    let props = {
+      'encrypt': {
+        acceptLabel: 'Encrypt',
+        onAccept: this.handleEncrypt,
+        placeholder: 'Write a Message',
+      },
+      'decrypt': {
+        acceptLabel: 'Decrypt',
+        onAccept: this.handleEncrypt,
+        placeholder: 'Message to Decrypt',
+      },
+      'sign': {
+        acceptLabel: 'Sign',
+        onAccept: this.handleEncrypt,
+        placeholder: 'Message to Sign',
+      },
+      'verify': {
+        acceptLabel: 'Verify',
+        onAccept: this.handleEncrypt,
+        placeholder: 'Message to Verify',
+      },
+    }[this.props.type] || {}
+
     return (
       <div is="wrap" ref="wrap">
         <div is="text">
-          <textarea is="textarea" placeholder="Write a Message" onKeyDown={ this.handleKeyDown } />
+          <textarea is="textarea" ref="textarea" placeholder={ props.placeholder } onKeyDown={ this.handleKeyDown } />
         </div>
         <div is="actions">
-          <a is="link cancel" href="#" onClick={ this.handleClick }>Cancel</a>
-          <a is="link confirm" href="#">Encrypt</a>
+          <a is="link cancel" onClick={ this.handleCancel }>Cancel</a>
+          <a is="link confirm" onClick={ props.onAccept }>{ props.acceptLabel }</a>
         </div>
       </div>
     )
