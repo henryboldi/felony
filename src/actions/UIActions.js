@@ -1,4 +1,4 @@
-import * as types from '../constants/ActionTypes'
+import * as types from '../constants/UIConstants'
 
 export function selectKey(id) {
   return { type: types.SELECT_KEY, id }
