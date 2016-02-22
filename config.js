@@ -32,6 +32,7 @@ System.config({
     "react-redux": "npm:react-redux@4.1.2",
     "reactcss": "github:casesandberg/reactcss@1.0.0",
     "redux": "npm:redux@3.1.4",
+    "redux-thunk": "npm:redux-thunk@1.0.3",
     "uuid": "npm:uuid@2.0.1",
     "github:capaj/systemjs-hot-reloader@0.5.1": {
       "debug": "npm:debug@2.2.0",
