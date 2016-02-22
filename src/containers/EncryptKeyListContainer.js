@@ -6,7 +6,7 @@ import EncryptKeyList from '../components/encrypt/EncryptKeyList'
 const mapStateToProps = (state) => {
   // console.log('state', state)
   return {
-    keys: state.keys.get('store'),
+    keys: state.keys.get('store').toJS(),
     active: state.keys.get('active').toJS(),
   }
 }

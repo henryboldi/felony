@@ -14,10 +14,10 @@ function createWindow() {
   })
 
   mainWindow = new BrowserWindow({
-    'x': mainWindowState.x,
-    'y': mainWindowState.y,
-    'width': mainWindowState.width,
-    'height': mainWindowState.height,
+    x: mainWindowState.x,
+    y: mainWindowState.y,
+    width: mainWindowState.width,
+    height: mainWindowState.height,
     'title-bar-style': 'hidden',
     title: 'Felony',
   })

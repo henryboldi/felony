@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import app from './app'
+import ui from './ui'
 import keys from './keys'
 
 const rootReducer = combineReducers({
-  app,
+  ui,
   keys,
 })
 

@@ -2,6 +2,9 @@
 
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
+import dynamics from 'dynamics.js'
+
+import colors from '../../styles/variables/colors'
 
 import { FullScreenCompose } from '../common/index'
 
@@ -11,29 +14,23 @@ class EncryptCompose extends Component {
       'default': {
         compose: {
           position: 'fixed',
-          bottom: '0',
+          zIndex: '12',
+          bottom: '-10px',
           right: '0',
           left: '0',
           boxShadow: '0 0 14px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.10)',
-          maxHeight: '50px',
-          minHeight: '50px',
-          transform: 'translateY(50px)',
-          transition: 'transform 100ms ease-in-out',
+          height: '55px',
+          background: colors.bgDark,
+          padding: '10px',
+          transform: 'translateY(64px)',
         },
         textarea: {
-          width: '94%',
-          padding: '3%',
-          border: 'none',
-          display: 'block',
-          outline: 'none',
-        },
-        Compose: {
-          actions: 'false',
-          position: 'absolute',
-        },
-        cover: {
-          Absolute: '0 0 0 0',
-          zIndex: '11',
+          background: '#fff',
+          height: '45px',
+          lineHeight: '45px',
+          borderRadius: '2px',
+          padding: '0 12px',
+          color: '#aaa',
         },
       },
       'isVisible': {
@@ -41,29 +38,30 @@ class EncryptCompose extends Component {
           transform: 'translateY(0)',
         },
       },
-      'expanded': {
-        compose: {
-          maxHeight: '100%',
-          top: '0',
-        },
-        Compose: {
-          actions: 'true',
-        },
-        cover: {
-          display: 'none',
-        },
-      },
     }
   }
 
   handleClick = () => {
-    (!this.props.expanded) && this.props.handleToggleEncrypt()
+    (!this.props.expanded) && this.props.showCompose('encrypt')
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.isVisible && nextProps.isVisible) {
+      dynamics.animate(this.refs.compose, {
+        translateY: 0,
+      }, {
+        type: dynamics.spring,
+        duration: 500,
+        frequency: 110,
+        friction: 200,
+      })
+    }
   }
 
   render() {
     return (
-      <div is="compose" onClick={ this.handleClick }>
-        <FullScreenCompose is="Compose" onCancel={ this.props.handleToggleEncrypt } />
+      <div is="compose" ref="compose" onClick={ this.handleClick }>
+        <div is="textarea">Write a Message</div>
       </div>
     )
   }
