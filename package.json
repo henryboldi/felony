@@ -46,6 +46,7 @@
       "reactcss": "github:casesandberg/reactcss@1.0.0",
       "redux": "npm:redux@^3.1.4",
       "redux-thunk": "npm:redux-thunk@^1.0.3",
+      "underscore-db": "npm:underscore-db@^0.9.1",
       "uuid": "npm:uuid@^2.0.1"
     },
     "devDependencies": {

@@ -36,6 +36,7 @@ System.config({
     "reactcss": "github:casesandberg/reactcss@1.0.0",
     "redux": "npm:redux@3.1.4",
     "redux-thunk": "npm:redux-thunk@1.0.3",
+    "underscore-db": "npm:underscore-db@0.9.1",
     "uuid": "npm:uuid@2.0.1",
     "github:capaj/systemjs-hot-reloader@0.5.1": {
       "debug": "npm:debug@2.2.0",
@@ -438,6 +439,9 @@ System.config({
     },
     "npm:timers-browserify@1.4.2": {
       "process": "npm:process@0.11.2"
+    },
+    "npm:underscore-db@0.9.1": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:url@0.10.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
