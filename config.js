@@ -24,9 +24,12 @@ System.config({
     "dynamics.js": "npm:dynamics.js@0.0.9",
     "immutable": "npm:immutable@3.7.6",
     "lodash": "npm:lodash@3.10.1",
+    "lowdb": "npm:lowdb@0.12.4",
     "merge": "npm:merge@1.2.0",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
     "openpgp": "npm:openpgp@1.4.1",
+    "os": "github:jspm/nodelibs-os@0.1.0",
+    "path": "npm:path@0.12.7",
     "react": "npm:react@0.14.7",
     "react-dom": "npm:react-dom@0.14.6",
     "react-redux": "npm:react-redux@4.1.2",
@@ -269,6 +272,14 @@ System.config({
     "npm:fbjs@0.6.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:graceful-fs@4.1.3": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "constants": "github:jspm/nodelibs-constants@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "stream": "github:jspm/nodelibs-stream@0.1.0",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
     "npm:hash.js@1.0.3": {
       "inherits": "npm:inherits@2.0.1"
     },
@@ -279,7 +290,18 @@ System.config({
       "loose-envify": "npm:loose-envify@1.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:jju@1.3.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
+    },
+    "npm:json-parse-helpfulerror@1.0.3": {
+      "jju": "npm:jju@1.3.0"
+    },
     "npm:lodash@3.10.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:lodash@4.5.0": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:loose-envify@1.1.0": {
@@ -287,6 +309,16 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "stream": "github:jspm/nodelibs-stream@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:lowdb@0.12.4": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "graceful-fs": "npm:graceful-fs@4.1.3",
+      "is-promise": "npm:is-promise@2.1.0",
+      "json-parse-helpfulerror": "npm:json-parse-helpfulerror@1.0.3",
+      "lodash": "npm:lodash@4.5.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "steno": "npm:steno@0.4.3",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:miller-rabin@4.0.0": {
       "bn.js": "npm:bn.js@4.10.3",
@@ -318,6 +350,10 @@ System.config({
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:path@0.12.7": {
+      "process": "npm:process@0.11.2",
+      "util": "npm:util@0.10.3"
     },
     "npm:pbkdf2@3.0.4": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -386,6 +422,11 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:steno@0.4.3": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "graceful-fs": "npm:graceful-fs@4.1.3",
+      "path": "github:jspm/nodelibs-path@0.1.0"
     },
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",
