@@ -1,20 +1,23 @@
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
-import { addKey, selectKey } from '../actions/index'
+import { addKey, fetchKeys, selectKey } from '../actions/index'
 import EncryptKeyList from '../components/encrypt/EncryptKeyList'
 
 const mapStateToProps = (state) => {
-  // console.log('state', state)
   return {
-    keys: state.keys.get('store').toJS(),
-    active: state.keys.get('active').toJS(),
+    keys: state.keyReducer.get('store').toJS(),
+    active: state.uiReducer.get('activeKeys').toJS(),
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onTestAdd: (key) => {
+    addKey: (key) => {
       dispatch(addKey(key))
+    },
+
+    fetchKeys: () => {
+      dispatch(fetchKeys())
     },
 
     selectKey: (id) => {

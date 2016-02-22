@@ -6,8 +6,8 @@ import FullScreenCompose from '../components/common/FullScreenCompose'
 
 const mapStateToProps = (state) => {
   return {
-    expanded: state.ui.get('expandedCompose'),
-    type: state.ui.get('composeType'),
+    expanded: state.uiReducer.get('expandedCompose'),
+    type: state.uiReducer.get('composeType'),
   }
 }
 

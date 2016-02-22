@@ -5,8 +5,8 @@ import EncryptCompose from '../components/encrypt/EncryptCompose'
 
 const mapStateToProps = (state) => {
   return {
-    isVisible: _.some(_.values(state.keys.get('active').toJS()), (value) => { return value }),
-    expanded: state.ui.get('expandedCompose'),
+    isVisible: _.some(_.values(state.uiReducer.get('activeKeys').toJS()), (value) => { return value }),
+    expanded: state.uiReducer.get('expandedCompose'),
   }
 }
 
