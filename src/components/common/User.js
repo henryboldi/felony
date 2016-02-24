@@ -27,7 +27,7 @@ class User extends Component {
         },
         avatar: {
           transform: 'scale(1)',
-          transition: 'transform 100ms ease-in-out',
+          transition: 'transform 100ms linear',
         },
         name: {
           flex: '1',

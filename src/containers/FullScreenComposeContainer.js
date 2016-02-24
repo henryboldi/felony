@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
-import { toggleCompose } from '../actions/index'
+import { toggleCompose, addKey } from '../actions/index'
 import FullScreenCompose from '../components/common/FullScreenCompose'
 
 const mapStateToProps = (state) => {
@@ -13,8 +13,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleToggleCompose: () => {
+    toggleCompose: () => {
       dispatch(toggleCompose())
+    },
+
+    addKey: (key) => {
+      dispatch(addKey(key))
     },
   }
 }

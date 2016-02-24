@@ -83,11 +83,16 @@ class FullScreenCompose extends Component {
   // }
 
   handleCancel = () => {
-    this.props.handleToggleCompose()
+    this.clearInput()
+    this.props.toggleCompose()
   }
 
   handleKeyDown = (e) => {
+    // Escape
     (e.keyCode === 27 && this.props.expanded) && this.handleCancel()
+
+    // Enter
+    // (e.keyCode === 13) && this.handleAddKey()
   }
 
   handleEncrypt = () => {
@@ -97,6 +102,20 @@ class FullScreenCompose extends Component {
     } else {
       console.log('Please Write A Message')
     }
+  }
+
+  handleAddKey = () => {
+    const text = this.refs.textarea.value
+    if (text) {
+      // get the name here or something?
+      this.props.addKey && this.props.addKey({ name: text })
+      this.clearInput()
+      this.props.toggleCompose()
+    }
+  }
+
+  clearInput = () => {
+    this.refs.textarea.value = ''
   }
 
   render() {
@@ -120,6 +139,11 @@ class FullScreenCompose extends Component {
         acceptLabel: 'Verify',
         onAccept: this.handleEncrypt,
         placeholder: 'Message to Verify',
+      },
+      'add-key': {
+        acceptLabel: 'Add Key',
+        onAccept: this.handleAddKey,
+        placeholder: 'Public Key',
       },
     }[this.props.type] || {}
 

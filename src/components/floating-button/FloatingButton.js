@@ -45,7 +45,7 @@ class FloatingButton extends Component {
       { this.state.isShowingActions ?
         <div>
           <div is="buttons">
-            <div is="item">
+            <div is="item" onClick={ this.props.showCompose.bind(this, 'add-key') }>
               <FloatingButtonItem label="Add Key">
                 <Icon name="add-key" />
               </FloatingButtonItem>

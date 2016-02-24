@@ -51,7 +51,7 @@ class EncryptCompose extends Component {
         translateY: 0,
       }, {
         type: dynamics.spring,
-        duration: 500,
+        duration: 300,
         frequency: 110,
         friction: 200,
       })
