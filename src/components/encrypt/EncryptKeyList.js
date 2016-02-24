@@ -17,6 +17,10 @@ class EncryptKeyList extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.fetchKeys()
+  }
+
   render() {
     return (
         <div is="list">
