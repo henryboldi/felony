@@ -21,11 +21,9 @@ class EncryptKeyList extends Component {
     // setInterval(() => {
     //   this.props.onTestAdd('Case')
     // }, 5000)
-    this.props.onTestAdd('Medibuds')
-    this.props.onTestAdd('Case')
-    this.props.onTestAdd('Foo Bar')
-    this.props.onTestAdd('Middle Earth Dude')
-    this.props.onTestAdd('Colin')
+    this.props.fetchKeys()
+
+    // this.props.addKey({ name: 'Medibuds' })
   }
 
   render() {
