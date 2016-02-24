@@ -19,6 +19,7 @@ class FloatingButtonItem extends Component {
           display: 'inline-flex',
           alignItems: 'center',
           position: 'relative',
+          transform: 'scale(0.5)', // for animation
         },
         label: {
           position: 'absolute',
@@ -64,16 +65,7 @@ class FloatingButtonItem extends Component {
   }
 
   componentDidMount = () => {
-    // Animate this node once it is mounted
-    const node = ReactDOM.findDOMNode(this)
-
-    if (document.body.style.transform == undefined) {
-      node.style.WebkitTransform = 'scale(0.5)'
-    } else {
-      node.style.transform = 'scale(0.5)'
-    }
-
-    dynamics.animate(node, {
+    dynamics.animate(this.refs.wrap, {
       scale: 1,
     }, {
       type: dynamics.spring,
@@ -83,7 +75,7 @@ class FloatingButtonItem extends Component {
   }
 
   render() {
-    return <div is="wrap">
+    return <div is="wrap" ref="wrap">
       { this.props.label &&
         <div is="label">
           <FloatingButtonItemLabel
