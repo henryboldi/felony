@@ -1,0 +1,5 @@
+body, html {
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  font-family: 'work-sans';
+}
