@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
-import EncryptComposeContainer from '../../containers/EncryptComposeContainer'
+import EncryptComposeToggleContainer from '../../containers/EncryptComposeToggleContainer'
 import EncryptKeyListContainer from '../../containers/EncryptKeyListContainer'
 
 class Encrypt extends Component {
@@ -28,7 +28,7 @@ class Encrypt extends Component {
         <div is="list">
           <EncryptKeyListContainer />
         </div>
-        <EncryptComposeContainer />
+        <EncryptComposeToggleContainer />
       </div>
     )
   }

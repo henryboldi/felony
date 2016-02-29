@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
 import { toggleCompose } from '../actions/index'
-import FullScreenCompose from '../components/common/FullScreenCompose'
+import Compose from '../components/common/Compose'
 
 const mapStateToProps = (state) => {
   return {
@@ -19,9 +19,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const FullScreenComposeContainer = connect(
+const ComposeContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(FullScreenCompose)
+)(Compose)
 
-export default FullScreenComposeContainer
+export default ComposeContainer

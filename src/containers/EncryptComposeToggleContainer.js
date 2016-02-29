@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import { showComposeWithType } from '../actions/index'
-import EncryptCompose from '../components/encrypt/EncryptCompose'
+import EncryptComposeToggle from '../components/encrypt/EncryptComposeToggle'
 
 const mapStateToProps = (state) => {
   return {
@@ -18,9 +18,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const EncryptComposeContainer = connect(
+const EncryptComposeToggleContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(EncryptCompose)
+)(EncryptComposeToggle)
 
-export default EncryptComposeContainer
+export default EncryptComposeToggleContainer

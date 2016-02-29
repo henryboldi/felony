@@ -6,7 +6,7 @@ import dynamics from 'dynamics.js'
 
 import colors from '../../styles/variables/colors'
 
-class FullScreenCompose extends Component {
+class Compose extends Component {
   classes() {
     return {
       'default': {
@@ -99,8 +99,8 @@ class FullScreenCompose extends Component {
     }
   }
 
-  render() {
-    let props = {
+  getProps = () => {
+    return {
       'encrypt': {
         acceptLabel: 'Encrypt',
         onAccept: this.handleEncrypt,
@@ -122,6 +122,10 @@ class FullScreenCompose extends Component {
         placeholder: 'Message to Verify',
       },
     }[this.props.type] || {}
+  }
+
+  render() {
+    const props = this.getProps()
 
     return (
       <div is="wrap" ref="wrap">
@@ -137,4 +141,4 @@ class FullScreenCompose extends Component {
   }
 }
 
-export default ReactCSS(FullScreenCompose)
+export default ReactCSS(Compose)

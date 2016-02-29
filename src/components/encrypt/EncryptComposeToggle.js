@@ -6,9 +6,9 @@ import dynamics from 'dynamics.js'
 
 import colors from '../../styles/variables/colors'
 
-import { FullScreenCompose } from '../common/index'
+import { Compose } from '../common/index'
 
-class EncryptCompose extends Component {
+class EncryptComposeToggle extends Component {
   classes() {
     return {
       'default': {
@@ -51,9 +51,8 @@ class EncryptCompose extends Component {
         translateY: 0,
       }, {
         type: dynamics.spring,
-        duration: 500,
-        frequency: 110,
-        friction: 200,
+        duration: 700,
+        friction: 400,
       })
     }
   }
@@ -67,4 +66,4 @@ class EncryptCompose extends Component {
   }
 }
 
-export default ReactCSS(EncryptCompose)
+export default ReactCSS(EncryptComposeToggle)

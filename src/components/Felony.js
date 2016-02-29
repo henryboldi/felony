@@ -10,7 +10,7 @@ import colors  from '../styles/variables/colors'
 
 import Header from './header/Header'
 import FloatingButtonContainer from '../containers/FloatingButtonContainer'
-import FullScreenComposeContainer from '../containers/FullScreenComposeContainer'
+import ComposeContainer from '../containers/ComposeContainer'
 import Encrypt from './encrypt/Encrypt'
 
 export class Felony extends Component {
@@ -58,7 +58,7 @@ export class Felony extends Component {
         <Encrypt />
 
         <FloatingButtonContainer />
-        <FullScreenComposeContainer />
+        <ComposeContainer />
       </div>
     )
   }
