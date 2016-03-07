@@ -9,7 +9,7 @@ html, body {
 
 .app {
   background: #2D2D2D;
-  border-radius: 2px;
+  border-radius: 6px;
   box-shadow: 0 0 50px rgba(0,0,0,.4);
   width: 300px;
   height: 400px;
@@ -77,4 +77,13 @@ html, body {
   .hero-download:hover {
     background: #D52035;
     color: #fff;
+  }
+
+  .hero-platforms {
+    fill: #D52035;
+    margin-top: 12px;
+  }
+
+  .hero-platforms svg {
+    margin-right: 8px;
   }
