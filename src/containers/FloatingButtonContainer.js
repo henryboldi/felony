@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { showComposeWithType } from '../actions/index'
+import { showComposerWithType } from '../actions/index'
 import FloatingButton from '../components/floating-button/FloatingButton'
 
 const mapStateToProps = (state) => {
@@ -9,8 +9,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showCompose: (type) => {
-      dispatch(showComposeWithType(type))
+    showComposer: (type) => {
+      dispatch(showComposerWithType(type))
     },
   }
 }

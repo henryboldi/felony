@@ -50,24 +50,19 @@ class FloatingButton extends Component {
                 <Icon name="add-key" />
               </FloatingButtonItem>
             </div>
-            <div is="item" onClick={ this.props.showCompose.bind(this, 'verify') }>
+            <div is="item" onClick={ this.props.showComposer.bind(this, 'verify') }>
               <FloatingButtonItem label="Verify">
                 <Icon name="verify" />
               </FloatingButtonItem>
             </div>
-            <div is="item" onClick={ this.props.showCompose.bind(this, 'sign') }>
+            <div is="item" onClick={ this.props.showComposer.bind(this, 'sign') }>
               <FloatingButtonItem label="Sign">
                 <Icon name="sign" />
               </FloatingButtonItem>
             </div>
-            <div is="item" onClick={ this.props.showCompose.bind(this, 'decrypt') }>
-              <FloatingButtonItem label="Decrypt" >
+            <div is="item" onClick={ this.props.showComposer.bind(this, 'decrypt') }>
+              <FloatingButtonItem size="large" label="Decrypt" >
                 <Icon name="decrypt" />
-              </FloatingButtonItem>
-            </div>
-            <div is="item" onClick={ this.props.showCompose.bind(this, 'encrypt') }>
-              <FloatingButtonItem size="large" label="Encrypt" >
-                <Icon name="encrypt" />
               </FloatingButtonItem>
             </div>
           </div>
