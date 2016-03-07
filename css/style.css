@@ -1,3 +1,80 @@
 html, body {
   background-color: #01202A;
+  font-family: 'helvetica';
 }
+
+.line {
+  position: absolute;
+}
+
+.app {
+  background: #2D2D2D;
+  border-radius: 2px;
+  box-shadow: 0 0 50px rgba(0,0,0,.4);
+  width: 300px;
+  height: 400px;
+  position: fixed;
+  top: 50%;
+  margin-top: -200px;
+  left: 50%;
+  margin-left: -360px;
+}
+
+.block {
+  position: relative;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.wrap {
+  max-width: 720px;
+}
+
+  .wrap--align-right {
+    max-width: 340px;
+    padding-left: 380px;
+  }
+
+.hero-block{
+
+}
+
+  .hero-headline {
+    margin-top: 0;
+    font-size: 54px;
+    color: #3D545C;
+  }
+
+  .hero-subline {
+    font-size: 54px;
+    color: #fff;
+    margin: 60px 0;
+  }
+
+  .hero-download {
+    display: inline-block;
+    height: 46px;
+    line-height: 46px;
+    padding: 0 35px;
+    border: 4px solid #D52035;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #D52035;
+    text-decoration: none;
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    background: #01202A;
+    font-weight: 600;
+  }
+
+  .hero-download:hover {
+    background: #D52035;
+    color: #fff;
+  }

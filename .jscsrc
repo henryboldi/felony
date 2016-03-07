@@ -3,6 +3,5 @@
   "excludeFiles": ["build/**", "node_modules/**", "config.js"],
   "disallowQuotedKeysInObjects": null,
   "validateQuoteMarks": null,
-  "requireSemicolons": false,
-  "disallowSemicolons": true,
+  "requireSpacesInAnonymousFunctionExpression": null
 }
