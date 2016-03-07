@@ -10,8 +10,8 @@ import colors  from '../styles/variables/colors'
 
 import Header from './header/Header'
 import FloatingButtonContainer from '../containers/FloatingButtonContainer'
-import ComposeContainer from '../containers/ComposeContainer'
-import Encrypt from './encrypt/Encrypt'
+import ComposerContainer from '../containers/ComposerContainer'
+import BuddiesContainer from '../containers/BuddiesContainer'
 
 export class Felony extends Component {
   state = {
@@ -55,10 +55,10 @@ export class Felony extends Component {
           <Header />
         </div>
 
-        <Encrypt />
+        <BuddiesContainer />
 
         <FloatingButtonContainer />
-        <ComposeContainer />
+        <ComposerContainer />
       </div>
     )
   }
