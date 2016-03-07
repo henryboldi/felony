@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import uiReducer from './uiReducer'
-import keyReducer from './keyReducer'
+import buddiesReducer from './buddiesReducer'
 
 const rootReducer = combineReducers({
   uiReducer,
-  keyReducer,
+  buddiesReducer,
 })
 
 export default rootReducer

@@ -8,7 +8,7 @@ import { User } from '../common/index'
 import colors from '../../styles/variables/colors'
 import { spacing, sizing } from '../../styles/variables/utils'
 
-class EncryptKeyListItem extends Component {
+class BuddiesListBuddy extends Component {
   classes() {
     return {
       'default': {
@@ -40,13 +40,15 @@ class EncryptKeyListItem extends Component {
   }
 
   render() {
-    return <div onClick={ this.handleClick } is="item">
-      <div is="user">
-        <User name={ this.props.name } active={ this.props.active } />
+    return (
+      <div onClick={ this.handleClick } is="item">
+        <div is="user">
+          <User name={ this.props.name } active={ this.props.active } />
+        </div>
+        <div is="spaceLine"/>
       </div>
-      <div is="spaceLine"/>
-    </div>
+    )
   }
 }
 
-export default ReactCSS(EncryptKeyListItem)
+export default ReactCSS(BuddiesListBuddy)

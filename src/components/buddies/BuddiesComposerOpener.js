@@ -6,13 +6,11 @@ import dynamics from 'dynamics.js'
 
 import colors from '../../styles/variables/colors'
 
-import { Compose } from '../common/index'
-
-class EncryptComposeToggle extends Component {
+class BuddiesComposerOpener extends Component {
   classes() {
     return {
       'default': {
-        compose: {
+        opener: {
           position: 'fixed',
           zIndex: '12',
           bottom: '-10px',
@@ -24,7 +22,7 @@ class EncryptComposeToggle extends Component {
           padding: '10px',
           transform: 'translateY(64px)',
         },
-        textarea: {
+        button: {
           background: '#fff',
           height: '45px',
           lineHeight: '45px',
@@ -33,8 +31,8 @@ class EncryptComposeToggle extends Component {
           color: '#aaa',
         },
       },
-      'isVisible': {
-        compose: {
+      'isShowingBuddiesComposerOpener': {
+        opener: {
           transform: 'translateY(0)',
         },
       },
@@ -42,12 +40,12 @@ class EncryptComposeToggle extends Component {
   }
 
   handleClick = () => {
-    (!this.props.expanded) && this.props.showCompose('encrypt')
+    (!this.props.isShowingOpener) && this.props.showComposer('encrypt')
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.isVisible && nextProps.isVisible) {
-      dynamics.animate(this.refs.compose, {
+    if (!this.props.isShowingOpener && nextProps.isShowingOpener) {
+      dynamics.animate(this.refs.opener, {
         translateY: 0,
       }, {
         type: dynamics.spring,
@@ -59,11 +57,11 @@ class EncryptComposeToggle extends Component {
 
   render() {
     return (
-      <div is="compose" ref="compose" onClick={ this.handleClick }>
-        <div is="textarea">Write a Message</div>
+      <div is="opener" ref="opener" onClick={ this.handleClick }>
+        <div is="button">Write a Message</div>
       </div>
     )
   }
 }
 
-export default ReactCSS(EncryptComposeToggle)
+export default ReactCSS(BuddiesComposerOpener)

@@ -1,2 +1,2 @@
-export * from './KeyActions'
+export * from './BuddiesActions'
 export * from './UIActions'
