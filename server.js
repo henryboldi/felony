@@ -1,8 +1,30 @@
-require('babel-register')
-var proc = require('child_process')
+/* eslint no-console: 0 */
 
-// Emit File Events For JSPM to Hot Reload
-require('chokidar-socket-emitter')({ app: 1111 })
+import express from 'express'
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
 
-// Start Electron
-var child = proc.exec('electron .')
+import config from './webpack.config.development'
+
+const app = express()
+const compiler = webpack(config)
+const PORT = 3000
+
+app.use(webpackDevMiddleware(compiler, {
+  publicPath: config.output.publicPath,
+  stats: {
+    colors: true,
+  },
+}))
+
+app.use(webpackHotMiddleware(compiler))
+
+app.listen(PORT, 'localhost', err => {
+  if (err) {
+    console.error(err)
+    return
+  }
+
+  console.log(`Listening at http://localhost:${PORT}`)
+})
