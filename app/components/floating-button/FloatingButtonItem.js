@@ -5,8 +5,8 @@ import ReactDOM from 'react-dom'
 import ReactCSS from 'reactcss'
 import dynamics from 'dynamics.js'
 
-import colors from '../../styles/variables/colors'
-import { spacing, sizing } from '../../styles/variables/utils'
+import colors from '../../assets/styles/variables/colors'
+import { spacing, sizing } from '../../assets/styles/variables/utils'
 import FloatingButtonItemLabel from './FloatingButtonItemLabel'
 
 class FloatingButtonItem extends Component {
@@ -29,8 +29,8 @@ class FloatingButtonItem extends Component {
         },
         button: {
           backgroundColor: colors.primary,
-          height: floatingButtonSize,
-          width: floatingButtonSize, // TODO: use utils for sizing
+          height: `${floatingButtonSize}px`,
+          width: `${floatingButtonSize}px`, // TODO: use utils for sizing
           borderRadius: '100%',
           display: 'flex',
           alignItems: 'center',
@@ -53,8 +53,8 @@ class FloatingButtonItem extends Component {
       },
       'size-large': {
         button: {
-          height: floatingButtonSize * 1.3,
-          width: floatingButtonSize * 1.3,
+          height: `${floatingButtonSize * 1.3}px`,
+          width: `${floatingButtonSize * 1.3}px`,
           right: '900px',
         },
         label: {

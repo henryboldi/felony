@@ -3,8 +3,8 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
-import colors from '../../styles/variables/colors'
-import { spacing, sizing } from '../../styles/variables/utils'
+import colors from '../../assets/styles/variables/colors'
+import { spacing, sizing } from '../../assets/styles/variables/utils'
 
 class FloatingButtonItemLabel extends Component {
   classes() {

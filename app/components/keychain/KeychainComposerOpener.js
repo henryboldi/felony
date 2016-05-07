@@ -4,9 +4,9 @@ import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import dynamics from 'dynamics.js'
 
-import colors from '../../styles/variables/colors'
+import colors from '../../assets/styles/variables/colors'
 
-class BuddiesComposerOpener extends Component {
+class KeychainComposerOpener extends Component {
   classes() {
     return {
       'default': {
@@ -31,7 +31,7 @@ class BuddiesComposerOpener extends Component {
           color: '#aaa',
         },
       },
-      'isShowingBuddiesComposerOpener': {
+      'isShowingOpener': {
         opener: {
           transform: 'translateY(0)',
         },
@@ -40,7 +40,7 @@ class BuddiesComposerOpener extends Component {
   }
 
   handleClick = () => {
-    (!this.props.isShowingOpener) && this.props.showComposer('encrypt')
+    this.props.showComposer('encrypt')
   }
 
   componentWillReceiveProps(nextProps) {
@@ -64,4 +64,4 @@ class BuddiesComposerOpener extends Component {
   }
 }
 
-export default ReactCSS(BuddiesComposerOpener)
+export default ReactCSS(KeychainComposerOpener)

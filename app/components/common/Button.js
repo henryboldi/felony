@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
-import { spacing } from '../../styles/variables/utils'
+import { spacing } from '../../assets/styles/variables/utils'
 
 class Button extends Component {
   classes() {

@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
-import { getIcon } from '../../helpers/icons'
+import { getIcon } from '../../utils/icons'
 
 class Icon extends Component {
   classes() {

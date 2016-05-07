@@ -3,10 +3,13 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
-import colors from '../../styles/variables/colors'
-import { spacing } from '../../styles/variables/utils'
+import colors from '../../assets/styles/variables/colors'
+import { spacing } from '../../assets/styles/variables/utils'
 
-import { User, Button, Icon } from '../common/index'
+import { Button, Icon } from '../common/index'
+import AliasContainer from '../../containers/AliasContainer'
+
+import { generateKey } from '../../utils/pgp'
 
 class Header extends Component {
   classes() {
@@ -17,11 +20,6 @@ class Header extends Component {
           display: 'flex',
           justifyContent: 'space-between',
           padding: `${spacing.m + spacing.statusBarHeight }px ${spacing.m}px ${spacing.m}px`,
-        },
-        user: {
-          color: '#fff',
-          flex: '1',
-          fontWeight: '500',
         },
         actions: {
           display: 'flex',
@@ -39,11 +37,10 @@ class Header extends Component {
   }
 
   render() {
+
     return (
       <div is="header">
-        <div is="user">
-          <User name="Cali-Connection" />
-        </div>
+        <AliasContainer />
         <div is="actions">
           <div is="icon">
             <Icon name="more" color="#F4C97A"/>

@@ -5,10 +5,10 @@ import ReactCSS from 'reactcss'
 
 import { User } from '../common/index'
 
-import colors from '../../styles/variables/colors'
-import { spacing, sizing } from '../../styles/variables/utils'
+import colors from '../../assets/styles/variables/colors'
+import { spacing, sizing } from '../../assets/styles/variables/utils'
 
-class BuddiesListBuddy extends Component {
+class KeychainListKey extends Component {
   classes() {
     return {
       'default': {
@@ -24,7 +24,7 @@ class BuddiesListBuddy extends Component {
         spaceLine: {
           borderBottom: `solid 1px ${colors.bgDark}`,
           margin: `0px ${spacing.m}px 0px ${spacing.m + sizing.avatar + spacing.s}px`,
-          item: 1,
+          item: '1',
         },
       },
       'active': {
@@ -43,7 +43,7 @@ class BuddiesListBuddy extends Component {
     return (
       <div onClick={ this.handleClick } is="item">
         <div is="user">
-          <User name={ this.props.name } active={ this.props.active } />
+          <User name={ this.props.name.length === 0 ? this.props.email : this.props.name } active={ this.props.active } />
         </div>
         <div is="spaceLine"/>
       </div>
@@ -51,4 +51,4 @@ class BuddiesListBuddy extends Component {
   }
 }
 
-export default ReactCSS(BuddiesListBuddy)
+export default ReactCSS(KeychainListKey)

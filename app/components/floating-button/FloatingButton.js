@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
-import { spacing } from '../../styles/variables/utils'
+import { spacing } from '../../assets/styles/variables/utils'
 
 import { Overlay, Icon } from '../common/index'
 import FloatingButtonItem from './FloatingButtonItem'
@@ -16,8 +16,8 @@ class FloatingButton extends Component {
       'default': {
         wrap: {
           position: 'fixed',
-          right: spacing.m,
-          bottom: spacing.m,
+          right: `${spacing.m}px`,
+          bottom: `${spacing.m}px`,
         },
         buttons: {
           zIndex: '9990',
@@ -45,7 +45,7 @@ class FloatingButton extends Component {
       { this.state.isShowingActions ?
         <div>
           <div is="buttons">
-            <div is="item">
+            <div is="item" onClick={ this.props.showComposer.bind(this, 'add key') }>
               <FloatingButtonItem label="Add Key">
                 <Icon name="add-key" />
               </FloatingButtonItem>
