@@ -1,5 +1,3 @@
-'use strict'
-
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
@@ -10,7 +8,7 @@ import rootReducer from './reducers/index'
 
 import Felony from './components/Felony'
 
-let store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 render(
   <Provider store={store}>
@@ -18,7 +16,3 @@ render(
   </Provider>,
   document.getElementById('root')
 )
-
-export function __reload() {
-  console.clear()
-}

@@ -3,15 +3,17 @@
 import 'normalize.css'
 import React, { Component } from 'react'
 import ReactCSS  from 'reactcss'
+import db from '../config/database.js'
 
-import '../fonts/work-sans/WorkSans.css!'
-import '../styles/felony.css!'
-import colors  from '../styles/variables/colors'
+import '../assets/fonts/work-sans/WorkSans.css'
+import '../assets/styles/felony.css'
+import colors  from '../assets/styles/variables/colors'
 
 import Header from './header/Header'
 import FloatingButtonContainer from '../containers/FloatingButtonContainer'
 import ComposerContainer from '../containers/ComposerContainer'
-import BuddiesContainer from '../containers/BuddiesContainer'
+import OutputContainer from '../containers/OutputContainer'
+import KeychainContainer from '../containers/KeychainContainer'
 
 export class Felony extends Component {
   state = {
@@ -32,9 +34,9 @@ export class Felony extends Component {
         },
         header: {
           position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
+          top: '0',
+          left: '0',
+          right: '0',
         },
       },
     }
@@ -55,10 +57,11 @@ export class Felony extends Component {
           <Header />
         </div>
 
-        <BuddiesContainer />
+        <KeychainContainer />
 
         <FloatingButtonContainer />
         <ComposerContainer />
+        <OutputContainer />
       </div>
     )
   }
