@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import dynamics from 'dynamics.js'
+var keytar = require("keytar")
 import { generateKey } from '../../utils/pgp'
 
 import colors from '../../assets/styles/variables/colors'
@@ -70,10 +71,11 @@ class ComposerAliasForm extends Component {
     const passphrase = this.refs.form[2].value
 
     console.log(name, email, passphrase)
-
     this.props.toggleGeneratingKey()
     const key = await generateKey({ name, email }, passphrase)
     console.log(key)
+
+    keytar.addPassword('felony', `${name} <${email}>`, passphrase)
 
     await this.props.addKey(key)
     this.props.toggleGeneratingKey()
