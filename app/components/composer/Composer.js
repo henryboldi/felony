@@ -30,11 +30,11 @@ class Composer extends Component {
         },
       },
       'isShowingComposer': {
-      wrap: {
-        transform: 'translateY(0)',
-        opacity: '1',
+        wrap: {
+          transform: 'translateY(0)',
+          opacity: '1',
+        },
       },
-    },
     }
   }
 

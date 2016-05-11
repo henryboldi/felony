@@ -22,16 +22,37 @@ class ComposerForm extends Component {
           zIndex: '13',
           flexDirection: 'column',
           display: 'flex',
+          background: '#37373C',
+        },
+        head: {
+          background: '#2B272C',
+          fontWeight: '300',
+          padding: '20px',
+        },
+
+        title: {
+          fontSize: '20px',
+        },
+        icon: {
+          width: '20px',
+          marginRight: '10px',
+          display: 'inline-block',
+        },
+        subtitle: {
+          fontSize: '16px',
+          color: 'rgba(255,255,255,.7)',
+          marginTop: '10px',
         },
         text: {
           flex: '1',
           position: 'relative',
+          margin: '0 20px',
         },
         textarea: {
-          Absolute: '23px 10px 10px 10px',
+          Absolute: '23px auto 10px auto',
           border: 'none',
           outline: 'none',
-          width: '94%',
+          width: '100%',
           boxSizing: 'border-box',
           padding: '10px 3%',
           color: '#333',
@@ -42,23 +63,17 @@ class ComposerForm extends Component {
         actions: {
           marginTop: '-10px',
           height: '40px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 10px',
-        },
-        link: {
-          textDecoration: 'none',
-          cursor: 'pointer',
-        },
-        cancel: {
-          color: '#999',
+          padding: '20px',
         },
         confirm: {
           color: '#fff',
           padding: '10px 20px',
           borderRadius: '5px',
           backgroundColor: colors.primary,
+          textDecoration: 'none',
+          cursor: 'pointer',
+          textAlign: 'center',
+          display: 'block',
         },
       },
     }
@@ -132,6 +147,7 @@ class ComposerForm extends Component {
         acceptLabel: 'Decrypt',
         onAccept: this.handleDecrypt,
         placeholder: 'Message to Decrypt',
+        icon: 'decrypt',
       },
       'sign': {
         title: 'Sign',
@@ -139,6 +155,7 @@ class ComposerForm extends Component {
         acceptLabel: 'Sign',
         onAccept: this.handleSign,
         placeholder: 'Message to Sign',
+        icon: 'sign',
       },
       'verify': {
         title: 'Verify',
@@ -146,6 +163,7 @@ class ComposerForm extends Component {
         acceptLabel: 'Verify',
         onAccept: this.handleVerify,
         placeholder: 'Message to Verify',
+        icon: 'verify',
       },
       'add key': {
         title: 'Add Key',
@@ -153,6 +171,7 @@ class ComposerForm extends Component {
         acceptLabel: 'Add',
         onAccept: this.handleAddKey,
         placeholder: 'Key to add to keychain',
+        icon: 'add-key',
       },
     }[this.props.composerType] || {}
   }
@@ -162,15 +181,20 @@ class ComposerForm extends Component {
 
     return (
       <div is="wrap" ref="wrap">
-        <h1>{ props.title }</h1>
-        <label>Helpful Haiku</label>
-        <p>{ props.subtitle }</p>
+        <div is="head">
+          <div is="title">
+            <div is="icon">
+              <Icon name={ props.icon } color={ colors.primary } />
+            </div>
+            { props.title }
+          </div>
+          <div is="subtitle">{ props.subtitle }</div>
+        </div>
         <div is="text">
           <textarea is="textarea" ref="textarea" placeholder={ props.placeholder } onKeyDown={ this.props.handleKeyDown } />
         </div>
         <div is="actions">
-          <a is="link cancel" onClick={ this.props.handleCancel }>Cancel</a>
-          <a is="link confirm" onClick={ props.onAccept }>{ props.acceptLabel }</a>
+          <a is="confirm" onClick={ props.onAccept }>{ props.acceptLabel }</a>
         </div>
       </div>
     )
