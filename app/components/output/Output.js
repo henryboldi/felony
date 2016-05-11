@@ -23,24 +23,24 @@ class Output extends Component {
           opacity: '0px',
           transition: 'all 100ms linear',
         },
-      },
-      actions: {
-        marginTop: '-10px',
-        height: '40px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 10px',
-      },
-      link: {
-        textDecoration: 'none',
-        cursor: 'pointer',
-      },
-      cancel: {
-        color: '#999',
-      },
-      confirm: {
-        color: colors.primary,
+        actions: {
+          marginTop: '-10px',
+          height: '40px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0 10px',
+        },
+        link: {
+          textDecoration: 'none',
+          cursor: 'pointer',
+        },
+        cancel: {
+          color: '#999',
+        },
+        confirm: {
+          color: colors.primary,
+        },
       },
       'isShowingOutput': {
         wrap: {
