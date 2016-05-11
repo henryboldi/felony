@@ -71,10 +71,12 @@ class ComposerAliasForm extends Component {
 
     console.log(name, email, passphrase)
 
+    this.props.toggleGeneratingKey()
     const key = await generateKey({ name, email }, passphrase)
     console.log(key)
 
     await this.props.addKey(key)
+    this.props.toggleGeneratingKey()
     console.log('added key!')
   }
 

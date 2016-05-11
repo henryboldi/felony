@@ -8,6 +8,10 @@ export function toggleComposer() {
   return { type: types.TOGGLE_COMPOSER }
 }
 
+export function toggleGeneratingKey() {
+  return { type: types.TOGGLE_GENERATING_KEY }
+}
+
 export function showComposerWithType(type) {
   return { type: types.SHOW_COMPOSER_WITH_TYPE, data: type }
 }

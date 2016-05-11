@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
-import { toggleComposer, addKey, setOutput } from '../actions/index'
+import { toggleComposer, toggleGeneratingKey, addKey, setOutput } from '../actions/index'
 import Composer from '../components/composer/Composer'
 
 const mapStateToProps = (state) => {
@@ -11,16 +11,14 @@ const mapStateToProps = (state) => {
   })
   const first = aliases[0] || null
 
-  console.log(aliases)
-  console.log('first', first)
   return {
     isShowingComposer: state.uiReducer.get('isShowingComposer'),
+    isGeneratingKey: state.uiReducer.get('isGeneratingKey'),
     composerType: state.uiReducer.get('composerType'),
     selectedKeychain: _.values(_.pick(keychain, (value, key) => {
       return state.uiReducer.get('selectedKeychain').toJS()[key]
     })),
     keychain: _.filter(keychain, key => {
-      console.log(key)
       return key.privateKeyArmored === null
     }),
     alias: first,
@@ -31,6 +29,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     toggleComposer: () => {
       dispatch(toggleComposer())
+    },
+
+    toggleGeneratingKey: () => {
+      dispatch(toggleGeneratingKey())
     },
 
     addKey: (key) => {
