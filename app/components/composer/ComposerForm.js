@@ -170,7 +170,12 @@ class ComposerForm extends Component {
         </div>
         <div is="actions">
           <a is="link cancel" onClick={ this.props.handleCancel }>Cancel</a>
-          <a is="link confirm" onClick={ props.onAccept }>{ props.acceptLabel }</a>
+          { this.props.isGeneratingKey ?
+              <a is="link confirm">Generating Key... Pls wait</a>
+            :
+              <a is="link confirm" onClick={ props.onAccept }>{ props.acceptLabel }</a>
+          }
+
         </div>
       </div>
     )
