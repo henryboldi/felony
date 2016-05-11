@@ -21,7 +21,7 @@ class User extends Component {
           position: 'relative',
         },
         outline: {
-          Absolute: '0 0 0 0',
+          Absolute: '0px 0px 0px 0px',
           borderRadius: '50%',
           border: `2px solid ${ colors.primary }`,
         },

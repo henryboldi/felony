@@ -14,9 +14,9 @@ class FloatingButtonItemLabel extends Component {
           display: 'flex',
           alignItems: 'center',
           position: 'absolute',
-          top: '0',
-          bottom: '0',
-          right: '0'
+          top: '0px',
+          bottom: '0px',
+          right: '0px'
         },
         label: {
           backgroundColor: 'rgba(255,255,255,0.4)',
