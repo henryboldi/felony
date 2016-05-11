@@ -2,10 +2,14 @@
 
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
+import CopyToClipboard from 'react-copy-to-clipboard'
 
 import colors from '../../assets/styles/variables/colors'
 
 class Output extends Component {
+
+  state = { copied: false }
+
   classes() {
     return {
       'default': {
@@ -66,6 +70,14 @@ class Output extends Component {
       <div is="wrap" ref="wrap">
         <h1>{ this.props.composerType } successful</h1>
         { this.props.output }
+
+        <CopyToClipboard
+          text={ this.props.output }
+          onCopy={() => this.setState({ copied: true })}
+        >
+          <button>Copy to clipboard with button</button>
+        </CopyToClipboard>
+        {this.state.copied ? <span style={{ color: 'red' }}>Copied.</span> : null}
         <div is="actions">
           <a is="link confirm" onClick={ this.handleCancel }>Close</a>
         </div>

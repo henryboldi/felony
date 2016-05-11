@@ -11,7 +11,7 @@ export function getPublicKeysFromKeychain(keychain) {
 
 function applyFelonyBranding(openpgpBrandedKey) {
   let output
-  output = openpgpBrandedKey.replace('Version: OpenPGP.js v2.2.1', 'Version: 🔑 Felony (PGP made easy) v0.0.1')
+  output = openpgpBrandedKey.replace(/Version: OpenPGP\.js [^<]\d\.\d\.\d/g, 'Version: 🔑 Felony (PGP made easy) v0.0.1')
   output = output.replace('Comment: http://openpgpjs.org', 'Comment: 👀 How dafuq do I use this? --> http://felony.io 😉')
   return output
 }

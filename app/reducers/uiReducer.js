@@ -1,4 +1,4 @@
-import { TOGGLE_COMPOSER, SHOW_COMPOSER_WITH_TYPE, SELECT_KEY, SET_ACTIVE_ALIAS, SET_OUTPUT } from '../constants/UIConstants'
+import { TOGGLE_COMPOSER, TOGGLE_GENERATING_KEY, SHOW_COMPOSER_WITH_TYPE, SELECT_KEY, SET_ACTIVE_ALIAS, SET_OUTPUT } from '../constants/UIConstants'
 import { OrderedMap } from 'immutable'
 
 const initialState = OrderedMap({
@@ -7,12 +7,15 @@ const initialState = OrderedMap({
   selectedKeychain: OrderedMap({}),
   activeAlias: '',
   output: '',
+  isGeneratingKey: false,
 })
 
 const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_COMPOSER:
       return state.set('isShowingComposer', !state.get('isShowingComposer'))
+    case TOGGLE_GENERATING_KEY:
+      return state.set('isGeneratingKey', !state.get('isGeneratingKey'))
     case SHOW_COMPOSER_WITH_TYPE:
       return state.set('composerType', action.data).set('isShowingComposer', true)
     case SELECT_KEY:

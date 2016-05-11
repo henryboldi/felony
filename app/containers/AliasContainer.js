@@ -3,8 +3,12 @@ import { showComposerWithType } from '../actions/index'
 import Alias from '../components/alias/Alias'
 
 const mapStateToProps = (state) => {
+  const aliases = _.filter(state.keychainReducer.get('keychain').toJS(), key => {
+    return key.privateKeyArmored !== null
+  })
+  const first = aliases[0] || { name: '', email: '' }
   return {
-    aliases: _.filter(state.keychainReducer.get('keychain').toJS(), key => { return key.privateKeyArmored == '' }),
+    alias: first,
   }
 }
 

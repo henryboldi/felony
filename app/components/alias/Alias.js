@@ -23,7 +23,7 @@ class Alias extends Component {
   render() {
     return (
       <div is="user" onClick={ this.props.showComposer.bind(this, 'alias') }>
-        <User name="Cali-Connection1" />
+        <User name={ this.props.alias.name.length === 0 ? this.props.alias.email : this.props.alias.name } />
       </div>
     )
   }

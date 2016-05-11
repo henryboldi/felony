@@ -93,7 +93,8 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.10.0",
+    "webpack-node-externals": "^1.2.0"
   },
   "dependencies": {
     "body-parser": "^1.15.0",
@@ -104,13 +105,15 @@
     "font-awesome": "^4.6.1",
     "immutable": "^3.7.6",
     "isomorphic-fetch": "^2.2.1",
+    "keytar": "^3.0.2",
     "lodash": "^3.10.1",
     "lowdb": "^0.12.4",
     "merge": "^1.2.0",
     "normalize.css": "^3.0.3",
     "openpgp": "^2.2.1",
     "os": "^0.1.0",
-    "react": "^15.0.1",
+    "react": "^15.0.2",
+    "react-copy-to-clipboard": "^4.1.0",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.2.4",

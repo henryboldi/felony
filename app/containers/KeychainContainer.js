@@ -7,7 +7,6 @@ const mapStateToProps = (state) => {
   return {
     // For `KeychainList` component
     keychain: _.filter(state.keychainReducer.get('keychain').toJS(), key => {
-      console.log(key)
       return key.privateKeyArmored === null
     }),
     selectedKeychain: state.uiReducer.get('selectedKeychain').toJS(),
