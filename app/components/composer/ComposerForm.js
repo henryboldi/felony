@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import dynamics from 'dynamics.js'
+import ReactDOM from 'react-dom'
 import { readArmored, encrypt, decrypt, sign, verify } from '../../utils/pgp'
 
 import { Icon } from '../common/index'
@@ -10,6 +11,7 @@ import { Icon } from '../common/index'
 import colors from '../../assets/styles/variables/colors'
 
 class ComposerForm extends Component {
+
   classes() {
     return {
       'default': {
@@ -95,25 +97,21 @@ class ComposerForm extends Component {
 
   handleEncrypt = async () => {
     const encryptMessage = await this._pgp(encrypt, this.props.selectedKeychain, this.props.alias.privateKeyArmored)()
-
     this.props.setOutput(encryptMessage)
   }
 
   handleDecrypt = async () => {
     const message = await this._pgp(decrypt, this.props.alias.privateKeyArmored)()
-
     this.props.setOutput(message)
   }
 
   handleSign = async () => {
     const signedMessage = await this._pgp(sign, this.props.alias.privateKeyArmored)()
-
     this.props.setOutput(signedMessage)
   }
 
   handleVerify = async () => {
     const match = await this._pgp(verify, this.props.keychain)()
-
     this.props.setOutput(`Signed message is verified to match: ${match.name} <${match.email}>`)
   }
 
@@ -155,6 +153,14 @@ class ComposerForm extends Component {
         placeholder: 'Key to add to keychain',
       },
     }[this.props.composerType] || {}
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.isShowingComposer) {
+      const textarea = ReactDOM.findDOMNode(this.refs.textarea)
+      textarea.value = ''
+      textarea.focus()
+    }
   }
 
   render() {
