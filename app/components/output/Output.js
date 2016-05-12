@@ -55,6 +55,10 @@ class Output extends Component {
     }
   }
 
+  componentWillReceiveProps = (nextProps) => {
+    this.state = { copied: false }
+  }
+
   handleCancel = () => {
     this.props.setOutput('')
     this.props.toggleComposer()
@@ -68,18 +72,28 @@ class Output extends Component {
 
     return (
       <div is="wrap" ref="wrap">
-        <h1>{ this.props.composerType } successful</h1>
-        { this.props.output }
-
-        <CopyToClipboard
-          text={ this.props.output }
-          onCopy={() => this.setState({ copied: true })}
-        >
-          <button>Copy to clipboard with button</button>
-        </CopyToClipboard>
-        {this.state.copied ? <span style={{ color: 'red' }}>Copied.</span> : null}
+        <div is="head">
+          <div is="title">
+            <div is="icon">
+              <Icon name="check" color="#00E676" />
+            </div>                                                                                                                                                                                                                                                                                                                                                                                </div>
+            Success!
+          </div>
+          <div is="subtitle">Now share it up! #blessup</div>
+        </div>
+        <div is="text">
+          <textarea is="textarea" ref="textarea" value={ this.props.output } />
+        </div>
         <div is="actions">
-          <a is="link confirm" onClick={ this.handleCancel }>Close</a>
+          <CopyToClipboard
+            text={ this.props.output }
+            onCopy={() => {
+              this.setState({ copied: true })
+              setTimeout(() => this.handleCancel(), 700)
+            } }
+          >
+            <a is="link confirm">{ this.state.copied ? 'Copied!' : 'Copy to Clipboard' }</a>
+          </CopyToClipboard>
         </div>
       </div>
     )
