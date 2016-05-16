@@ -1,4 +1,13 @@
-import { TOGGLE_COMPOSER, TOGGLE_GENERATING_KEY, SHOW_COMPOSER_WITH_TYPE, SELECT_KEY, SET_ACTIVE_ALIAS, SET_OUTPUT } from '../constants/UIConstants'
+import {
+  TOGGLE_COMPOSER,
+  TOGGLE_GENERATING_KEY,
+  SHOW_COMPOSER_WITH_TYPE,
+  SELECT_KEY,
+  CLEAR_SELECTED_KEYS,
+  SET_ACTIVE_ALIAS,
+  SET_OUTPUT
+} from '../constants/UIConstants'
+
 import { OrderedMap } from 'immutable'
 
 const initialState = OrderedMap({
@@ -24,6 +33,9 @@ const uiReducer = (state = initialState, action) => {
       } else {
         return state.setIn(['selectedKeychain', action.id], true)
       }
+
+    case CLEAR_SELECTED_KEYS:
+      return state.setIn(['selectedKeychain'], OrderedMap({}))
 
     case SET_ACTIVE_ALIAS:
       return state.set('activeAlias', action.activeAlias)

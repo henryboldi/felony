@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
-import { toggleComposer, setOutput } from '../actions/index'
+import { toggleComposer, setOutput, clearSelectedKeys } from '../actions/index'
 import Output from '../components/output/Output'
 
 const mapStateToProps = (state) => {
@@ -23,6 +23,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     toggleComposer: () => {
       dispatch(toggleComposer())
+    },
+
+    clearSelectedKeys: () => {
+      dispatch(clearSelectedKeys())
     },
 
     setOutput: (output) => {
