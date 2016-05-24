@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
+import { Icon } from '../common/index'
+
 import colors from '../../assets/styles/variables/colors'
 
 class Output extends Component {
@@ -27,23 +29,57 @@ class Output extends Component {
           opacity: '0px',
           transition: 'all 100ms linear',
         },
+        head: {
+          background: '#2B272C',
+          fontWeight: '300',
+          padding: '20px',
+        },
+
+        title: {
+          fontSize: '20px',
+        },
+        icon: {
+          width: '20px',
+          marginRight: '10px',
+          display: 'inline-block',
+          verticalAlign: 'middle',
+        },
+        subtitle: {
+          fontSize: '16px',
+          color: 'rgba(255,255,255,.7)',
+          marginTop: '10px',
+        },
+        text: {
+          flex: '1',
+          position: 'relative',
+          margin: '0 20px',
+        },
+        textarea: {
+          Absolute: '23px auto 10px auto',
+          border: 'none',
+          outline: 'none',
+          width: '100%',
+          boxSizing: 'border-box',
+          padding: '10px 3%',
+          color: '#333',
+          borderRadius: '2px',
+          fontSize: '14px',
+          fontFamily: 'Andale Mono',
+        },
         actions: {
           marginTop: '-10px',
           height: '40px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 10px',
-        },
-        link: {
-          textDecoration: 'none',
-          cursor: 'pointer',
-        },
-        cancel: {
-          color: '#999',
+          padding: '20px',
         },
         confirm: {
-          color: colors.primary,
+          color: colors.bgDark,
+          padding: '10px 20px',
+          borderRadius: '5px',
+          backgroundColor: '#00E676',
+          textDecoration: 'none',
+          cursor: 'pointer',
+          textAlign: 'center',
+          display: 'block',
         },
       },
       'isShowingOutput': {
@@ -71,31 +107,35 @@ class Output extends Component {
   render() {
 
     return (
+      <div>
       <div is="wrap" ref="wrap">
         <div is="head">
           <div is="title">
             <div is="icon">
               <Icon name="check" color="#00E676" />
-            </div>                                                                                                                                                                                                                                                                                                                                                                                </div>
+            </div>
             Success!
           </div>
           <div is="subtitle">Now share it up! #blessup</div>
         </div>
-        <div is="text">
-          <textarea is="textarea" ref="textarea" value={ this.props.output } />
-        </div>
+          <div is="text">
+            <textarea is="textarea" ref="textarea" value={ this.props.output } />
+          </div>
+
         <div is="actions">
           <CopyToClipboard
             text={ this.props.output }
             onCopy={() => {
               this.setState({ copied: true })
+              this.props.clearSelectedKeys()
               setTimeout(() => this.handleCancel(), 700)
             } }
           >
-            <a is="link confirm">{ this.state.copied ? 'Copied!' : 'Copy to Clipboard' }</a>
+            <a is="link confirm">{ this.state.copied ? 'Copied to clipboard!' : 'Copy & Close' }</a>
           </CopyToClipboard>
         </div>
       </div>
+    </div>
     )
   }
 }
