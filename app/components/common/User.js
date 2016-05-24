@@ -23,11 +23,14 @@ class User extends Component {
         outline: {
           Absolute: '0px 0px 0px 0px',
           borderRadius: '50%',
+          opacity: '0',
           border: `2px solid ${ colors.primary }`,
         },
         avatar: {
           transform: 'scale(1)',
           transition: 'transform 100ms ease-in-out',
+          borderRadius: '50%',
+          backgroundColor: '#666666',
         },
         name: {
           flex: '1',
@@ -42,6 +45,9 @@ class User extends Component {
         avatar: {
           transform: 'scale(.6)',
         },
+        outline: {
+          opacity: '1',
+        },
       },
     }
   }
@@ -52,7 +58,7 @@ class User extends Component {
         <div is="avatar-wrap">
           <div is="outline" />
           <div is="avatar">
-            <Avatar href="assets/images/avatar.png" />
+            <Avatar href={ `assets/images/avatar17.svg` }/>
           </div>
         </div>
         <div is="name">
