@@ -39,6 +39,7 @@ class ComposerForm extends Component {
           width: '20px',
           marginRight: '10px',
           display: 'inline-block',
+          verticalAlign: 'middle',
         },
         subtitle: {
           fontSize: '16px',
