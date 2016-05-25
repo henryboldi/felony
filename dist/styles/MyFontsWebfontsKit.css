@@ -1,0 +1,35 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3221626, 2016-05-19T15:29:00-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: DalleDisplay-Demi by Stawix
+ * URL: http://www.myfonts.com/fonts/stawix/dalle/display-demi/
+ *
+ * Webfont: DalleDisplay-Thin by Stawix
+ * URL: http://www.myfonts.com/fonts/stawix/dalle/display-thin/
+ *
+ * Webfont: DalleSet-Regular by Stawix
+ * URL: http://www.myfonts.com/fonts/stawix/dalle/regular/
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=3221626
+ * Licensed pageviews: 10,000
+ * Webfonts copyright: &#x00A9; 2012, 2013, 2014 by Stawix Ruecha &amp; Foundry. All rights reserved.
+ *
+ * © 2016 MyFonts Inc
+*/
+
+
+@font-face {font-family: 'DalleDisplay-Demi';src: url('webfonts/31287A_0_0.eot');src: url('webfonts/31287A_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/31287A_0_0.woff2') format('woff2'),url('webfonts/31287A_0_0.woff') format('woff'),url('webfonts/31287A_0_0.ttf') format('truetype');}
+
+
+@font-face {font-family: 'DalleDisplay-Thin';src: url('webfonts/31287A_1_0.eot');src: url('webfonts/31287A_1_0.eot?#iefix') format('embedded-opentype'),url('webfonts/31287A_1_0.woff2') format('woff2'),url('webfonts/31287A_1_0.woff') format('woff'),url('webfonts/31287A_1_0.ttf') format('truetype');}
+
+
+@font-face {font-family: 'DalleSet-Regular';src: url('webfonts/31287A_2_0.eot');src: url('webfonts/31287A_2_0.eot?#iefix') format('embedded-opentype'),url('webfonts/31287A_2_0.woff2') format('woff2'),url('webfonts/31287A_2_0.woff') format('woff'),url('webfonts/31287A_2_0.ttf') format('truetype');}
