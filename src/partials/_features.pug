@@ -1,0 +1,17 @@
+mixin feature(title, body)
+  .feature
+      h2 #{title}
+      p!= attributes['body']
+
+section.feature-section.lightBg
+  .features
+    +feature("Open Source")(
+      body!="Anyone can contribute and anyone can see how it works which makes it much more secure&mdash; and completely free of charge."
+    )
+    +feature("Secure")(
+      body!="Felony is built using OpenPGP.js. Therefore, the core encryption codebase has had a complete security audit conducted by Cure53."
+    )
+    +feature("Accessible")(
+      body!="Designed by a professional UX designer that&rsquo;s worked at a startup with 30million in funding, with feedback from people at YCombinator, Uber, and more."
+    )
+  a(href="").btn.primary-btn How it works

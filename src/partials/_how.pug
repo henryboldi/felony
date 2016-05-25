@@ -1,0 +1,14 @@
+mixin step(number, title, body)
+  .step
+      p.step-number #{number}
+      h4 #{title}
+      p #{body}
+
+section.steps.lightBg
+  h3.title how it works
+  +step(1, "Generate a key pair", "This creates a public key and a private key. A public key is what you share with others so people can send you messages, while the private key is what unlocks them.")
+  +step(2, "Add keys to your keychain", "Your keychain is like your buddy list of contants you can send encrypted messages to. You can find public keys to add to your keychain on sites like...")
+  +step(3, "Encrypt a message", "Send messages such as your address on darknet markets or any sensitive information intended to be only opened by those you choose from your keychain.")
+  a(href="").btn.primary-btn Download
+
+object(type="image/svg+xml" data="./images/slant-sans-red.svg").slanty-thing.flip
