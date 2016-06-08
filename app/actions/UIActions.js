@@ -12,6 +12,10 @@ export function toggleGeneratingKey() {
   return { type: types.TOGGLE_GENERATING_KEY }
 }
 
+export function toggleIsCopied() {
+  return { type: types.TOGGLE_IS_COPIED }
+}
+
 export function clearSelectedKeys() {
   return { type: types.CLEAR_SELECTED_KEYS }
 }
