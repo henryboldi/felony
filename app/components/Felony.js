@@ -7,9 +7,10 @@ import db from '../config/database.js'
 
 import '../assets/fonts/work-sans/WorkSans.css'
 import '../assets/styles/felony.css'
+import '../assets/styles/spinner.css'
 import colors  from '../assets/styles/variables/colors'
 
-import Header from './header/Header'
+import HeaderContainer from '../containers/HeaderContainer'
 import FloatingButtonContainer from '../containers/FloatingButtonContainer'
 import ComposerContainer from '../containers/ComposerContainer'
 import OutputContainer from '../containers/OutputContainer'
@@ -54,7 +55,7 @@ export class Felony extends Component {
       <div is="app">
         <div is="header"
           onClick={ this.handleAddToSelected }>
-          <Header />
+          <HeaderContainer />
         </div>
 
         <KeychainContainer />
