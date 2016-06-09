@@ -3,12 +3,20 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import dynamics from 'dynamics.js'
-var keytar = require("keytar")
+import keytar from 'keytar'
+import notifier from 'node-notifier'
 import { generateKey } from '../../utils/pgp'
+import path from 'path'
+
+import ComposerAliasFormInput from './ComposerAliasFormInput'
+import ComposerFormSubmit from './ComposerFormSubmit'
+import ComposerAliasSuccess from './ComposerAliasSuccess'
 
 import colors from '../../assets/styles/variables/colors'
 
 class ComposerAliasForm extends Component {
+  state = { submitted: false }
+
   classes() {
     return {
       'default': {
@@ -22,44 +30,73 @@ class ComposerAliasForm extends Component {
           flexDirection: 'column',
           display: 'flex',
         },
-        text: {
+        welcome: {
+          width: '35px',
+          margin: '0 auto',
+          marginTop: '43px',
+          marginBottom: '-70px',
+        },
+        instructions: {
+          width: '200px',
+          textAlign: 'center',
+          margin: '0 auto',
+          marginTop: '0px',
+          marginBottom: '20px',
+        },
+        form: {
           flex: '1',
           position: 'relative',
+          margin: '0 20px',
         },
         formItem: {
-          display: 'block',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          width: '94%',
+          display: 'flex',
+          flexDirection: 'column',
+          marginBottom: '15px',
         },
         input: {
-          border: 'none',
+          border: 'solid 2px #CBC5C5',
+          backgroundColor: 'transparent',
           outline: 'none',
           width: '100%',
           boxSizing: 'border-box',
           padding: '10px 3%',
           color: '#333',
-          borderRadius: '2px',
+          borderRadius: '5px',
           fontSize: '14px',
           fontFamily: 'Andale Mono',
+          flexGrow: '1',
         },
         actions: {
           marginTop: '-10px',
           height: '40px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 10px',
-        },
-        link: {
-          textDecoration: 'none',
-          cursor: 'pointer',
-        },
-        cancel: {
-          color: '#999',
+          padding: '20px',
         },
         confirm: {
-          color: colors.primary,
+          color: '#fff',
+          padding: '10px 30px',
+          borderRadius: '5px',
+          backgroundColor: colors.primary,
+          textDecoration: 'none',
+          cursor: 'pointer',
+          textAlign: 'center',
+          display: 'block',
+          transition: '200ms ease-in-out',
+        },
+        bgGrey: {
+          backgroundColor: colors.bgGrey,
+          color: colors.bgDark,
+          position: 'fixed',
+          left: '0',
+          right: '0',
+          bottom: '0',
+        },
+      },
+      hover: {
+        input: {
+          border: 'solid 1px red',
+        },
+        confirm: {
+          backgroundColor: '#BF1B23',
         },
       },
     }
@@ -70,59 +107,86 @@ class ComposerAliasForm extends Component {
     const email = this.refs.form[1].value
     const passphrase = this.refs.form[2].value
 
+    const notification = {
+      title: 'Keys Done Generating',
+      body: 'Copy your public key by clicking the icon to the right of your name.',
+    }
+
     console.log(name, email, passphrase)
     this.props.toggleGeneratingKey()
-    const key = await generateKey({ name, email }, passphrase)
+    this.setState({ submitted: true })
+    await this.props.addKey({ id: 999, name, privateKeyArmored: 'generating' })
+    let key = await generateKey({ name, email }, passphrase)
+    key.avatar = 9
+    key.id = 999
     console.log(key)
 
+    new Notification(notification.title, notification)
     keytar.addPassword('felony', `${name} <${email}>`, passphrase)
-
     await this.props.addKey(key)
     this.props.toggleGeneratingKey()
+
     console.log('added key!')
   }
 
   render() {
     return (
       <div is="wrap" ref="wrap">
-        <form is="form" ref="form">
-          <div is="formItem">
-            <label>Name</label>
-            <input
-              is="input"
-              ref="textarea"
-              placeholder={ 'Name' }
-              onKeyDown={ this.props.handleKeyDown }
+        <img
+          is="welcome"
+          src="assets/images/logo@2x.png"
+        />
+        <object
+          type="image/svg+xml"
+          data="assets/images/slant.svg"
+        ></object>
+        <div is="bgGrey">
+          { !this.state.submitted ?
+            <div>
+              <p is="instructions">To get started, generate your keys.</p>
+              <form is="form" ref="form">
+                <div is="formItem">
+                  <ComposerAliasFormInput
+                    type="text"
+                    ref="textarea"
+                    placeholder={ 'Name' }
+                    onKeyDown={ this.props.handleKeyDown }
+                  />
+                </div>
+                <div is="formItem">
+                  <ComposerAliasFormInput
+                    type="email"
+                    ref="textarea"
+                    placeholder={ 'Email' }
+                    onKeyDown={ this.props.handleKeyDown }
+                  />
+                </div>
+                <div is="formItem">
+                  <ComposerAliasFormInput
+                    type="password"
+                    is="input"
+                    ref="textarea"
+                    placeholder={ 'Passphrase' }
+                    onKeyDown={ this.props.handleKeyDown }
+                  />
+                </div>
+              </form>
+              <div is="actions">
+                <ComposerFormSubmit
+                  onClick={ this.handleConfirm }
+                  value="Generate"
+                />
+              </div>
+            </div>
+          :
+            <ComposerAliasSuccess
+              handleCancel={ this.props.handleCancel }
             />
-          </div>
-          <div is="formItem">
-            <label>Email</label>
-            <input
-              type="email"
-              is="input"
-              ref="textarea"
-              placeholder={ 'Email' }
-              onKeyDown={ this.props.handleKeyDown }
-            />
-          </div>
-          <div is="formItem">
-            <label>Passphrase</label>
-            <input
-              type="password"
-              is="input"
-              ref="textarea"
-              placeholder={ 'Passphrase' }
-              onKeyDown={ this.props.handleKeyDown }
-            />
-          </div>
-        </form>
-        <div is="actions">
-          <a is="link cancel" onClick={ this.props.handleCancel }>Cancel</a>
-          <a is="link confirm" onClick={ this.handleConfirm }>Generate Key Pair</a>
+          }
         </div>
       </div>
     )
   }
 }
 
-export default ReactCSS(ComposerAliasForm)
+export default ReactCSS.Hover(ReactCSS(ComposerAliasForm))
