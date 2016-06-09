@@ -7,7 +7,8 @@ import colors from '../../assets/styles/variables/colors'
 import { spacing } from '../../assets/styles/variables/utils'
 
 import { Button, Icon } from '../common/index'
-import AliasContainer from '../../containers/AliasContainer'
+import Alias from '../alias/Alias'
+import HeaderKeyStatus from './HeaderKeyStatus'
 
 import { generateKey } from '../../utils/pgp'
 
@@ -27,6 +28,7 @@ class Header extends Component {
         },
         icon: {
           width: '24px',
+          marginBottom: '2px',
         },
         Decrypt: {
           background: colors.primaryGradient, // TODO: File issue as this should work
@@ -36,14 +38,32 @@ class Header extends Component {
     }
   }
 
+  componentDidMount = () => {
+    this.props.showComposer('alias')
+  }
+
+  counter = 0
+
+  componentDidUpdate = (prevProps) => {
+    console.log(prevProps.alias.privateKeyArmored)
+    this.counter++
+    if (prevProps.alias.privateKeyArmored !== this.props.alias.privateKeyArmored && this.counter < 3) {
+      this.props.toggleComposer()
+    }
+  }
+
   render() {
 
     return (
       <div is="header">
-        <AliasContainer />
+        <Alias
+          {...this.props }
+        />
         <div is="actions">
           <div is="icon">
-            <Icon name="more" color="#F4C97A"/>
+            <HeaderKeyStatus
+              {...this.props }
+            />
           </div>
         </div>
       </div>
