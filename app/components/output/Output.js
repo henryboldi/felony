@@ -75,7 +75,7 @@ class Output extends Component {
           color: colors.bgDark,
           padding: '10px 20px',
           borderRadius: '5px',
-          backgroundColor: '#00E676',
+          backgroundColor: colors.green,
           textDecoration: 'none',
           cursor: 'pointer',
           textAlign: 'center',
