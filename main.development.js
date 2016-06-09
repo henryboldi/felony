@@ -1,4 +1,5 @@
 import { app, BrowserWindow, Menu, crashReporter, shell } from 'electron';
+import open from 'open';
 
 let menu;
 let template;
@@ -19,8 +20,9 @@ app.on('window-all-closed', () => {
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728
+    width: 295,
+    height: 435,
+    'title-bar-style': 'hidden',
   });
 
   mainWindow.loadURL(`file://${__dirname}/app/app.html`);
@@ -30,6 +32,10 @@ app.on('ready', () => {
     mainWindow.focus();
   });
 
+  mainWindow.webContents.on('new-window', function(event, url){
+    event.preventDefault();
+    open(url);
+  });
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
