@@ -1,6 +1,7 @@
 /* eslint max-len: 0 */
 import webpack from 'webpack'
 import baseConfig from './webpack.config.base'
+import nodeExternals from 'webpack-node-externals'
 
 const config = {
   ...baseConfig,
@@ -29,7 +30,7 @@ const config = {
         test: /\.global\.css$/,
         loaders: [
           'style-loader',
-          'css-loader?sourceMap',
+          'css-loader',
         ],
       },
 
@@ -37,7 +38,7 @@ const config = {
         test: /^((?!\.global).)*\.css$/,
         loaders: [
           'style-loader',
-          'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+          'css-loader',
         ],
       },
     ],
@@ -56,6 +57,15 @@ const config = {
   ],
 
   target: 'electron-renderer',
+
+  externals: [
+    nodeExternals({
+      whitelist: ['webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr', 'normalize.css'],
+    }),
+
+    // put your node 3rd party libraries which can't be built with webpack here
+    // (mysql, mongodb, and so on..)
+  ],
 }
 
 export default config

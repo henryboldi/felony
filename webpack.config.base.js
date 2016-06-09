@@ -1,5 +1,4 @@
 import path from 'path'
-import nodeExternals from 'webpack-node-externals'
 
 export default {
   module: {
@@ -30,9 +29,6 @@ export default {
 
   ],
   externals: [
-    nodeExternals({
-      whitelist: ['webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr', 'normalize.css'],
-    }),
 
     // put your node 3rd party libraries which can't be built with webpack here
     // (mysql, mongodb, and so on..)
