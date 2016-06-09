@@ -40,10 +40,15 @@ class KeychainListKey extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div onClick={ this.handleClick } is="item">
         <div is="user">
-          <User name={ this.props.name.length === 0 ? this.props.email : this.props.name } active={ this.props.active } />
+          <User
+            name={ this.props.name.length === 0 ? this.props.email : this.props.name }
+            active={ this.props.active }
+            avatar={ this.props.avatar }
+          />
         </div>
         <div is="spaceLine"/>
       </div>

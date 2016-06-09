@@ -33,6 +33,7 @@ class KeychainList extends Component {
                 email={ key.email }
                 onSelect={ this.props.selectKey }
                 active={ this.props.selectedKeychain[key.id] }
+                avatar={ key.avatar }
               />
             )
           }) }
