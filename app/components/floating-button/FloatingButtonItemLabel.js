@@ -16,10 +16,10 @@ class FloatingButtonItemLabel extends Component {
           position: 'absolute',
           top: '0px',
           bottom: '0px',
-          right: '0px'
+          right: '0px',
         },
         label: {
-          backgroundColor: 'rgba(255,255,255,0.4)',
+          backgroundColor: '#87878A',
           borderRadius: '3px',
           padding: '4px',
           color: colors.bgDark,
@@ -31,7 +31,7 @@ class FloatingButtonItemLabel extends Component {
       },
       hover: {
         label: {
-          backgroundColor: 'rgba(255,255,255,0.7)',
+          backgroundColor: '#C3C3C5',
         },
       },
     }
