@@ -58,7 +58,7 @@ class User extends Component {
         <div is="avatar-wrap">
           <div is="outline" />
           <div is="avatar">
-            <Avatar href={ `assets/images/avatar17.svg` }/>
+            <Avatar href={ `assets/images/avatar${ this.props.avatar }.svg` }/>
           </div>
         </div>
         <div is="name">
