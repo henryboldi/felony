@@ -19,6 +19,8 @@ const shouldUseAsar = argv.asar || argv.a || false;
 const shouldBuildAll = argv.all || false;
 
 
+console.log(electronCfg)
+
 const DEFAULT_OPTS = {
   dir: './',
   name: appName,
@@ -30,7 +32,7 @@ const DEFAULT_OPTS = {
     '/main.development.js'
   ].concat(devDeps.map(name => `/node_modules/${name}($|/)`))
   .concat(
-    deps.filter(name => !electronCfg.externals.includes(name))
+    deps.filter(name => !electronCfg.default.externals.includes(name))
       .map(name => `/node_modules/${name}($|/)`)
   )
 };
@@ -71,8 +73,8 @@ function build(cfg) {
 
 function startPack() {
   console.log('start pack...');
-  build(electronCfg)
-    .then(() => build(cfg))
+  build(electronCfg.default)
+    .then(() => build(cfg.default))
     .then(() => del('release'))
     .then(paths => {
       if (shouldBuildAll) {
