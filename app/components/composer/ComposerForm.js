@@ -106,8 +106,16 @@ class ComposerForm extends Component {
 
   readKey = this._pgp(readArmored)
 
+  getRandomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  }
+
   handleAddKey = async () => {
-    const key = await this.readKey()
+    const avatar = this.getRandomInt(1, 23)
+    let key = await this.readKey()
+    key.avatar = avatar
+
+    console.log(key)
     await this.props.addKey(key)
   }
 
