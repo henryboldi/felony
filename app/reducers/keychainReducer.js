@@ -7,6 +7,7 @@ const KeyRecord = Record({
   email: '',
   publicKeyArmored: '',
   privateKeyArmored: '',
+  avatar: '',
   completed: false,
 })
 
@@ -25,6 +26,7 @@ const keychainReducer = (state = initialState, action) => {
           email: action.key.email,
           publicKeyArmored: action.key.publicKeyArmored,
           privateKeyArmored: action.key.privateKeyArmored || null,
+          avatar: action.key.avatar,
         })
       )
     case SET_KEYCHAIN:
@@ -38,6 +40,7 @@ const keychainReducer = (state = initialState, action) => {
               email: key.email,
               publicKeyArmored: key.publicKeyArmored,
               privateKeyArmored: key.privateKeyArmored || null,
+              avatar: key.avatar,
             })
           )
         }
