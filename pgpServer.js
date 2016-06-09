@@ -37,7 +37,7 @@ app.post('/generateKey', async function (req, res) {
 
   const key = await openpgp.generateKey({
     userIds: [{ name: req.body.name, email: req.body.email }], // multiple user IDs
-    numBits: 4096,                                            // RSA key size 4096
+    numBits: 2048,                                            // RSA key size 4096
     passphrase: req.body.passphrase,        // protects the private key
   })
 
