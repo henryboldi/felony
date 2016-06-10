@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
-import dynamics from 'dynamics.js'
 
 import colors from '../../assets/styles/variables/colors'
 
@@ -57,11 +56,15 @@ class AliasComposer extends Component {
   }
 
   render() {
-
     return (
       <div is="wrap" ref="wrap">
         <div is="text">
-          <textarea is="textarea" ref="textarea" placeholder={ props.placeholder } onKeyDown={ this.handleKeyDown } />
+          <textarea
+            is="textarea"
+            ref="textarea"
+            placeholder={ this.props.placeholder }
+            onKeyDown={ this.handleKeyDown }
+          />
         </div>
       </div>
     )

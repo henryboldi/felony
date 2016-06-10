@@ -17,7 +17,7 @@ class Icon extends Component {
   }
 
   render() {
-    return <div is="icon" dangerouslySetInnerHTML={{ __html: getIcon(this.props.name) }} />
+    return <div is="icon" dangerouslySetInnerHTML={ { __html: getIcon(this.props.name) } } />
   }
 }
 

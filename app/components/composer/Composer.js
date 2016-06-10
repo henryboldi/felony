@@ -2,8 +2,6 @@
 
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
-import dynamics from 'dynamics.js'
-import { verify, sign, decrypt, encrypt, getPublicKeysFromKeychain } from '../../utils/pgp'
 
 import ComposerForm from './ComposerForm'
 import ComposerAliasForm from './ComposerAliasForm'
@@ -47,10 +45,9 @@ class Composer extends Component {
   }
 
   render() {
-
     return (
       <div is="wrap" ref="wrap">
-        { this.props.composerType == 'alias' ?
+        { this.props.composerType === 'alias' ?
           <ComposerAliasForm
             handleKeyDown={ this.handleKeyDown }
             handleCancel={ this.handleCancel }

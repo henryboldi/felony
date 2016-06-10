@@ -1,4 +1,4 @@
-var openpgp = require('openpgp')
+const openpgp = require('openpgp')
 openpgp.initWorker({ path: '../node_modules/openpgp/dist/openpgp.worker.min.js' })
 openpgp.config.aead_protect = true
 openpgp.config.use_native = true
@@ -21,15 +21,14 @@ function massagePGP(string) {
                .replace('===', '==\r\n=')
 }
 
-export async function generateKey({ name, email='' },  passphrase) {
-
+export async function generateKey({ name, email = '' }, passphrase) {
   const response = await fetch('http://127.0.0.1:3001/generateKey', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name, email, passphrase }),
-    })
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, email, passphrase }),
+  })
   const data = await response.json()
 
   return {
@@ -44,12 +43,12 @@ export async function readArmored(armoredKey) {
   const massagedKey = massagePGP(armoredKey)
 
   const response = await fetch('http://127.0.0.1:3001/readArmored', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ armoredKey: massagedKey }),
-    })
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ armoredKey: massagedKey }),
+  })
   const data = await response.json()
   const userStr = data.key.keys[0].users[0].userId.userid
 
@@ -64,20 +63,19 @@ export async function readArmored(armoredKey) {
 }
 
 export async function encrypt(message, selectedKeys, privateKeyArmored) {
-
   const publicKeysArmored = getPublicKeysFromKeychain(selectedKeys)
-  let sendThis = { message, publicKeysArmored }
+  const sendThis = { message, publicKeysArmored }
   if (privateKeyArmored) {
     sendThis.privateKeyArmored = privateKeyArmored
   }
 
   const response = await fetch('http://127.0.0.1:3001/encrypt', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(sendThis),
-    })
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(sendThis),
+  })
   const data = await response.json()
 
   return applyFelonyBranding(data.encryptedMessage)
@@ -87,12 +85,12 @@ export async function decrypt(encryptedMessage, privateKeyArmored) {
   const encryptedMessageMassaged = massagePGP(encryptedMessage)
 
   const response = await fetch('http://127.0.0.1:3001/decrypt', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ encryptedMessage, privateKeyArmored }),
-    })
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ encryptedMessage, privateKeyArmored }),
+  })
   const data = await response.json()
 
   return data.message
@@ -100,12 +98,12 @@ export async function decrypt(encryptedMessage, privateKeyArmored) {
 
 export async function sign(message, privateKeyArmored) {
   const response = await fetch('http://127.0.0.1:3001/sign', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message, privateKeyArmored }),
-    })
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ message, privateKeyArmored }),
+  })
   const data = await response.json()
 
   return applyFelonyBranding(data.signedMessage)
@@ -115,12 +113,12 @@ export async function verify(signedMessage, keychain) {
 
   const signedMessageMassaged = massagePGP(signedMessage)
   const response = await fetch('http://127.0.0.1:3001/verify', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ signedMessage: signedMessageMassaged, keychain }),
-    })
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ signedMessage: signedMessageMassaged, keychain }),
+  })
   const data = await response.json()
 
   return data.match

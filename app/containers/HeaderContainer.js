@@ -1,12 +1,19 @@
 import { connect } from 'react-redux'
 import { showComposerWithType, toggleIsCopied, toggleComposer } from '../actions/index'
 import Header from '../components/header/Header'
+import _ from 'lodash'
 
 const mapStateToProps = (state) => {
   const aliases = _.filter(state.keychainReducer.get('keychain').toJS(), key => {
     return key.privateKeyArmored !== null
   })
-  const first = aliases[0] || { name: '', email: '', privateKeyArmored: '', publicKeyArmored: '', avatar: '' }
+  const first = aliases[0] || {
+    name: '',
+    email: '',
+    privateKeyArmored: '',
+    publicKeyArmored: '',
+    avatar: '',
+  }
 
   return {
     isCopied: state.uiReducer.get('isCopied'),

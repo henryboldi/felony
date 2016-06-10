@@ -16,7 +16,7 @@ class User extends Component {
           display: 'flex',
           alignItems: 'center',
         },
-        'avatar-wrap': {
+        avatarWrap: {
           width: sizing.avatar,
           position: 'relative',
         },
@@ -55,10 +55,10 @@ class User extends Component {
   render() {
     return (
       <div is="user">
-        <div is="avatar-wrap">
+        <div is="avatarWrap">
           <div is="outline" />
           <div is="avatar">
-            <Avatar href={ `assets/images/avatar${ this.props.avatar }.svg` }/>
+            <Avatar href={ `assets/images/avatar${ this.props.avatar }.svg` } />
           </div>
         </div>
         <div is="name">

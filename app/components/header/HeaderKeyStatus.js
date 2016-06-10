@@ -31,7 +31,7 @@ class HeaderKeyStatus extends Component {
   }
 
   render() {
-    return <div>
+    return (<div>
       <div
         onMouseEnter={ this.handleMouseEnter }
         onMouseLeave={ this.handleMouseLeave }
@@ -60,7 +60,7 @@ class HeaderKeyStatus extends Component {
           null
         }
       </div>
-    </div>
+    </div>)
   }
 }
 

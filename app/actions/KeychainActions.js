@@ -1,8 +1,6 @@
 import * as types from '../constants/KeychainConstants'
 import db from '../config/database.js'
 
-import uuid from 'uuid'
-
 export function addKey(key) {
   return async function (dispatch) {
     try {

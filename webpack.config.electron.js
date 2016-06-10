@@ -1,6 +1,5 @@
 import webpack from 'webpack'
 import baseConfig from './webpack.config.base'
-import nodeExternals from 'webpack-node-externals'
 
 export default {
   ...baseConfig,

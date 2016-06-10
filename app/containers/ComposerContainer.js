@@ -1,6 +1,5 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
-import Immutable from 'immutable'
 import { toggleComposer, clearSelectedKeys, toggleGeneratingKey, addKey, setOutput } from '../actions/index'
 import Composer from '../components/composer/Composer'
 

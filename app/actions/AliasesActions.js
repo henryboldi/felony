@@ -2,8 +2,6 @@ import * as types from '../constants/AliasesConstants'
 import db from '../config/database.js'
 import { generateKey } from '../../utils/pgp'
 
-import uuid from 'uuid'
-
 export function addAlias(alias) {
   return async function (dispatch) {
     try {

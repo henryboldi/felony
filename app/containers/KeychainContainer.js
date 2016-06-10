@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import Immutable from 'immutable'
 import { addKey, fetchKeychain, selectKey, showComposerWithType } from '../actions/index'
 import Keychain from '../components/keychain/Keychain'
+import _ from 'lodash'
 
 const mapStateToProps = (state) => {
   return {
@@ -12,7 +12,9 @@ const mapStateToProps = (state) => {
     selectedKeychain: state.uiReducer.get('selectedKeychain').toJS(),
 
     // For `KeychainComposerOpener` component
-    isShowingOpener: _.some(_.values(state.uiReducer.get('selectedKeychain').toJS()), (value) => { return value }),
+    isShowingOpener: _.some(_.values(state.uiReducer.get('selectedKeychain').toJS()), (value) => {
+      return value
+    }),
   }
 }
 

@@ -1,4 +1,4 @@
-'use strict'
+'use strict' /* eslint max-len: 0 */
 
 const store = {
   'more': `<svg style="width:100%;height:100%" viewBox="0 0 24 24">

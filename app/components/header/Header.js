@@ -6,11 +6,8 @@ import ReactCSS from 'reactcss'
 import colors from '../../assets/styles/variables/colors'
 import { spacing } from '../../assets/styles/variables/utils'
 
-import { Button, Icon } from '../common/index'
 import Alias from '../alias/Alias'
 import HeaderKeyStatus from './HeaderKeyStatus'
-
-import { generateKey } from '../../utils/pgp'
 
 class Header extends Component {
   classes() {
@@ -20,7 +17,7 @@ class Header extends Component {
           background: colors.bgDark,
           display: 'flex',
           justifyContent: 'space-between',
-          padding: `${spacing.m + spacing.statusBarHeight }px ${spacing.m}px ${spacing.m}px`,
+          padding: `${ spacing.m + spacing.statusBarHeight }px ${ spacing.m }px ${ spacing.m }px`,
         },
         actions: {
           display: 'flex',
@@ -47,13 +44,13 @@ class Header extends Component {
   componentDidUpdate = (prevProps) => {
     console.log(prevProps.alias.privateKeyArmored)
     this.counter++
-    if (prevProps.alias.privateKeyArmored !== this.props.alias.privateKeyArmored && this.counter < 3) {
+    if (prevProps.alias.privateKeyArmored !== this.props.alias.privateKeyArmored
+      && this.counter < 3) {
       this.props.toggleComposer()
     }
   }
 
   render() {
-
     return (
       <div is="header">
         <Alias

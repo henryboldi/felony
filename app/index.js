@@ -11,7 +11,7 @@ import Felony from './components/Felony'
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 render(
-  <Provider store={store}>
+  <Provider store={ store }>
     <Felony />
   </Provider>,
   document.getElementById('root')

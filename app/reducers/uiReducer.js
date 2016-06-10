@@ -6,7 +6,7 @@ import {
   SELECT_KEY,
   CLEAR_SELECTED_KEYS,
   SET_ACTIVE_ALIAS,
-  SET_OUTPUT
+  SET_OUTPUT,
 } from '../constants/UIConstants'
 
 import { OrderedMap } from 'immutable'
@@ -32,7 +32,8 @@ const uiReducer = (state = initialState, action) => {
     case SHOW_COMPOSER_WITH_TYPE:
       return state.set('composerType', action.data).set('isShowingComposer', true)
     case SELECT_KEY:
-      if (state.hasIn(['selectedKeychain', action.id]) && state.getIn(['selectedKeychain', action.id]) === true) {
+      if (state.hasIn(['selectedKeychain', action.id])
+        && state.getIn(['selectedKeychain', action.id]) === true) {
         return state.setIn(['selectedKeychain', action.id], false)
       } else {
         return state.setIn(['selectedKeychain', action.id], true)

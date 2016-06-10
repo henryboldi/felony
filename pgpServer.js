@@ -1,11 +1,13 @@
-import "babel-polyfill"
+import 'babel-polyfill'
 import express from 'express'
 import bodyParser from 'body-parser'
 import keytar from 'keytar'
-let app = express()
-var openpgp = require('openpgp') // use as CommonJS, AMD, ES6 module or via window.openpgp
+const app = express()
+const openpgp = require('openpgp') // use as CommonJS, AMD, ES6 module or via window.openpgp
 
-openpgp.initWorker({ path: './node_modules/openpgp/dist/openpgp.worker.min.js' }) // set the relative web worker path
+// set the relative web worker path
+openpgp.initWorker({ path: './node_modules/openpgp/dist/openpgp.worker.min.js' })
+
 
 openpgp.config.aead_protect = true
 
@@ -15,7 +17,7 @@ function getNameString(key) {
   const userStr = key.users[0].userId.userid
   const email = userStr.substring(userStr.lastIndexOf('<') + 1, userStr.lastIndexOf('>'))
   const name = userStr.substring(0, userStr.lastIndexOf(' '))
-  return `${name} <${email}>`
+  return `${ name } <${ email }>`
 }
 
 function getPrivateKeyPassphrase(privateKey) {
@@ -26,9 +28,9 @@ function getPrivateKeyPassphrase(privateKey) {
 
 const decryptPrivateKey = async function (privateKey, passphrase) {
   const unlocked = await openpgp.decryptKey({
-      privateKey,
-      passphrase,
-    })
+    privateKey,
+    passphrase,
+  })
   const decryptedKey = unlocked.key
   return decryptedKey
 }
@@ -84,9 +86,9 @@ app.post('/decrypt', async function (req, res) {
   // const decryptedKey = await decryptPrivateKey(privateKey, 'test')
 
   const options = {
-      message: openpgp.message.readArmored(req.body.encryptedMessage),     // parse armored message
-      privateKey, // for decryption
-    }
+    message: openpgp.message.readArmored(req.body.encryptedMessage),     // parse armored message
+    privateKey, // for decryption
+  }
   const plaintext = await openpgp.decrypt(options)
   const message = plaintext.data
 
@@ -103,7 +105,7 @@ app.post('/sign', async function (req, res) {
 
     const options = {
       data: req.body.message,     // parse armored message
-      //publicKeys: openpgp.key.readArmored(pubkey).keys,    // for verification (optional)
+      // publicKeys: openpgp.key.readArmored(pubkey).keys,    // for verification (optional)
       privateKeys: [decryptedKey], // for decryption
     }
 

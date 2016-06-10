@@ -7,12 +7,14 @@ import colors from '../../assets/styles/variables/colors'
 class HeaderKeyStatusSpinner extends Component {
 
   render() {
-    return <div>
-      <div className="spinner">
-        <div className="double-bounce1"></div>
-        <div className="double-bounce2"></div>
+    return (
+      <div>
+        <div className="spinner">
+          <div className="double-bounce1"></div>
+          <div className="double-bounce2"></div>
+        </div>
       </div>
-    </div>
+    )
   }
 }
 

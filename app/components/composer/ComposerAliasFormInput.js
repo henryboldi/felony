@@ -3,8 +3,6 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
-import colors from '../../assets/styles/variables/colors'
-
 class ComposerAliasFormInput extends Component {
   state = { focus: false }
 
@@ -26,7 +24,7 @@ class ComposerAliasFormInput extends Component {
           transition: '200ms ease-in-out',
         },
       },
-      hover: {
+      'hover': {
         input: {
           border: 'solid 2px #A7A4A4',
         },
@@ -52,9 +50,9 @@ class ComposerAliasFormInput extends Component {
         is="input"
         placeholder={ this.props.placeholder }
         handleKeyDown={ this.props.onKeyDown }
-        onFocus={ () => { this.setState({ focus: true }) }}
+        onFocus={ () => { this.setState({ focus: true }) } }
 
-        onBlur={ () => { this.setState({ focus: false }) }}
+        onBlur={ () => { this.setState({ focus: false }) } }
 
       />
     )

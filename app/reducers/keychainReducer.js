@@ -1,5 +1,5 @@
 import { ADD_KEY, SET_KEYCHAIN } from '../constants/KeychainConstants'
-import { OrderedMap, Record, List } from 'immutable'
+import { OrderedMap, Record } from 'immutable'
 
 const KeyRecord = Record({
   id: '',
@@ -30,7 +30,7 @@ const keychainReducer = (state = initialState, action) => {
         })
       )
     case SET_KEYCHAIN:
-      return state.withMutations(function (st) {
+      return state.withMutations((st) => {
         for (let key of action.keychain) {
           st.setIn(
             ['keychain', key.id],

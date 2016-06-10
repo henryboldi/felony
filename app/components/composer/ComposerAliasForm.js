@@ -2,11 +2,8 @@
 
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
-import dynamics from 'dynamics.js'
 import keytar from 'keytar'
-import notifier from 'node-notifier'
 import { generateKey } from '../../utils/pgp'
-import path from 'path'
 
 import ComposerAliasFormInput from './ComposerAliasFormInput'
 import ComposerFormSubmit from './ComposerFormSubmit'
@@ -91,7 +88,7 @@ class ComposerAliasForm extends Component {
           bottom: '0',
         },
       },
-      hover: {
+      'hover': {
         input: {
           border: 'solid 1px red',
         },
@@ -116,13 +113,13 @@ class ComposerAliasForm extends Component {
     this.props.toggleGeneratingKey()
     this.setState({ submitted: true })
     await this.props.addKey({ id: 999, name, privateKeyArmored: 'generating' })
-    let key = await generateKey({ name, email }, passphrase)
+    const key = await generateKey({ name, email }, passphrase)
     key.avatar = 9
     key.id = 999
     console.log(key)
 
     new Notification(notification.title, notification)
-    keytar.addPassword('felony', `${name} <${email}>`, passphrase)
+    keytar.addPassword('felony', `${ name } <${ email }>`, passphrase)
     await this.props.addKey(key)
     this.props.toggleGeneratingKey()
 

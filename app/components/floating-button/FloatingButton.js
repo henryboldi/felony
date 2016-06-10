@@ -5,7 +5,7 @@ import ReactCSS from 'reactcss'
 
 import { spacing } from '../../assets/styles/variables/utils'
 
-import { Overlay, Icon } from '../common/index'
+import { Icon } from '../common/index'
 import FloatingButtonItem from './FloatingButtonItem'
 
 class FloatingButton extends Component {
@@ -16,8 +16,8 @@ class FloatingButton extends Component {
       'default': {
         wrap: {
           position: 'fixed',
-          right: `${spacing.m}px`,
-          bottom: `${spacing.m}px`,
+          right: `${ spacing.m }px`,
+          bottom: `${ spacing.m }px`,
         },
         buttons: {
           zIndex: '9990',
@@ -38,7 +38,7 @@ class FloatingButton extends Component {
   handleClose = () => this.setState({ isShowingActions: false })
 
   render() {
-    return <div
+    return (<div
       is="wrap"
       onMouseLeave={ this.handleClose }
     >
@@ -68,13 +68,13 @@ class FloatingButton extends Component {
           </div>
         </div>
         :
-        <div onMouseEnter={this.handleOpen}>
+        <div onMouseEnter={ this.handleOpen }>
           <FloatingButtonItem size="large">
             <Icon name="plus" />
           </FloatingButtonItem>
         </div>
       }
-    </div>
+    </div>)
   }
 }
 

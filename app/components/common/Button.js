@@ -11,7 +11,7 @@ class Button extends Component {
       'default': {
         button: {
           height: '30px',
-          padding: `0 ${spacing.s}px`,
+          padding: `0 ${ spacing.s }px`,
           borderRadius: '4px',
           backgroundColor: this.props.background,
           color: this.props.color || 'inherit',
