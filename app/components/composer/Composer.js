@@ -26,7 +26,7 @@ class Composer extends Component {
           display: 'flex',
           transform: 'translateY(100%)',
           opacity: '0px',
-          transition: 'all 100ms linear',
+          transition: 'all 200ms ease-in-out',
         },
       },
       'isShowingComposer': {
