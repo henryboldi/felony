@@ -27,7 +27,7 @@ class Output extends Component {
           display: 'flex',
           transform: 'translateY(100%)',
           opacity: '0px',
-          transition: 'all 100ms linear',
+          transition: 'all 200ms ease-in-out',
         },
         head: {
           background: '#2B272C',
@@ -128,10 +128,15 @@ class Output extends Component {
             onCopy={() => {
               this.setState({ copied: true })
               this.props.clearSelectedKeys()
-              setTimeout(() => this.handleCancel(), 700)
+              setTimeout(() => this.handleCancel(), 1500)
             } }
           >
-            <a is="link confirm">{ this.state.copied ? 'Copied to clipboard!' : 'Copy & Close' }</a>
+            <a is="link confirm">
+              { this.state.copied ?
+                'nice!'
+              :
+                'Copy to Clipboard'
+              }</a>
           </CopyToClipboard>
         </div>
       </div>
