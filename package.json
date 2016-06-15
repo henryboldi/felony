@@ -1,8 +1,13 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
+  "name": "felony",
+  "productName": "Felony",
   "version": "0.10.0",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
+  "author": {
+    "name": "Henry Boldizsar",
+    "email": "henrymb67@gmail.com",
+    "url": "https://github.com/henryboldi"
+  },
+  "description": "Felony makes sending encrypted messages anywhere easy.",
   "main": "main.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test mocha --compilers js:babel-register --recursive --require ./test/setup.js test/**/*.spec.js",
@@ -10,7 +15,6 @@
     "test-e2e": "cross-env NODE_ENV=test mocha --compilers js:babel-register --require ./test/setup.js --require co-mocha ./test/e2e.js",
     "lint": "eslint app test *.js",
     "hot-server": "node -r babel-register server.js",
-    "pgp-server": "node -r babel-register pgpServer.js",
     "build-main": "cross-env NODE_ENV=production node -r babel-register ./node_modules/.bin/webpack --config webpack.config.electron.js --progress --profile --colors",
     "build-renderer": "cross-env NODE_ENV=production node -r babel-register ./node_modules/.bin/webpack --config webpack.config.production.js --progress --profile --colors",
     "build": "npm run build-main && npm run build-renderer",
@@ -19,7 +23,7 @@
     "package": "cross-env NODE_ENV=production node -r babel-register package.js",
     "package-all": "npm run package -- --all",
     "postinstall": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
-    "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\" \"npm run pgp-server\""
+    "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\""
   },
   "bin": {
     "electron": "./node_modules/.bin/electron"
@@ -27,11 +31,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chentsulin/electron-react-boilerplate.git"
-  },
-  "author": {
-    "name": "C. T. Lin",
-    "email": "chentsulin@gmail.com",
-    "url": "https://github.com/chentsulin"
   },
   "license": "MIT",
   "bugs": {
@@ -120,6 +119,7 @@
     "react": "^15.0.2",
     "react-copy-to-clipboard": "^4.1.0",
     "react-dom": "^15.0.1",
+    "react-ladda": "^4.0.3",
     "react-redux": "^4.4.5",
     "react-router": "^2.2.4",
     "react-router-redux": "^4.0.2",
