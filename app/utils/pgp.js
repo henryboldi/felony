@@ -3,6 +3,7 @@ openpgp.initWorker({ path: '../node_modules/openpgp/dist/openpgp.worker.min.js' 
 openpgp.config.aead_protect = true
 openpgp.config.use_native = true
 
+import keytar from 'keytar'
 import fetch from 'isomorphic-fetch'
 
 export function getPublicKeysFromKeychain(keychain) {
@@ -21,37 +22,49 @@ function massagePGP(string) {
                .replace('===', '==\r\n=')
 }
 
+function getNameString(key) {
+  const userStr = key.users[0].userId.userid
+  const email = userStr.substring(userStr.lastIndexOf('<') + 1, userStr.lastIndexOf('>'))
+  const name = userStr.substring(0, userStr.lastIndexOf(' '))
+  return `${name} <${email}>`
+}
+
+const decryptPrivateKey = async function (privateKey, passphrase) {
+  const unlocked = await openpgp.decryptKey({
+      privateKey,
+      passphrase,
+    })
+  const decryptedKey = unlocked.key
+  return decryptedKey
+}
+
+async function getPrivateKeyPassphrase(privateKey) {
+  const nameString = getNameString(privateKey)
+  const passphrase = keytar.getPassword('felony', nameString)
+  return passphrase
+}
+
 export async function generateKey({ name, email='' },  passphrase) {
 
-  const response = await fetch('http://127.0.0.1:3001/generateKey', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name, email, passphrase }),
-    })
-  const data = await response.json()
+  const key = await openpgp.generateKey({
+    userIds: [{ name, email }], // multiple user IDs
+    numBits: 4096,                                            // RSA key size 4096
+    passphrase,        // protects the private key
+  })
 
   return {
     name,
     email,
-    privateKeyArmored: applyFelonyBranding(data.key.privateKeyArmored),
-    publicKeyArmored: applyFelonyBranding(data.key.publicKeyArmored),
+    privateKeyArmored: applyFelonyBranding(key.privateKeyArmored),
+    publicKeyArmored: applyFelonyBranding(key.publicKeyArmored),
   }
 }
 
 export async function readArmored(armoredKey) {
   const massagedKey = massagePGP(armoredKey)
 
-  const response = await fetch('http://127.0.0.1:3001/readArmored', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ armoredKey: massagedKey }),
-    })
-  const data = await response.json()
-  const userStr = data.key.keys[0].users[0].userId.userid
+  const key = await openpgp.key.readArmored(massagedKey)
+  const userStr = key.keys[0].users[0].userId.userid
 
   const email = userStr.substring(userStr.lastIndexOf('<') + 1, userStr.lastIndexOf('>'))
   const name = userStr.substring(0, userStr.lastIndexOf(' '))
@@ -64,64 +77,77 @@ export async function readArmored(armoredKey) {
 }
 
 export async function encrypt(message, selectedKeys, privateKeyArmored) {
-
   const publicKeysArmored = getPublicKeysFromKeychain(selectedKeys)
-  let sendThis = { message, publicKeysArmored }
-  if (privateKeyArmored) {
-    sendThis.privateKeyArmored = privateKeyArmored
+
+  let publicKeys = []
+  for (let key of publicKeysArmored) {
+    publicKeys.push(openpgp.key.readArmored(key).keys[0])
   }
 
-  const response = await fetch('http://127.0.0.1:3001/encrypt', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(sendThis),
-    })
-  const data = await response.json()
+  let privateKey = openpgp.key.readArmored(privateKeyArmored).keys[0]
+  const passphrase = getPrivateKeyPassphrase(privateKey)
+  privateKey.decrypt(passphrase)
 
-  return applyFelonyBranding(data.encryptedMessage)
+  const options = {
+    data: message,                             // input as String (or Uint8Array)
+    publicKeys: publicKeys,  // for encryption
+    privateKeys: [privateKey], // for signing (optional)
+  }
+
+  const ciphertext = await openpgp.encrypt(options)
+  const encryptedMessage = ciphertext.data
+
+  return applyFelonyBranding(encryptedMessage)
 }
 
 export async function decrypt(encryptedMessage, privateKeyArmored) {
   const encryptedMessageMassaged = massagePGP(encryptedMessage)
 
-  const response = await fetch('http://127.0.0.1:3001/decrypt', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ encryptedMessage, privateKeyArmored }),
-    })
-  const data = await response.json()
+  let privateKey = openpgp.key.readArmored(privateKeyArmored).keys[0]
+  const passphrase = getPrivateKeyPassphrase(privateKey)
+  privateKey.decrypt(passphrase)
 
-  return data.message
+  // const decryptedKey = await decryptPrivateKey(privateKey, 'test')
+
+  const options = {
+      message: openpgp.message.readArmored(encryptedMessageMassaged),     // parse armored message
+      privateKey, // for decryption
+    }
+  const plaintext = await openpgp.decrypt(options)
+
+  return plaintext.data
 }
 
 export async function sign(message, privateKeyArmored) {
-  const response = await fetch('http://127.0.0.1:3001/sign', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message, privateKeyArmored }),
-    })
-  const data = await response.json()
+  const privateKey = openpgp.key.readArmored(privateKeyArmored).keys[0]
+  const passphrase = await getPrivateKeyPassphrase(privateKey)
+  const decryptedKey = await decryptPrivateKey(privateKey, passphrase)
 
-  return applyFelonyBranding(data.signedMessage)
+  const options = {
+    data: message,     // parse armored message
+    //publicKeys: openpgp.key.readArmored(pubkey).keys,    // for verification (optional)
+    privateKeys: [decryptedKey], // for decryption
+  }
+
+  const signed = await openpgp.sign(options)
+
+  return applyFelonyBranding(signed.data)
 }
 
 export async function verify(signedMessage, keychain) {
 
   const signedMessageMassaged = massagePGP(signedMessage)
-  const response = await fetch('http://127.0.0.1:3001/verify', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ signedMessage: signedMessageMassaged, keychain }),
-    })
-  const data = await response.json()
+  let options = {
+    message: openpgp.cleartext.readArmored(signedMessageMassaged),
+  }
+  let match = false
+  for (let key of keychain) {
+    options.publicKeys = openpgp.key.readArmored(key.publicKeyArmored).keys
+    const verified = await openpgp.verify(options)
+    if (verified.signatures[0].valid === true) {
+      match = key
+    }
+  }
 
-  return data.match
+  return match
 }
