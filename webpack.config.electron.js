@@ -33,7 +33,7 @@ export default {
     }),
   ],
 
-  target: 'electron-main',
+  target: 'electron-renderer',
 
   node: {
     __dirname: false,
@@ -41,7 +41,6 @@ export default {
   },
 
   externals: [
-    ...baseConfig.externals,
     'keytar',
     'openpgp',
     'font-awesome',

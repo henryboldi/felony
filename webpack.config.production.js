@@ -1,18 +1,21 @@
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import baseConfig from './webpack.config.base';
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import baseConfig from './webpack.config.base'
 
 const config = {
   ...baseConfig,
 
   devtool: 'source-map',
 
-  entry: './app/index',
+  entry: [
+    'babel-polyfill',
+    './app/index',
+  ],
 
   output: {
     ...baseConfig.output,
 
-    publicPath: '../dist/'
+    publicPath: '../dist/',
   },
 
   module: {
@@ -26,7 +29,7 @@ const config = {
         loader: ExtractTextPlugin.extract(
           'style-loader',
           'css-loader'
-        )
+        ),
       },
 
       {
@@ -34,9 +37,9 @@ const config = {
         loader: ExtractTextPlugin.extract(
           'style-loader',
           'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-        )
-      }
-    ]
+        ),
+      },
+    ],
   },
 
   plugins: [
@@ -45,19 +48,24 @@ const config = {
     new webpack.DefinePlugin({
       __DEV__: false,
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
+        NODE_ENV: JSON.stringify('production'),
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         screw_ie8: true,
-        warnings: false
-      }
+        warnings: false,
+      },
     }),
-    new ExtractTextPlugin('style.css', { allChunks: true })
+    new ExtractTextPlugin('style.css', { allChunks: true }),
   ],
 
-  target: 'electron-renderer'
-};
+  externals: [
+    'keytar',
+    'openpgp',
+  ],
 
-export default config;
+  target: 'electron-renderer',
+}
+
+export default config
