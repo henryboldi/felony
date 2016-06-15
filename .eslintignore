@@ -1,1 +1,7 @@
 main.js
+build/**
+docs/build/**
+lib/**
+node_modules/**
+modules/**
+config.js

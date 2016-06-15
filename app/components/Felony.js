@@ -2,13 +2,12 @@
 
 import 'normalize.css'
 import React, { Component } from 'react'
-import ReactCSS  from 'reactcss'
-import db from '../config/database.js'
+import ReactCSS from 'reactcss'
 
 import '../assets/fonts/work-sans/WorkSans.css'
 import '../assets/styles/felony.css'
 import '../assets/styles/spinner.css'
-import colors  from '../assets/styles/variables/colors'
+import colors from '../assets/styles/variables/colors'
 
 import HeaderContainer from '../containers/HeaderContainer'
 import FloatingButtonContainer from '../containers/FloatingButtonContainer'
@@ -53,8 +52,7 @@ export class Felony extends Component {
   render() {
     return (
       <div is="app">
-        <div is="header"
-          onClick={ this.handleAddToSelected }>
+        <div is="header" onClick={ this.handleAddToSelected }>
           <HeaderContainer />
         </div>
 

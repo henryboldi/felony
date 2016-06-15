@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
 import colors from '../../assets/styles/variables/colors'
-import { spacing, sizing } from '../../assets/styles/variables/utils'
 
 class FloatingButtonItemLabel extends Component {
   classes() {
@@ -25,11 +24,11 @@ class FloatingButtonItemLabel extends Component {
           color: colors.bgDark,
           whiteSpace: 'nowrap',
           fontSize: '14px',
-          boxShadow: `0px 1px 0px 0px ${colors.bgDark}`,
-          transition: `background-color 0.2s ease-in-out`,
+          boxShadow: `0px 1px 0px 0px ${ colors.bgDark }`,
+          transition: 'background-color 0.2s ease-in-out',
         },
       },
-      hover: {
+      'hover': {
         label: {
           backgroundColor: '#C3C3C5',
         },

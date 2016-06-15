@@ -91,7 +91,7 @@ class Output extends Component {
     }
   }
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = () => {
     this.state = { copied: false }
   }
 
@@ -105,7 +105,6 @@ class Output extends Component {
   }
 
   render() {
-
     return (
       <div>
       <div is="wrap" ref="wrap">
@@ -125,7 +124,7 @@ class Output extends Component {
         <div is="actions">
           <CopyToClipboard
             text={ this.props.output }
-            onCopy={() => {
+            onCopy={ () => {
               this.setState({ copied: true })
               this.props.clearSelectedKeys()
               setTimeout(() => this.handleCancel(), 1500)

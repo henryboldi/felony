@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
-import dynamics from 'dynamics.js'
 import ReactDOM from 'react-dom'
 import { readArmored, encrypt, decrypt, sign, verify } from '../../utils/pgp'
 
@@ -126,7 +125,7 @@ class ComposerForm extends Component {
 
   handleAddKey = async () => {
     const avatar = this.getRandomInt(1, 23)
-    let key = await this.readKey()
+    const key = await this.readKey()
     key.avatar = avatar
 
     console.log(key)
@@ -150,7 +149,7 @@ class ComposerForm extends Component {
 
   handleVerify = async () => {
     const match = await this._pgp(verify, this.props.keychain)()
-    this.props.setOutput(`Signed message is verified to match: ${match.name} <${match.email}>`)
+    this.props.setOutput(`Signed message is verified to match: ${ match.name } <${ match.email }>`)
   }
 
   getProps = () => {
@@ -221,7 +220,12 @@ class ComposerForm extends Component {
           <div is="subtitle">{ props.subtitle }</div>
         </div>
         <div is="text">
-          <textarea is="textarea" ref="textarea" placeholder={ props.placeholder } onKeyDown={ this.props.handleKeyDown } />
+          <textarea
+            is="textarea"
+            ref="textarea"
+            placeholder={ props.placeholder }
+            onKeyDown={ this.props.handleKeyDown }
+          />
         </div>
         <div is="actions">
           { this.props.isGeneratingKey ? (

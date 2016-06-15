@@ -4,8 +4,6 @@ import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import _ from 'lodash'
 
-import colors from '../../assets/styles/variables/colors'
-
 import KeychainListItem from './KeychainListItem'
 
 class KeychainList extends Component {
@@ -24,7 +22,7 @@ class KeychainList extends Component {
   render() {
     return (
         <div is="list">
-          { this.props.keychain && _.map(this.props.keychain, (key, j) => {
+          { this.props.keychain && _.map(this.props.keychain, (key) => {
             return (
               <KeychainListItem
                 key={ key.id }

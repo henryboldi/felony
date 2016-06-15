@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { showComposerWithType } from '../actions/index'
 import FloatingButton from '../components/floating-button/FloatingButton'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {
   }
 }

@@ -53,14 +53,16 @@ class HeaderKeyStatusTooltip extends Component {
   }
 
   render() {
-    return <div is="tooltip" ref="tooltip">
-      <div is="arrow"></div>
-      { this.props.isGeneratingKey ?
-        <p>{ 'Generating Keys: <2min' }</p>
-      :
-        <p>{ this.props.isCopied ? 'Copied!' : 'Copy Public Key' }</p>
-      }
-    </div>
+    return (
+      <div is="tooltip" ref="tooltip">
+        <div is="arrow"></div>
+        { this.props.isGeneratingKey ?
+          <p>{ 'Generating Keys: <2min' }</p>
+        :
+          <p>{ this.props.isCopied ? 'Copied!' : 'Copy Public Key' }</p>
+        }
+      </div>
+    )
   }
 }
 

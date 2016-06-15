@@ -47,7 +47,7 @@ class ComposerAliasSuccess extends Component {
           transition: '200ms ease-in-out',
         },
       },
-      hover: {
+      'hover': {
         input: {
           border: 'solid 1px red',
         },

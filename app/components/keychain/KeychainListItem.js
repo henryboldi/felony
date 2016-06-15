@@ -17,13 +17,13 @@ class KeychainListKey extends Component {
           transition: 'color 200ms linear',
         },
         user: {
-          padding: `${spacing.m}px ${spacing.m}px ${spacing.m}px`,
+          padding: `${ spacing.m }px ${ spacing.m }px ${ spacing.m }px`,
           display: 'flex',
           cursor: 'pointer',
         },
         spaceLine: {
-          borderBottom: `solid 1px ${colors.bgDark}`,
-          margin: `0px ${spacing.m}px 0px ${spacing.m + sizing.avatar + spacing.s}px`,
+          borderBottom: `solid 1px ${ colors.bgDark }`,
+          margin: `0px ${ spacing.m }px 0px ${ spacing.m + sizing.avatar + spacing.s }px`,
           item: '1',
         },
       },
@@ -50,7 +50,7 @@ class KeychainListKey extends Component {
             avatar={ this.props.avatar }
           />
         </div>
-        <div is="spaceLine"/>
+        <div is="spaceLine" />
       </div>
     )
   }

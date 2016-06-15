@@ -23,7 +23,7 @@ class ComposerFormSubmit extends Component {
           transition: '200ms ease-in-out',
         },
       },
-      hover: {
+      'hover': {
         confirm: {
           backgroundColor: '#BF1B23',
         },

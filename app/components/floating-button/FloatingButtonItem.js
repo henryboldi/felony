@@ -1,12 +1,10 @@
 'use strict'
 
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import ReactCSS from 'reactcss'
 import dynamics from 'dynamics.js'
 
 import colors from '../../assets/styles/variables/colors'
-import { spacing, sizing } from '../../assets/styles/variables/utils'
 import FloatingButtonItemLabel from './FloatingButtonItemLabel'
 
 class FloatingButtonItem extends Component {
@@ -29,8 +27,8 @@ class FloatingButtonItem extends Component {
         },
         button: {
           backgroundColor: colors.primary,
-          height: `${floatingButtonSize}px`,
-          width: `${floatingButtonSize}px`, // TODO: use utils for sizing
+          height: `${ floatingButtonSize }px`,
+          width: `${ floatingButtonSize }px`, // TODO: use utils for sizing
           borderRadius: '100%',
           display: 'flex',
           alignItems: 'center',
@@ -42,19 +40,16 @@ class FloatingButtonItem extends Component {
         buttonContent: {
           width: '24px',
         },
-        buttonContent: {
-          width: '24px',
-        },
       },
-      hover: {
+      'hover': {
         button: {
           boxShadow: '0 8px 17px 0 rgba(221, 33, 48, 0.7)',
         },
       },
       'size-large': {
         button: {
-          height: `${floatingButtonSize * 1.3}px`,
-          width: `${floatingButtonSize * 1.3}px`,
+          height: `${ floatingButtonSize * 1.3 }px`,
+          width: `${ floatingButtonSize * 1.3 }px`,
           right: '900px',
         },
         label: {
@@ -75,7 +70,7 @@ class FloatingButtonItem extends Component {
   }
 
   render() {
-    return <div is="wrap" ref="wrap">
+    return (<div is="wrap" ref="wrap">
       { this.props.label &&
         <div is="label">
           <FloatingButtonItemLabel
@@ -87,7 +82,7 @@ class FloatingButtonItem extends Component {
       <a is="button">
         <span is="buttonContent">{ this.props.children }</ span>
       </a>
-    </div>
+    </div>)
   }
 }
 

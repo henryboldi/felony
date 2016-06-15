@@ -23,10 +23,10 @@ class HeaderKeyCopy extends Component {
   }
 
   render() {
-    return <div is="copy">
+    return (<div is="copy">
       <CopyToClipboard
         text={ this.props.alias.publicKeyArmored }
-        onCopy={() => {
+        onCopy={ () => {
           this.props.toggleIsCopied()
           setTimeout(() => {
             this.props.toggleIsCopied()
@@ -47,7 +47,7 @@ class HeaderKeyCopy extends Component {
           </a>
         }
       </CopyToClipboard>
-    </div>
+    </div>)
   }
 }
 
