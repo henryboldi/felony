@@ -48,7 +48,7 @@ app.on('ready', () => {
     template = [{
       label: 'Electron',
       submenu: [{
-        label: 'About ElectronReact',
+        label: 'About Felony',
         selector: 'orderFrontStandardAboutPanel:'
       }, {
         type: 'separator'
@@ -58,7 +58,7 @@ app.on('ready', () => {
       }, {
         type: 'separator'
       }, {
-        label: 'Hide ElectronReact',
+        label: 'Hide Felony',
         accelerator: 'Command+H',
         selector: 'hide:'
       }, {
