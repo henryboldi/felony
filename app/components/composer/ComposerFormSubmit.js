@@ -6,6 +6,8 @@ import ReactCSS from 'reactcss'
 import colors from '../../assets/styles/variables/colors'
 
 class ComposerFormSubmit extends Component {
+  state = { value: this.props.value }
+
   classes() {
     return {
       'default': {
@@ -29,9 +31,25 @@ class ComposerFormSubmit extends Component {
     }
   }
 
+  componentWillReceiveProps = (nextProps) => {
+    this.setState({ value: nextProps.value })
+  }
+
+  handleClick = (clickFn) => {
+    return () => {
+      this.setState({ value: 'Hold Your Breath...' })
+      clickFn()
+    }
+  }
+
   render() {
     return (
-      <a is="link confirm" onClick={ this.props.onClick }>{ this.props.value }</a>
+      <a
+        is="link confirm"
+        onClick={ this.handleClick(this.props.onClick) }
+      >
+        { this.state.value }
+      </a>
     )
   }
 }
