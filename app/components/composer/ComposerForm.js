@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom'
 import { readArmored, encrypt, decrypt, sign, verify } from '../../utils/pgp'
 
 import { Icon } from '../common/index'
+import ComposerFormSubmit from './ComposerFormSubmit'
 
 import colors from '../../assets/styles/variables/colors'
 
@@ -29,11 +30,13 @@ class ComposerForm extends Component {
         head: {
           background: '#2B272C',
           fontWeight: '300',
-          padding: '20px',
+          padding: '10px 20px',
+          paddingTop: '35px',
         },
 
         title: {
           fontSize: '20px',
+          fontWeight: '400',
         },
         icon: {
           width: '20px',
@@ -44,12 +47,15 @@ class ComposerForm extends Component {
         subtitle: {
           fontSize: '16px',
           color: 'rgba(255,255,255,.7)',
-          marginTop: '10px',
+          marginTop: '6px',
+          marginBottom: '3px',
+          lineHeight: '23px',
         },
         text: {
           flex: '1',
           position: 'relative',
           margin: '0 20px',
+          marginTop: '-10px',
         },
         textarea: {
           Absolute: '23px auto 10px auto',
@@ -62,10 +68,11 @@ class ComposerForm extends Component {
           borderRadius: '2px',
           fontSize: '14px',
           fontFamily: 'Andale Mono',
+          marginTop: '5px',
         },
         actions: {
-          marginTop: '-10px',
-          height: '40px',
+          marginTop: '-18px',
+          height: '55px',
           padding: '20px',
         },
         confirm: {
@@ -77,6 +84,13 @@ class ComposerForm extends Component {
           cursor: 'pointer',
           textAlign: 'center',
           display: 'block',
+        },
+        cancel: {
+          color: 'rgba(255,255,255,.4)',
+          textAlign: 'center',
+          display: 'block',
+          marginTop: '7px',
+          cursor: 'pointer',
         },
       },
     }
@@ -143,41 +157,42 @@ class ComposerForm extends Component {
     return {
       'encrypt': {
         title: 'Encrypt',
-        subtitle: 'a message read by / only those that you select / an exclusive club',
+        subtitle: 'Encrypting creates a locked message for your recipients.',
         acceptLabel: 'Encrypt',
         onAccept: this.handleEncrypt,
-        placeholder: 'Write a Message',
+        placeholder: 'Write a message',
+        icon: 'encrypt',
       },
       'decrypt': {
         title: 'Decrypt',
-        subtitle: 'unlock a message / only one way to find out / what secrets it holds',
+        subtitle: 'Decrypting a message lets you read for you.',
         acceptLabel: 'Decrypt',
         onAccept: this.handleDecrypt,
-        placeholder: 'Message to Decrypt',
+        placeholder: 'Paste an encrypted message',
         icon: 'decrypt',
       },
       'sign': {
         title: 'Sign',
-        subtitle: 'sign a new message / so all your pals can be sure / that it’s really you',
+        subtitle: 'Signing a message lets others know that it’s really you.',
         acceptLabel: 'Sign',
         onAccept: this.handleSign,
-        placeholder: 'Message to Sign',
+        placeholder: 'Write a message',
         icon: 'sign',
       },
       'verify': {
         title: 'Verify',
-        subtitle: 'make sure a message / is by who claimed to write it / verify that shit',
+        subtitle: 'Verifying confirms who authored a message is as they claim.',
         acceptLabel: 'Verify',
         onAccept: this.handleVerify,
-        placeholder: 'Message to Verify',
+        placeholder: 'Paste a signed message',
         icon: 'verify',
       },
       'add key': {
         title: 'Add Key',
-        subtitle: 'add a brand new key / to your ever-expanding / magical keychain',
+        subtitle: 'Add someone’s public key to your buddies list.',
         acceptLabel: 'Add',
         onAccept: this.handleAddKey,
-        placeholder: 'Key to add to keychain',
+        placeholder: 'Paste a public key',
         icon: 'add-key',
       },
     }[this.props.composerType] || {}
@@ -212,8 +227,12 @@ class ComposerForm extends Component {
           { this.props.isGeneratingKey ? (
             <a is="link confirm">Generating Key... Pls wait</a>
           ) : (
-            <a is="link confirm" onClick={ props.onAccept }>{ props.acceptLabel }</a>
+            <ComposerFormSubmit
+              onClick={ props.onAccept }
+              value={ props.acceptLabel }
+            />
           ) }
+          <a is="link cancel" onClick={ this.props.handleCancel }>nevermind</a>
         </div>
       </div>
     )
