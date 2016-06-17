@@ -38,7 +38,7 @@ async function decryptPrivateKey(privateKey, passphrase) {
   return decryptedKey
 }
 
-async function getPrivateKeyPassphrase(privateKey) {
+function getPrivateKeyPassphrase(privateKey) {
   const nameString = getNameString(privateKey)
   const passphrase = keytar.getPassword('felony', nameString)
   return passphrase
@@ -47,7 +47,7 @@ async function getPrivateKeyPassphrase(privateKey) {
 export async function generateKey({ name, email = '' }, passphrase) {
   const key = await openpgp.generateKey({
     userIds: [{ name, email }],
-    numBits: 4096, // RSA key size 4096
+    numBits: 2048, // should up RSA key size to 4096?
     passphrase,
   })
 
