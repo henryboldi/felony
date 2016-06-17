@@ -13,6 +13,7 @@ const argv = require('minimist')(process.argv.slice(2))
 const pkg = require('./package.json')
 const deps = Object.keys(pkg.dependencies)
 const devDeps = Object.keys(pkg.devDependencies)
+const electronInstaller = require('electron-winstaller');
 
 const appName = argv.name || argv.n || pkg.productName
 const shouldUseAsar = argv.asar || argv.a || false
@@ -120,13 +121,30 @@ function pack(plat, arch, cb) {
     'out': `release/${ plat }-${ arch }`,
   })
 
+  if (`${ plat }-${ arch }` === 'darwin-x64') {
+    opts['osx-sign'] = {
+      app: '/release/darwin-x64/Felony-darwin-x64/Felony.app',
+      identity: 'xxxxxxxxx', // Developer ID Application: * (*)
+    }
+  }
+
+  console.log('opts', opts)
+
   packager(opts, cb)
 }
-
 
 function log(plat, arch) {
   return (err, filepath) => {
     if (err) return console.error(err)
-    console.log(`${ plat }-${ arch } finished!`)
+    console.log(`${ plat }-${ arch } finished`)
+    if (`${ plat }-${ arch }` === 'win32-x64') {
+      var resultPromise = electronInstaller.createWindowsInstaller({
+        appDirectory: 'release/win32-x64/Felony-win32-x64',
+        outputDirectory: 'release/win32-x64-installer',
+        authors: 'Henry Boldizsar',
+        exe: 'Felony.exe',
+      });
+      resultPromise.then(() => console.log("It worked!"), (e) => console.log(`No dice: ${e.message}`));
+    }
   }
 }
