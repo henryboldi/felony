@@ -9,7 +9,10 @@ let mainWindow = null
 crashReporter.start()
 
 const feedUrl = `https://felony-update.herokuapp.com/${process.platform}/${process.arch}/${version}`
-autoUpdater.setFeedURL(feedUrl)
+if (process.env.NODE_ENV !== 'development') {
+  autoUpdater.setFeedURL(feedUrl)
+}
+
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')()
