@@ -1,4 +1,5 @@
-import { app, BrowserWindow, Menu, crashReporter, shell } from 'electron'
+import { app, BrowserWindow, Menu, crashReporter, shell, autoUpdater } from 'electron'
+const { version } = require('./package.json')
 import open from 'open'
 
 let menu
@@ -6,6 +7,9 @@ let template
 let mainWindow = null
 
 crashReporter.start()
+
+const feedUrl = `https://felony-update.herokuapp.com/${process.platform}/${process.arch}/${version}`
+autoUpdater.setFeedURL(feedUrl)
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')()
