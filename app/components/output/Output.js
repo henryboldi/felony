@@ -32,7 +32,8 @@ class Output extends Component {
         head: {
           background: '#2B272C',
           fontWeight: '300',
-          padding: '20px',
+          padding: '10px 20px',
+          paddingTop: '35px',
         },
 
         title: {
@@ -113,9 +114,9 @@ class Output extends Component {
             <div is="icon">
               <Icon name="check" color="#00E676" />
             </div>
-            Success!
+            Success
           </div>
-          <div is="subtitle">Now share it up! #blessup</div>
+          <div is="subtitle">Share this anywhere on the web.</div>
         </div>
           <div is="text">
             <textarea is="textarea" ref="textarea" value={ this.props.output } />
@@ -132,9 +133,9 @@ class Output extends Component {
           >
             <a is="link confirm">
               { this.state.copied ?
-                'nice!'
+                'Copied ...Closing'
               :
-                'Copy to Clipboard'
+                'Copy & Close'
               }</a>
           </CopyToClipboard>
         </div>
