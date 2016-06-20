@@ -1,7 +1,7 @@
 {
   "name": "felony",
   "productName": "Felony",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "dependencies": {
     "openpgp": "^2.2.1"
   }
