@@ -7,10 +7,41 @@ let template
 let mainWindow = null
 
 crashReporter.start()
+const feedUrl = `https://felony-app-update.herokuapp.com/update/${process.platform}_${process.arch}/${version}`
 
-const feedUrl = `https://felony-update.herokuapp.com/${process.platform}/${process.arch}/${version}`
 if (process.env.NODE_ENV !== 'development') {
   autoUpdater.setFeedURL(feedUrl)
+
+  try {
+    let check = true
+
+    autoUpdater.checkForUpdates()
+    setInterval(() => {
+      if (check) {
+        autoUpdater.checkForUpdates()
+      }
+    }, 120000)
+
+    autoUpdater.on('checking-for-update', () => {
+      check = false
+      console.log('checking')
+    })
+
+    autoUpdater.on('update-available', () => {
+      // Update
+    })
+
+    autoUpdater.on('update-not-available', () => {
+      // No update
+    })
+
+    autoUpdater.on('update-downloaded', () => {
+      // TODO: ask before installing
+      autoUpdater.quitAndInstall()
+    })
+  } catch (err) {
+    console.log('error', err)
+  }
 }
 
 
