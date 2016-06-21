@@ -5,13 +5,13 @@ mixin feature(title, body)
 
 section.feature-section.lightBg
   .features
-    +feature("Open Source")(
-      body!="Anyone can contribute and anyone can see how it works which makes it much more secure&mdash; and completely free of charge."
-    )
     +feature("Secure")(
-      body!="Felony is built using OpenPGP.js. Therefore, the core encryption codebase has had a complete security audit conducted by Cure53."
+      body!="OpenPGP.js, the encryption protocol on which Felony is built, has undergone a complete security audit by Cure53, a professional pentesting firm. Check out the report here."
     )
-    +feature("Accessible")(
-      body!="Designed by a professional UX designer that&rsquo;s worked at a startup with 30million in funding, with feedback from people at YCombinator, Uber, and more."
+    +feature("Open Source")(
+      body!="Anyone can see how Felony works and anyone can make it better. Transparency ensures a better product and a greater degree of security. Check out Felony on GitHub here."
     )
-  a(href="").btn.primary-btn How it works
+    +feature("Simple")(
+      body!="It&rsquo;s as easy as copy and paste. Copy and paste other users&rsquo; public keys to add them to your buddies list. Copy and paste encrypted and signed messages for use anywhere on the web."
+    )
+  a(href="").btn.primary-btn Download

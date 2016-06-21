@@ -1,15 +1,21 @@
 .feature-section
   margin-top: -5px
-  padding-top: 20px
+  padding-bottom: 120px
+  padding-top: 40px
+  display: flex
+  flex-direction: column
+  align-items: center
 
 .features
+  max-width: 1110px
   display: flex
   flex-wrap: wrap
   z-index: 12
   & .feature
     z-index: 12
     flex-grow: 1
-    max-width: 33%
+    padding: 20px
+    max-width: calc(33% - 40px)
     text-align: center
 
 .primary-btn

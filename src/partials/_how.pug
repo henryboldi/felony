@@ -2,13 +2,19 @@ mixin step(number, title, body)
   .step
       p.step-number #{number}
       h4 #{title}
-      p #{body}
+      p!= attributes['body']
 
 section.steps.lightBg
   h3.title how it works
-  +step(1, "Generate a key pair", "This creates a public key and a private key. A public key is what you share with others so people can send you messages, while the private key is what unlocks them.")
-  +step(2, "Add keys to your keychain", "Your keychain is like your buddy list of contants you can send encrypted messages to. You can find public keys to add to your keychain on sites like...")
-  +step(3, "Encrypt a message", "Send messages such as your address on darknet markets or any sensitive information intended to be only opened by those you choose from your keychain.")
-  a(href="").btn.primary-btn Download
+  +step(1, "Add public keys to your buddies list")(
+    body!="A public key is like a username - Adding someone&rsquo;s public key to your buddies list lets you send them messages. You can find other public keys on markets like keybase.io and darknet."
+  )
+  +step(2, "Encrypt a message")(
+    body!="Select a recipient from your buddies list and compose a message. Only your chosen recipient(s) can read the message. Encrypted messages might contain sensitive information, such as an address, document, or anything intended to be read only by intended recipients."
+  )
+  +step(3, "Send the encrypted message anywhere")(
+    body!="You can send the encrypted message on any website! For example, facebook messenger, twitter direct message, or youtube. Felony is security when and where you want it."
+  )
+  a(href="").btn.primary-btn Free Download
 
 object(type="image/svg+xml" data="./images/slant-sans-red.svg").slanty-thing.flip
