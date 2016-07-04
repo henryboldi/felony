@@ -8,7 +8,7 @@
 [![David](https://david-dm.org/henryboldi/felony.svg)]()
 
 ## Download Felony
-You can download compiled versions of Felony for Windows, Mac OS X, and Linux from https://github.com/henryboldi/felony/releases. The app is currently in it's pre-release stage, so it hasn't been fully tested on all platforms. Confirmed to be working on Mac, as that's what the developers own.
+You can download compiled versions of Felony for Windows, Mac OS X, and Linux from https://github.com/henryboldi/felony/releases. The app is currently in its pre-release stage, so it hasn't been fully tested on all platforms. Confirmed to be working on Mac, as that's what the developers own.
 
 ## Here's how it works...
 1. Add public keys to your buddies list— A public key is like a username - Adding someone’s public key to your buddies list lets you send them messages. You can find other public keys on markets like keybase.io and darknet.
