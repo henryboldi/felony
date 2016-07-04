@@ -8,7 +8,7 @@
 [![David](https://david-dm.org/henryboldi/felony.svg)]()
 
 ## Download Felony
-You can download compiled versions of Felony for Windows, Mac OS X, and Linux from https://github.com/henryboldi/felony/releases.
+You can download compiled versions of Felony for Windows, Mac OS X, and Linux from https://github.com/henryboldi/felony/releases. The app is currently in it's pre-release stage, so it hasn't been fully tested on all platforms. Confirmed to be working on Mac, as that's what the developers own.
 
 ## Running Locally
 To run the development environment run
