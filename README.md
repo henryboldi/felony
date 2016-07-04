@@ -1,5 +1,5 @@
-![Felony Logo](http://cl.ly/300W1V211h2O/logo.png)
-![Felony Screenshot](http://cl.ly/0l2z3M1s3E1i/screenshot.png)
+![Felony Logo](http://i.imgur.com/gqG7XoQ.png)
+![Felony Screenshot](http://i.imgur.com/0e1ZOLp.png)
 
 **Felony is an open-source pgp keychain built on the modern web with Electron, React, and Redux.** Felony is the first PGP app that's easy for anyone to use, without a tutorial.
 
@@ -8,7 +8,7 @@
 [![David](https://david-dm.org/henryboldi/felony.svg)]()
 
 ## Download Felony
-You can download compiled versions of Felony for Windows, Mac OS X, and Linux (.deb) from https://felony.io.
+You can download compiled versions of Felony for Windows, Mac OS X, and Linux (.deb) from https://github.com/henryboldi/felony/releases.
 
 ## Running Locally
 To run the development environment run
