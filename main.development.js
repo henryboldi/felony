@@ -6,7 +6,6 @@ let menu
 let template
 let mainWindow = null
 
-crashReporter.start()
 const feedUrl = `https://felony-app-update.herokuapp.com/update/${process.platform}_${process.arch}/${version}`
 
 if (process.env.NODE_ENV !== 'development') {
