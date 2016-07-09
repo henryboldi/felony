@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, crashReporter, shell, autoUpdater } from 'electron'
+import { app, BrowserWindow, Menu, shell, autoUpdater } from 'electron'
 const { version } = require('./package.json')
 import open from 'open'
 
