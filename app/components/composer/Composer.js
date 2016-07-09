@@ -45,13 +45,11 @@ class Composer extends Component {
       <div is="wrap" ref="wrap">
         { this.props.composerType === 'alias' ?
           <ComposerAliasForm
-            handleKeyDown={ this.handleKeyDown }
             handleCancel={ this.handleCancel }
             {...this.props }
           />
         :
           <ComposerForm
-            handleKeyDown={ this.handleKeyDown }
             handleCancel={ this.handleCancel }
             {...this.props }
           />
