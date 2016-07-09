@@ -12,7 +12,12 @@ import ComposerAliasSuccess from './ComposerAliasSuccess'
 import colors from '../../assets/styles/variables/colors'
 
 class ComposerAliasForm extends Component {
-  state = { submitted: false }
+  state = {
+    submitted: false,
+    invalidName: false,
+    invalidEmail: false,
+    invalidPassphrase: false
+  }
 
   classes() {
     return {
@@ -99,10 +104,31 @@ class ComposerAliasForm extends Component {
     }
   }
 
+  handleKeyDown = (e) => {
+    if(e.keyCode === 13){
+      this.handleConfirm();
+    }
+  }
+
   handleConfirm = async () => {
     const name = this.refs.form[0].value
     const email = this.refs.form[1].value
     const passphrase = this.refs.form[2].value
+
+    if(name === "" || email === "" || passphrase === ""){
+      this.setState({invalidName: false, invalidEmail: false, invalidPassphrase: false});
+      
+      if(name === ""){
+        this.setState({invalidName: true});
+      }
+      if(email === ""){
+        this.setState({invalidEmail: true});
+      }
+      if(passphrase === ""){
+        this.setState({invalidPassphrase: true});
+      }
+      return;
+    }
 
     const notification = {
       title: 'Keys Done Generating',
@@ -147,7 +173,8 @@ class ComposerAliasForm extends Component {
                     type="text"
                     ref="textarea"
                     placeholder={ 'Name' }
-                    onKeyDown={ this.props.handleKeyDown }
+                    onKeyDown={ this.handleKeyDown }
+                    error={ this.state.invalidName }
                   />
                 </div>
                 <div is="formItem">
@@ -155,7 +182,8 @@ class ComposerAliasForm extends Component {
                     type="email"
                     ref="textarea"
                     placeholder={ 'Email' }
-                    onKeyDown={ this.props.handleKeyDown }
+                    onKeyDown={ this.handleKeyDown }
+                    error={ this.state.invalidEmail }
                   />
                 </div>
                 <div is="formItem">
@@ -164,7 +192,8 @@ class ComposerAliasForm extends Component {
                     is="input"
                     ref="textarea"
                     placeholder={ 'Passphrase' }
-                    onKeyDown={ this.props.handleKeyDown }
+                    onKeyDown={ this.handleKeyDown }
+                    error={ this.state.invalidPassphrase }
                   />
                 </div>
               </form>
