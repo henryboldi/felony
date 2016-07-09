@@ -23,6 +23,9 @@ class ComposerAliasFormInput extends Component {
           flexGrow: '1',
           transition: '200ms ease-in-out',
         },
+        error: {
+          border: 'solid 2px #FF1122',
+        }
       },
       'hover': {
         input: {
@@ -47,13 +50,11 @@ class ComposerAliasFormInput extends Component {
     return (
       <input
         type={ this.props.type }
-        is="input"
+        is={ !this.props.error? "input" : "input error" }
         placeholder={ this.props.placeholder }
-        handleKeyDown={ this.props.onKeyDown }
+        onKeyDown={ this.props.onKeyDown }
         onFocus={ () => { this.setState({ focus: true }) } }
-
         onBlur={ () => { this.setState({ focus: false }) } }
-
       />
     )
   }

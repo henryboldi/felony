@@ -40,10 +40,6 @@ class Composer extends Component {
     this.props.toggleComposer()
   }
 
-  handleKeyDown = (e) => {
-    (e.keyCode === 27 && this.props.isShowingComposer) && this.handleCancel()
-  }
-
   render() {
     return (
       <div is="wrap" ref="wrap">
