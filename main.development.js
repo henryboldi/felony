@@ -55,6 +55,7 @@ app.on('window-all-closed', () => {
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
     'show': false,
+    'resizable': false,
     'width': 295,
     'height': 435,
     'title-bar-style': 'hidden',
