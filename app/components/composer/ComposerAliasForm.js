@@ -110,12 +110,22 @@ class ComposerAliasForm extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
+    const opts = { duration: 500 }
+    // slide the form and logo up if user switches between import and generate
     if (this.state.isImporting !== nextState.isImporting) {
       dynamics.animate(this.refs.form, {
+        // the height of the form + the negative margin on the submit button
         height: nextState.isImporting ? 219 : 160,
-      }, {
-        duration: 500,
-      })
+      }, opts)
+      // don't move the logo and svg when full screened (window is normally 410)
+      if (window.innerHeight < 500) {
+        dynamics.animate(this.refs.welcome, {
+          marginTop: nextState.isImporting ? 0 : 43,
+        }, opts)
+        dynamics.animate(this.refs.bg, {
+          marginTop: nextState.isImporting ? -5 : 0,
+        }, opts)
+      }
     }
   }
 
@@ -126,8 +136,13 @@ class ComposerAliasForm extends Component {
   }
 
   toggleImport = () => {
+    // get rid of markers in case of errors here too
     this.setState({
       isImporting: !this.state.isImporting,
+      invalidName: false,
+      invalidEmail: false,
+      invalidPassphrase: false,
+      invalidKey: false,
     })
   }
 
@@ -207,16 +222,18 @@ class ComposerAliasForm extends Component {
       <div is="wrap" ref="wrap">
         <img
           is="welcome"
+          ref="welcome"
           src="assets/images/logo@2x.png"
         />
         <object
+          ref="bg"
           type="image/svg+xml"
           data="assets/images/slant.svg"
         ></object>
         <div is="bgGrey">
           { !this.state.submitted ?
             <div>
-              <p is="instructions">To get started, generate your keys.</p>
+              <p is="instructions">To get started, generate or import your keys.</p>
               <form is="form" ref="form">
                 { this.state.isImporting ?
                   <div>
@@ -239,27 +256,32 @@ class ComposerAliasForm extends Component {
                   <div>
                     <div is="formItem">
                       <ComposerAliasFormInput
+                        is="input"
                         type="text"
                         ref="textarea"
                         placeholder={ 'Name' }
-                        onKeyDown={ this.props.handleKeyDown }
+                        onKeyDown={ this.handleKeyDown }
+                        error={ this.state.invalidName }
                       />
                     </div>
                     <div is="formItem">
                       <ComposerAliasFormInput
+                        is="input"
                         type="email"
                         ref="textarea"
                         placeholder={ 'Email' }
-                        onKeyDown={ this.props.handleKeyDown }
+                        onKeyDown={ this.handleKeyDown }
+                        error={ this.state.invalidEmail }
                       />
                     </div>
                     <div is="formItem">
                       <ComposerAliasFormInput
-                        type="password"
                         is="input"
+                        type="password"
                         ref="textarea"
                         placeholder={ 'Passphrase' }
-                        onKeyDown={ this.props.handleKeyDown }
+                        onKeyDown={ this.handleKeyDown }
+                        error={ this.state.invalidPassphrase }
                       />
                     </div>
                   </div>
