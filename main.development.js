@@ -6,7 +6,7 @@ let menu
 let template
 let mainWindow = null
 
-const feedUrl = `https://felony-app-update.herokuapp.com/update/${process.platform}_${process.arch}/${version}`
+const feedUrl = `https://felony-app-update.herokuapp.com/update/${ process.platform }_${ process.arch }/${ version }`
 
 if (process.env.NODE_ENV !== 'development') {
   autoUpdater.setFeedURL(feedUrl)
@@ -68,7 +68,7 @@ app.on('ready', () => {
     mainWindow.focus()
   })
 
-  mainWindow.webContents.on('new-window', function (event, url) {
+  mainWindow.webContents.on('new-window', (event, url) => {
     event.preventDefault()
     open(url)
   })
@@ -154,7 +154,9 @@ app.on('ready', () => {
         label: 'Toggle Full Screen',
         accelerator: 'Ctrl+Command+F',
         click() {
-          mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          if (!!mainWindow) {
+            mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          }
         },
       }, {
         label: 'Toggle Developer Tools',
@@ -166,7 +168,9 @@ app.on('ready', () => {
         label: 'Toggle Full Screen',
         accelerator: 'Ctrl+Command+F',
         click() {
-          mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          if (!!mainWindow) {
+            mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          }
         },
       }],
     }, {
@@ -237,7 +241,9 @@ app.on('ready', () => {
         label: 'Toggle &Full Screen',
         accelerator: 'F11',
         click() {
-          mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          if (!!mainWindow) {
+            mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          }
         },
       }, {
         label: 'Toggle &Developer Tools',
@@ -249,7 +255,9 @@ app.on('ready', () => {
         label: 'Toggle &Full Screen',
         accelerator: 'F11',
         click() {
-          mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          if (!!mainWindow) {
+            mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          }
         },
       }],
     }, {
