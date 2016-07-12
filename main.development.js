@@ -44,15 +44,7 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 
-if (process.env.NODE_ENV === 'development') {
-  require('electron-debug')()
-}
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit()
-})
-
-app.on('ready', () => {
+const createWindow = () => {
   mainWindow = new BrowserWindow({
     'show': false,
     'resizable': false,
@@ -286,5 +278,20 @@ app.on('ready', () => {
     }]
     menu = Menu.buildFromTemplate(template)
     mainWindow.setMenu(menu)
+  }
+}
+
+if (process.env.NODE_ENV === 'development') {
+  require('electron-debug')()
+}
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit()
+})
+
+app.on('ready', createWindow)
+app.on('activate', () => {
+  if (mainWindow === null) {
+    createWindow()
   }
 })
