@@ -3,12 +3,14 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import keytar from 'keytar'
-import { generateKey } from '../../utils/pgp'
+import { generateKey, readArmoredPrivate } from '../../utils/pgp'
 
 import ComposerAliasFormInput from './ComposerAliasFormInput'
+import ComposerAliasFormTextArea from './ComposerAliasFormTextArea'
 import ComposerFormSubmit from './ComposerFormSubmit'
 import ComposerAliasSuccess from './ComposerAliasSuccess'
 
+import dynamics from 'dynamics.js'
 import colors from '../../assets/styles/variables/colors'
 
 class ComposerAliasForm extends Component {
@@ -16,7 +18,9 @@ class ComposerAliasForm extends Component {
     submitted: false,
     invalidName: false,
     invalidEmail: false,
-    invalidPassphrase: false
+    invalidPassphrase: false,
+    invalidKey: false,
+    isImporting: false,
   }
 
   classes() {
@@ -49,6 +53,7 @@ class ComposerAliasForm extends Component {
           flex: '1',
           position: 'relative',
           margin: '0 20px',
+          overflow: 'hidden',
         },
         formItem: {
           display: 'flex',
@@ -68,10 +73,10 @@ class ComposerAliasForm extends Component {
           fontFamily: 'Andale Mono',
           flexGrow: '1',
         },
-        actions: {
+        action: {
           marginTop: '-10px',
           height: '40px',
-          padding: '20px',
+          padding: '10px 20px',
         },
         confirm: {
           color: '#fff',
@@ -104,10 +109,26 @@ class ComposerAliasForm extends Component {
     }
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    if (this.state.isImporting !== nextState.isImporting) {
+      dynamics.animate(this.refs.form, {
+        height: nextState.isImporting ? 219 : 160,
+      }, {
+        duration: 500,
+      })
+    }
+  }
+
   handleKeyDown = (e) => {
     if(e.keyCode === 13){
       this.handleConfirm();
     }
+  }
+
+  toggleImport = () => {
+    this.setState({
+      isImporting: !this.state.isImporting,
+    })
   }
 
   handleConfirm = async () => {
@@ -152,6 +173,35 @@ class ComposerAliasForm extends Component {
     console.log('added key!')
   }
 
+  handleImport = async () => {
+    const passphrase = this.refs.form[0].value
+    const key = await readArmoredPrivate(this.refs.form[1].value)
+
+    if (key.err) {
+      this.setState({ invalidKey: true })
+      return;
+    }
+    this.setState({ invalidKey: false })
+
+    const notification = {
+      title: 'Keys Successfully Imported',
+      body: 'Copy your public key by clicking the icon to the right of your name.'
+    }
+
+    new Notification(notification.title, notification)
+    key.avatar = 9
+    key.id = 999
+    console.log(key)
+
+    if (passphrase) {
+      keytar.addPassword('felony', `${ key.name } <${ key.email }>`, passphrase)
+    }
+
+    await this.props.addKey(key)
+
+    console.log('added key!')
+  }
+
   render() {
     return (
       <div is="wrap" ref="wrap">
@@ -168,39 +218,63 @@ class ComposerAliasForm extends Component {
             <div>
               <p is="instructions">To get started, generate your keys.</p>
               <form is="form" ref="form">
-                <div is="formItem">
-                  <ComposerAliasFormInput
-                    type="text"
-                    ref="textarea"
-                    placeholder={ 'Name' }
-                    onKeyDown={ this.handleKeyDown }
-                    error={ this.state.invalidName }
-                  />
-                </div>
-                <div is="formItem">
-                  <ComposerAliasFormInput
-                    type="email"
-                    ref="textarea"
-                    placeholder={ 'Email' }
-                    onKeyDown={ this.handleKeyDown }
-                    error={ this.state.invalidEmail }
-                  />
-                </div>
-                <div is="formItem">
-                  <ComposerAliasFormInput
-                    type="password"
-                    is="input"
-                    ref="textarea"
-                    placeholder={ 'Passphrase' }
-                    onKeyDown={ this.handleKeyDown }
-                    error={ this.state.invalidPassphrase }
-                  />
-                </div>
+                { this.state.isImporting ?
+                  <div>
+                    <div is="formItem">
+                      <ComposerAliasFormInput
+                        type="password"
+                        is="input"
+                        ref="textarea"
+                        placeholder={ 'Passphrase (if applicable)' }
+                      />
+                    </div>
+                    <div is="formItem">
+                      <ComposerAliasFormTextArea
+                        placeholder={ 'Paste your private key here' }
+                        error={ this.state.invalidKey }
+                      />
+                    </div>
+                  </div>
+                :
+                  <div>
+                    <div is="formItem">
+                      <ComposerAliasFormInput
+                        type="text"
+                        ref="textarea"
+                        placeholder={ 'Name' }
+                        onKeyDown={ this.props.handleKeyDown }
+                      />
+                    </div>
+                    <div is="formItem">
+                      <ComposerAliasFormInput
+                        type="email"
+                        ref="textarea"
+                        placeholder={ 'Email' }
+                        onKeyDown={ this.props.handleKeyDown }
+                      />
+                    </div>
+                    <div is="formItem">
+                      <ComposerAliasFormInput
+                        type="password"
+                        is="input"
+                        ref="textarea"
+                        placeholder={ 'Passphrase' }
+                        onKeyDown={ this.props.handleKeyDown }
+                      />
+                    </div>
+                  </div>
+                }
               </form>
-              <div is="actions">
+              <div is="action">
                 <ComposerFormSubmit
-                  onClick={ this.handleConfirm }
-                  value="Generate"
+                  onClick={ this.state.isImporting ? this.toggleImport : this.handleConfirm }
+                  value={ this.state.isImporting ? "Generate keys" : "Confirm" }
+                />
+              </div>
+              <div is="action">
+                <ComposerFormSubmit
+                  onClick={ this.state.isImporting ? this.handleImport : this.toggleImport }
+                  value={ this.state.isImporting ? "Confirm" : "Import keys" }
                 />
               </div>
             </div>
