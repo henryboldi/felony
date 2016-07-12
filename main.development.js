@@ -148,7 +148,9 @@ const createWindow = () => {
         label: 'Toggle Full Screen',
         accelerator: 'Ctrl+Command+F',
         click() {
-          mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          if (!!mainWindow) {
+            mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          }
         },
       }, {
         label: 'Toggle Developer Tools',
@@ -160,7 +162,9 @@ const createWindow = () => {
         label: 'Toggle Full Screen',
         accelerator: 'Ctrl+Command+F',
         click() {
-          mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          if (!!mainWindow) {
+            mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          }
         },
       }],
     }, {
@@ -231,7 +235,9 @@ const createWindow = () => {
         label: 'Toggle &Full Screen',
         accelerator: 'F11',
         click() {
-          mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          if (!!mainWindow) {
+            mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          }
         },
       }, {
         label: 'Toggle &Developer Tools',
@@ -243,7 +249,9 @@ const createWindow = () => {
         label: 'Toggle &Full Screen',
         accelerator: 'F11',
         click() {
-          mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          if (!!mainWindow) {
+            mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          }
         },
       }],
     }, {
