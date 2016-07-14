@@ -7,7 +7,6 @@ module.exports = {
     'react/prop-types': [0],
     'react/sort-comp': [1, {
       order: [
-        'constructor',
         'state',
         'classes',
         'static-methods',
