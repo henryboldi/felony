@@ -41,18 +41,20 @@ class KeychainComposerOpener extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (!this.props.isShowingOpener && nextProps.isShowingOpener) {
-      dynamics.animate(this.refs.opener, {
-        translateY: 0,
-      }, {
-        type: dynamics.spring,
-        duration: 700,
-        friction: 400,
-      })
+      this.moveOpener(0, 700, 400)
+    } else if (this.props.isShowingOpener && !nextProps.isShowingOpener) {
+      this.moveOpener(64, 400, 250)
     }
   }
 
-  handleClick = () => {
-    this.props.showComposer('encrypt')
+  moveOpener(y, duration, friction) {
+    dynamics.animate(this.refs.opener, {
+      translateY: y,
+    }, {
+      type: dynamics.spring,
+      duration,
+      friction,
+    })
   }
 
   render() {
