@@ -1,12 +1,12 @@
-import { app, BrowserWindow, Menu, shell, autoUpdater } from 'electron'
-const { version } = require('./package.json')
+import {app, BrowserWindow, Menu, shell, autoUpdater} from 'electron'
+const {version} = require('./package.json')
 import open from 'open'
 
 let menu
 let template
 let mainWindow = null
 
-const feedUrl = `https://felony-app-update.herokuapp.com/update/${ process.platform }_${ process.arch }/${ version }`
+const feedUrl = `https://felony-app-update.herokuapp.com/update/${process.platform}_${process.arch}/${version}`
 
 if (process.env.NODE_ENV !== 'development') {
   autoUpdater.setFeedURL(feedUrl)
@@ -53,7 +53,7 @@ const createWindow = () => {
     'title-bar-style': 'hidden',
   })
 
-  mainWindow.loadURL(`file://${ __dirname }/app/app.html`)
+  mainWindow.loadURL(`file://${__dirname}/app/app.html`)
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.show()
