@@ -21,21 +21,21 @@ class KeychainList extends Component {
 
   render() {
     return (
-        <div is="list">
-          { this.props.keychain && _.map(this.props.keychain, (key) => {
-            return (
-              <KeychainListItem
-                key={ key.id }
-                id={ key.id }
-                name={ key.name }
-                email={ key.email }
-                onSelect={ this.props.selectKey }
-                active={ this.props.selectedKeychain[key.id] }
-                avatar={ key.avatar }
-              />
-            )
-          }) }
-        </div>
+      <div is="list">
+        { this.props.keychain && _.map(this.props.keychain, (key) => {
+          return (
+            <KeychainListItem
+              key={ key.id }
+              id={ key.id }
+              name={ key.name }
+              email={ key.email }
+              onSelect={ this.props.selectKey }
+              active={ this.props.selectedKeychain[key.id] }
+              avatar={ key.avatar }
+            />
+          )
+        }) }
+      </div>
     )
   }
 }

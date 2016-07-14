@@ -13,7 +13,7 @@ const argv = require('minimist')(process.argv.slice(2))
 const pkg = require('./package.json')
 const deps = Object.keys(pkg.dependencies)
 const devDeps = Object.keys(pkg.devDependencies)
-const electronInstaller = require('electron-winstaller');
+const electronInstaller = require('electron-winstaller')
 
 const appName = argv.name || argv.n || pkg.productName
 const shouldUseAsar = argv.asar || argv.a || false
@@ -66,7 +66,7 @@ function build(cfg) {
   return new Promise((resolve, reject) => {
     webpack(cfg, (err, stats) => {
       if (err) return reject(err)
-      resolve(stats)
+      return resolve(stats)
     })
   })
 }
@@ -136,15 +136,18 @@ function pack(plat, arch, cb) {
 function log(plat, arch) {
   return (err, filepath) => {
     if (err) return console.error(err)
-    console.log(`${ plat }-${ arch } finished`)
     if (`${ plat }-${ arch }` === 'win32-x64') {
-      var resultPromise = electronInstaller.createWindowsInstaller({
+      const resultPromise = electronInstaller.createWindowsInstaller({
         appDirectory: 'release/win32-x64/Felony-win32-x64',
         outputDirectory: 'release/win32-x64-installer',
         authors: 'Henry Boldizsar',
         exe: 'Felony.exe',
-      });
-      resultPromise.then(() => console.log("It worked!"), (e) => console.log(`No dice: ${e.message}`));
+      })
+      return resultPromise.then(
+        () => console.log('It worked!'),
+        (e) => console.log(`No dice: ${ e.message }`)
+      )
     }
+    return console.log(`${ plat }-${ arch } finished`)
   }
 }

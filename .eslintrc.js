@@ -27,5 +27,6 @@ module.exports = {
     'semi': [2, 'never'],
     'no-console': [0],
     'new-cap': [1, { newIsCap: true, capIsNew: false }],
+    'no-use-before-define': ['error', { 'functions': false }],
   },
 };

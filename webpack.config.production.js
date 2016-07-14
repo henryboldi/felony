@@ -45,7 +45,7 @@ const config = {
   plugins: [
     ...baseConfig.plugins,
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.DefinePlugin({
+    new webpack.DefinePlugin({ // eslint-disable-line
       __DEV__: false,
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
@@ -53,7 +53,7 @@ const config = {
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
-        screw_ie8: true,
+        screw_ie8: true, // eslint-disable-line
         warnings: false,
       },
     }),
