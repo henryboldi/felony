@@ -1,5 +1,5 @@
-import {app, BrowserWindow, Menu, shell, autoUpdater} from 'electron'
-const {version} = require('./package.json')
+import { app, BrowserWindow, Menu, shell, autoUpdater } from 'electron'
+const { version } = require('./package.json')
 import open from 'open'
 
 let menu
@@ -53,7 +53,7 @@ const createWindow = () => {
     'title-bar-style': 'hidden',
   })
 
-  mainWindow.loadURL(`file://${__dirname}/app/app.html`)
+  mainWindow.loadURL(`file://${ __dirname }/app/app.html`)
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.show()
