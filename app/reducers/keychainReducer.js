@@ -31,7 +31,7 @@ const keychainReducer = (state = initialState, action) => {
       )
     case SET_KEYCHAIN:
       return state.withMutations((st) => {
-        for (let key of action.keychain) {
+        for (const key of action.keychain) {
           st.setIn(
             ['keychain', key.id],
             new KeyRecord({
