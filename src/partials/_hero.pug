@@ -3,11 +3,29 @@
     .left-hero.hero-side
       h1 Encryption Built for</br>a Trump Presidency
       p Easily send PGP encrypted</br>messages anywhere.
-      a(href="").btn.hero-btn download
+      a(href="").btn.hero-btn.download download
+
+      script(type='text/javascript').
+        var links = {
+          'Win': 'http://windows.download/',
+          'Mac': 'http://mac.download/',
+          'X11': 'http://linux.download/',
+          'Linux': 'http://linux.download/'
+          }
+          var anchors = document.getElementsByClassName('download');
+          for (var i = 0; i < anchors.length; i++) {
+          for (var os in links) {
+             if (links.hasOwnProperty(os)) {
+                var link = links[os];
+                if (navigator.appVersion.indexOf(os) > -1) {
+                  anchors[i].href = link;
+                }
+             }
+          }
+        }
+
       ul.platforms
-        | <script type="text/javascript"> function yourOS() { var ua = navigator.userAgent.toLowerCase(); if (ua.indexOf("win") != -1) {     return "Windows"; } else if (ua.indexOf("mac") != -1) {     return "Macintosh"; } else if (ua.indexOf("linux") != -1) {     return "Linux"; } else if (ua.indexOf("x11") != -1) {     return "Unix"; } else {     return "Computers"; } }</script>
         li: img(src="./images/apple@2x.png").apple
-            | <script type="text/javascript">document.write(yourOS())</script>
         li: img(src="./images/windows@2x.png").windows
         li: img(src="./images/linux@2x.png").linux
     .right-hero.hero-side
