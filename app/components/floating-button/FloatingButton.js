@@ -9,7 +9,13 @@ import { Icon } from '../common/index'
 import FloatingButtonItem from './FloatingButtonItem'
 
 class FloatingButton extends Component {
-  state = { isShowingActions: false }
+  constructor(props) {
+    super(props)
+    this.showComposer = this.props.showComposer.bind(this)
+    this.state = {
+      isShowingActions: false,
+    }
+  }
 
   classes() {
     return {
