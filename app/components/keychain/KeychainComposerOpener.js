@@ -41,17 +41,17 @@ class KeychainComposerOpener extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (!this.props.isShowingOpener && nextProps.isShowingOpener) {
-      this.moveOpener(0, 700, 400)
+      this.moveOpener(0, 'spring', 700, 400)
     } else if (this.props.isShowingOpener && !nextProps.isShowingOpener) {
-      this.moveOpener(64, 400, 250)
+      this.moveOpener(64, 'easeInOut', 400, 250)
     }
   }
 
-  moveOpener(y, duration, friction) {
+  moveOpener(y, style, duration, friction) {
     dynamics.animate(this.refs.opener, {
       translateY: y,
     }, {
-      type: dynamics.spring,
+      type: dynamics[style],
       duration,
       friction,
     })
