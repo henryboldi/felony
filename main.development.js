@@ -53,7 +53,7 @@ const createWindow = () => {
     'title-bar-style': 'hidden',
   })
 
-  mainWindow.loadURL(`file://${__dirname}/app/app.html`)
+  mainWindow.loadURL(`file://${ __dirname }/app/app.html`)
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.show()
