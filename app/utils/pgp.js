@@ -1,7 +1,9 @@
 const openpgp = require('openpgp')
 openpgp.initWorker({ path: '../node_modules/openpgp/dist/openpgp.worker.min.js' })
+/* eslint-disable */
 openpgp.config.aead_protect = true
 openpgp.config.use_native = true
+/* eslint-enable */
 
 import keytar from 'keytar'
 
