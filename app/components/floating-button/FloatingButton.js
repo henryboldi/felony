@@ -9,13 +9,7 @@ import { Icon } from '../common/index'
 import FloatingButtonItem from './FloatingButtonItem'
 
 class FloatingButton extends Component {
-  constructor(props) {
-    super(props)
-    this.showComposer = this.props.showComposer.bind(this)
-    this.state = {
-      isShowingActions: false,
-    }
-  }
+  state = { isShowingActions: false }
 
   classes() {
     return {
@@ -43,8 +37,17 @@ class FloatingButton extends Component {
 
   handleClose = () => this.setState({ isShowingActions: false })
 
-  showComposer(type) {
-    return this.props.showComposer.bind(this, type)
+  renderFloatingButtonDiv(type) {
+    const action = type.toLowerCase()
+    const iconName = action.replace(/ /g, '-')
+
+    return (
+      <div is="item" onClick={ () => this.props.showComposer(action) }>
+        <FloatingButtonItem label={ type }>
+          <Icon name={ iconName } />
+        </FloatingButtonItem>
+      </div>
+    )
   }
 
   render() {
@@ -55,26 +58,10 @@ class FloatingButton extends Component {
       { this.state.isShowingActions ?
         <div>
           <div is="buttons">
-            <div is="item" onClick={ this.showComposer('add key') }>
-              <FloatingButtonItem label="Add Key">
-                <Icon name="add-key" />
-              </FloatingButtonItem>
-            </div>
-            <div is="item" onClick={ this.showComposer('verify') }>
-              <FloatingButtonItem label="Verify">
-                <Icon name="verify" />
-              </FloatingButtonItem>
-            </div>
-            <div is="item" onClick={ this.showComposer('sign') }>
-              <FloatingButtonItem label="Sign">
-                <Icon name="sign" />
-              </FloatingButtonItem>
-            </div>
-            <div is="item" onClick={ this.showComposer('decrypt') }>
-              <FloatingButtonItem size="large" label="Decrypt" >
-                <Icon name="decrypt" />
-              </FloatingButtonItem>
-            </div>
+            { this.renderFloatingButtonDiv('Add Key') }
+            { this.renderFloatingButtonDiv('Verify') }
+            { this.renderFloatingButtonDiv('Sign') }
+            { this.renderFloatingButtonDiv('Decrypt') }
           </div>
         </div>
         :
