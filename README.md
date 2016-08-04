@@ -39,6 +39,6 @@ Have an idea for a feature you'd love to see in Felony? Create an issue and tag 
 ## Maintainers
 
 - [Sanil](https://github.com/TechyPeople)
-- [Frank](https://github.com/TechyPeople)
+- [Frank](https://github.com/frankcash)
 
 Created by [Henry](https://github.com/henryboldi)
