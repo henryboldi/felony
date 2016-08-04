@@ -34,3 +34,11 @@ For more information check out [electron-react-boilerplate](https://github.com/c
 Have an idea for a feature you'd love to see in Felony? Create an issue and tag it as a feature request.
 
 > 100% inline styles via [ReactCSS](http://reactcss.com/)
+
+
+## Maintainers
+
+- [Sanil](https://github.com/TechyPeople)
+- [Frank](https://github.com/TechyPeople)
+
+Created by [Henry](https://github.com/henryboldi)
