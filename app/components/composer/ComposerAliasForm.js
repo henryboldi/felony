@@ -16,7 +16,7 @@ class ComposerAliasForm extends Component {
     submitted: false,
     invalidName: false,
     invalidEmail: false,
-    invalidPassphrase: false
+    invalidPassphrase: false,
   }
 
   classes() {
@@ -105,8 +105,8 @@ class ComposerAliasForm extends Component {
   }
 
   handleKeyDown = (e) => {
-    if(e.keyCode === 13){
-      this.handleConfirm();
+    if (e.keyCode === 13) {
+      this.handleConfirm()
     }
   }
 
@@ -115,19 +115,19 @@ class ComposerAliasForm extends Component {
     const email = this.refs.form[1].value
     const passphrase = this.refs.form[2].value
 
-    if(name === "" || email === "" || passphrase === ""){
-      this.setState({invalidName: false, invalidEmail: false, invalidPassphrase: false});
+    if (name === '' || email === '' || passphrase === '') {
+      this.setState({ invalidName: false, invalidEmail: false, invalidPassphrase: false })
 
-      if(name === ""){
-        this.setState({invalidName: true});
+      if (name === '') {
+        this.setState({ invalidName: true })
       }
-      if(email === ""){
-        this.setState({invalidEmail: true});
+      if (email === '') {
+        this.setState({ invalidEmail: true })
       }
-      if(passphrase === ""){
-        this.setState({invalidPassphrase: true});
+      if (passphrase === '') {
+        this.setState({ invalidPassphrase: true })
       }
-      return;
+      return
     }
 
     const notification = {
@@ -158,6 +158,7 @@ class ComposerAliasForm extends Component {
         <img
           is="welcome"
           src="assets/images/logo@2x.png"
+          alt="Felony logo"
         />
         <object
           type="image/svg+xml"

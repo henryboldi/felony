@@ -35,9 +35,8 @@ const uiReducer = (state = initialState, action) => {
       if (state.hasIn(['selectedKeychain', action.id])
         && state.getIn(['selectedKeychain', action.id]) === true) {
         return state.setIn(['selectedKeychain', action.id], false)
-      } else {
-        return state.setIn(['selectedKeychain', action.id], true)
       }
+      return state.setIn(['selectedKeychain', action.id], true)
 
     case CLEAR_SELECTED_KEYS:
       return state.setIn(['selectedKeychain'], OrderedMap({}))

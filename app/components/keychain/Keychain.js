@@ -27,11 +27,11 @@ class Keychain extends Component {
       <div>
         <div is="keychain">
           <KeychainList
-            {...this.props }
+            { ...this.props }
           />
         </div>
         <KeychainComposerOpener
-          isShowingOpener= { this.props.isShowingOpener }
+          isShowingOpener={ this.props.isShowingOpener }
           showComposer={ this.props.showComposer }
         />
       </div>

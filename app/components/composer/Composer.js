@@ -46,12 +46,12 @@ class Composer extends Component {
         { this.props.composerType === 'alias' ?
           <ComposerAliasForm
             handleCancel={ this.handleCancel }
-            {...this.props }
+            { ...this.props }
           />
         :
           <ComposerForm
             handleCancel={ this.handleCancel }
-            {...this.props }
+            { ...this.props }
           />
         }
 

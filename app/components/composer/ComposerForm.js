@@ -109,7 +109,15 @@ class ComposerForm extends Component {
   //   }
   // }
 
-  _pgp = (pgpFn, ...options) => {
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.isShowingComposer) {
+      const textarea = ReactDOM.findDOMNode(this.refs.textarea)
+      textarea.value = ''
+      textarea.focus()
+    }
+  }
+
+  doPgp = (pgpFn, ...options) => {
     return () => {
       const data = this.refs.textarea.value
       const output = pgpFn(data, ...options)
@@ -117,7 +125,7 @@ class ComposerForm extends Component {
     }
   }
 
-  readKey = this._pgp(readArmored)
+  readKey = this.doPgp(readArmored)
 
   getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min
@@ -133,22 +141,24 @@ class ComposerForm extends Component {
   }
 
   handleEncrypt = async () => {
-    const encryptMessage = await this._pgp(encrypt, this.props.selectedKeychain, this.props.alias.privateKeyArmored)()
+    const encryptMessage = await this.doPgp(encrypt,
+                                           this.props.selectedKeychain,
+                                           this.props.alias.privateKeyArmored)()
     this.props.setOutput(encryptMessage)
   }
 
   handleDecrypt = async () => {
-    const message = await this._pgp(decrypt, this.props.alias.privateKeyArmored)()
+    const message = await this.doPgp(decrypt, this.props.alias.privateKeyArmored)()
     this.props.setOutput(message)
   }
 
   handleSign = async () => {
-    const signedMessage = await this._pgp(sign, this.props.alias.privateKeyArmored)()
+    const signedMessage = await this.doPgp(sign, this.props.alias.privateKeyArmored)()
     this.props.setOutput(signedMessage)
   }
 
   handleVerify = async () => {
-    const match = await this._pgp(verify, this.props.keychain)()
+    const match = await this.doPgp(verify, this.props.keychain)()
     this.props.setOutput(`Signed message is verified to match: ${ match.name } <${ match.email }>`)
   }
 
@@ -195,14 +205,6 @@ class ComposerForm extends Component {
         icon: 'add-key',
       },
     }[this.props.composerType] || {}
-  }
-
-  componentWillReceiveProps = (nextProps) => {
-    if (nextProps.isShowingComposer) {
-      const textarea = ReactDOM.findDOMNode(this.refs.textarea)
-      textarea.value = ''
-      textarea.focus()
-    }
   }
 
   render() {

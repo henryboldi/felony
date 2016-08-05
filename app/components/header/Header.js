@@ -39,8 +39,6 @@ class Header extends Component {
     this.props.showComposer('alias')
   }
 
-  counter = 0
-
   componentDidUpdate = (prevProps) => {
     console.log(prevProps.alias.privateKeyArmored)
     this.counter++
@@ -50,16 +48,18 @@ class Header extends Component {
     }
   }
 
+  counter = 0
+
   render() {
     return (
       <div is="header">
         <Alias
-          {...this.props }
+          { ...this.props }
         />
         <div is="actions">
           <div is="icon">
             <HeaderKeyStatus
-              {...this.props }
+              { ...this.props }
             />
           </div>
         </div>

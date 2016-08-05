@@ -108,39 +108,42 @@ class Output extends Component {
   render() {
     return (
       <div>
-      <div is="wrap" ref="wrap">
-        <div is="head">
-          <div is="title">
-            <div is="icon">
-              <Icon name="check" color="#00E676" />
+        <div is="wrap" ref="wrap">
+          <div is="head">
+            <div is="title">
+              <div is="icon">
+                <Icon name="check" color="#00E676" />
+              </div>
+              Success
             </div>
-            Success
+            <div is="subtitle">
+              Share this anywhere on the web.
+            </div>
           </div>
-          <div is="subtitle">Share this anywhere on the web.</div>
-        </div>
           <div is="text">
             <textarea is="textarea" ref="textarea" value={ this.props.output } />
           </div>
 
-        <div is="actions">
-          <CopyToClipboard
-            text={ this.props.output }
-            onCopy={ () => {
-              this.setState({ copied: true })
-              this.props.clearSelectedKeys()
-              setTimeout(() => this.handleCancel(), 1500)
-            } }
-          >
-            <a is="link confirm">
-              { this.state.copied ?
-                'Copied ...Closing'
-              :
-                'Copy & Close'
-              }</a>
-          </CopyToClipboard>
+          <div is="actions">
+            <CopyToClipboard
+              text={ this.props.output }
+              onCopy={ () => {
+                this.setState({ copied: true })
+                this.props.clearSelectedKeys()
+                setTimeout(() => this.handleCancel(), 1500)
+              } }
+            >
+              <a is="link confirm">
+                { this.state.copied ?
+                  'Copied ...Closing'
+                :
+                  'Copy & Close'
+                }
+              </a>
+            </CopyToClipboard>
+          </div>
         </div>
       </div>
-    </div>
     )
   }
 }

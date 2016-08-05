@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import dynamics from 'dynamics.js'
 
-import { Icon } from '../common/index'
+// import { Icon } from '../common/index'
 
 import colors from '../../assets/styles/variables/colors'
 

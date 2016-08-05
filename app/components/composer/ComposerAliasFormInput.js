@@ -25,7 +25,7 @@ class ComposerAliasFormInput extends Component {
         },
         error: {
           border: 'solid 2px #FF1122',
-        }
+        },
       },
       'hover': {
         input: {
@@ -50,7 +50,7 @@ class ComposerAliasFormInput extends Component {
     return (
       <input
         type={ this.props.type }
-        is={ !this.props.error? "input" : "input error" }
+        is={ !this.props.error ? 'input' : 'input error' }
         placeholder={ this.props.placeholder }
         onKeyDown={ this.props.onKeyDown }
         onFocus={ () => { this.setState({ focus: true }) } }

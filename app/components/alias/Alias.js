@@ -5,8 +5,6 @@ import ReactCSS from 'reactcss'
 
 import { User } from '../common/index'
 
-import { generateKey } from '../../utils/pgp'
-
 class Alias extends Component {
   classes() {
     return {
