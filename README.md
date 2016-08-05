@@ -41,6 +41,6 @@ Have an idea for a feature you'd love to see in Felony? Create an issue and tag 
 
 ## Maintainers
 
-Maintained with ❤️ by [Sanil](https://github.com/TechyPeople), [Frank](https://github.com/frankcash), [Krish](https://github.com/KrishMunot), [Daniel](https://github.com/Arthelon), [Sameer](https://github.com/samkho10), Ivy, and Willow.
+Maintained with ❤️ by [Sanil](https://github.com/TechyPeople), [Frank](https://github.com/frankcash), [Krish](https://github.com/KrishMunot), [Daniel](https://github.com/Arthelon), [Sameer](https://github.com/samkho10), Ivy, and [Willow](https://github.com/istx25).
 
 Created by [Henry](https://github.com/henryboldi).
