@@ -10,6 +10,9 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
 
+env:
+  CXX=g++-4.8
+
 before_install:
   - npm install -g npm@latest
 
