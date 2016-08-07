@@ -6,6 +6,7 @@
 [![GitHub release](https://img.shields.io/github/release/henryboldi/felony.svg?maxAge=2592000)]()
 [![Github All Releases](https://img.shields.io/github/downloads/henryboldi/felony/total.svg?maxAge=2592000)]()
 [![David](https://david-dm.org/henryboldi/felony.svg)]()
+[![Build Status](https://travis-ci.org/henryboldi/felony.svg?branch=master)](https://travis-ci.org/henryboldi/felony)
 
 ## Download Felony
 You can download compiled versions of Felony for Windows, macOS, and Linux from https://github.com/henryboldi/felony/releases. The app is currently in its pre-release stage, so it hasn't been fully tested on all platforms. Confirmed to be working on Mac, as that's what the developers own.
