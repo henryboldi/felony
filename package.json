@@ -30,11 +30,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chentsulin/electron-react-boilerplate.git"
+    "url": "git+https://github.com/henryboldi/felony.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chentsulin/electron-react-boilerplate/issues"
+    "url": "https://github.com/henryboldi/felony/issues"
   },
   "keywords": [
     "electron",
@@ -45,7 +45,7 @@
     "webpack",
     "react-hot"
   ],
-  "homepage": "https://github.com/chentsulin/electron-react-boilerplate#readme",
+  "homepage": "https://github.com/henryboldi/felony#readme",
   "devDependencies": {
     "asar": "^0.11.0",
     "babel-core": "^6.7.6",
