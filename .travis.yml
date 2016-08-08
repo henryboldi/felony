@@ -7,11 +7,13 @@ node_js:
 
 addons:
   apt:
-    packages:
-      - xvfb
-      - g++-4.8
     sources:
       - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+    packages:
+      - xvfb
+
 
 env:
   - CXX=g++-4.8
