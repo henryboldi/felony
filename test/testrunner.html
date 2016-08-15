@@ -1,0 +1,55 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="../node_modules/mocha/mocha.js"></script>
+  <script src="../node_modules/chai/chai.js"></script>
+
+  <script>
+    mocha.setup('bdd')
+    mocha.reporter('html');
+  </script>
+
+  <!-- Tests -->
+  <!-- <script src="test/test.js"></script> -->
+  <script src="lib/unittests-bundle.js"></script>
+
+  <!-- <script>
+    // Only tests run in real browser, injected script run if options.run == true
+    if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+      mocha.run();
+    }
+  </script> -->
+
+  <script>
+        var runner = mocha.run();
+
+        var failedTests = [];
+        runner.on('end', function(){
+          window.mochaResults = runner.stats;
+          window.mochaResults.reports = failedTests;
+        });
+
+        function logFailure(test, err) {
+          var flattenTitles = function(test) {
+            var titles = [];
+            while (test.parent.title) {
+              titles.push(test.parent.title);
+              test = test.parent;
+            }
+            return titles.reverse();
+          };
+
+          failedTests.push({name: test.title, result: false, message: err.message, stack: err.stack, titles: flattenTitles(test)});
+        };
+
+        runner.on('fail', logFailure);
+  </script>
+
+
+</body>
+</html>

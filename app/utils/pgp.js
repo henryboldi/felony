@@ -3,7 +3,7 @@ openpgp.initWorker({ path: '../node_modules/openpgp/dist/openpgp.worker.min.js' 
 openpgp.config.aead_protect = true
 openpgp.config.use_native = true
 
-import keytar from 'keytar'
+import keytar from 'keytar';
 
 export function getPublicKeysFromKeychain(keychain) {
   return keychain.map(key => key.publicKeyArmored)
@@ -48,14 +48,14 @@ export async function generateKey({ name, email = '' }, passphrase) {
   const key = await openpgp.generateKey({
     userIds: [{ name, email }],
     numBits: 2048, // should up RSA key size to 4096?
-    passphrase,
+    passphrase
   })
 
   return {
     name,
     email,
     privateKeyArmored: applyFelonyBranding(key.privateKeyArmored),
-    publicKeyArmored: applyFelonyBranding(key.publicKeyArmored),
+    publicKeyArmored: applyFelonyBranding(key.publicKeyArmored)
   }
 }
 
