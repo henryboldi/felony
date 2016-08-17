@@ -149,7 +149,11 @@ class ComposerForm extends Component {
 
   handleVerify = async () => {
     const match = await this._pgp(verify, this.props.keychain)()
-    this.props.setOutput(`Signed message is verified to match: ${ match.name } <${ match.email }>`)
+    if(typeof match.name === "undefined"){
+      this.props.setOutput('The author of this message appears to not be in your contact list')
+    }else{
+      this.props.setOutput(`Signed message is verified to match: ${ match.name } <${ match.email }>`)
+    }
   }
 
   getProps = () => {
