@@ -9,3 +9,11 @@ If you're reporting a bug, please include as much information as possible about 
 
 Internally, we try to minimize the use of our core branch.
 If you're contributing and fixing an issue, please be sure that your push references the associated issue number.
+
+# Check Log File
+
+If your log file contains any information please attach it.
+
+- Linux: ~/.config/Felony/log.log
+- OS X: ~/Library/Logs/Felony/log.log
+- Windows: $HOME/AppData/Roaming/Felony/log.log
