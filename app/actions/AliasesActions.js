@@ -1,6 +1,7 @@
 import * as types from '../constants/AliasesConstants'
 import db from '../config/database.js'
-import { generateKey } from '../utils/pgp'
+import { generateKey } from '../../utils/pgp'
+let log = require('electron-log');
 
 export function addAlias(alias) {
   return async function dispatchAction(dispatch) {
@@ -9,7 +10,8 @@ export function addAlias(alias) {
       const insertedAlias = await db('aliases').insert(alias)
       return dispatch({ type: types.ADD_KEY, alias: insertedAlias })
     } catch (err) {
-      return console.log(err)
+      console.log(err)
+      log.warn(err);
     }
   }
 }
@@ -24,7 +26,7 @@ export function fetchAliases() {
       const aliases = await db('aliases').value()
       return dispatch(setAliases(aliases))
     } catch (err) {
-      return console.log(err)
+      log.warn(err);
     }
   }
 }
