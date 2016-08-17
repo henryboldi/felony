@@ -1,5 +1,7 @@
 import * as types from '../constants/KeychainConstants'
 import db from '../config/database.js'
+let log = require('electron-log');
+
 
 export function addKey(key) {
   return async function (dispatch) {
@@ -8,6 +10,7 @@ export function addKey(key) {
       return dispatch({ type: types.ADD_KEY, key: insertedKey })
     } catch (err) {
       console.log(err)
+      log.warn(err);
     }
   }
 }
@@ -22,6 +25,7 @@ export function fetchKeychain() {
       const keychain = await db('keychain').value()
       return dispatch(setKeychain(keychain))
     } catch (err) {
+      log.warn(err);
 
     }
   }
