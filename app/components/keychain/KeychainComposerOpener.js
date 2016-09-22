@@ -39,6 +39,10 @@ class KeychainComposerOpener extends Component {
     }
   }
 
+  handleClick = () => {
+    this.props.showComposer('encrypt')
+  }
+
   componentWillReceiveProps(nextProps) {
     if (!this.props.isShowingOpener && nextProps.isShowingOpener) {
       this.moveOpener(0, 'spring', 700, 400)

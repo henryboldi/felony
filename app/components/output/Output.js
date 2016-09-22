@@ -3,8 +3,6 @@
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import CopyToClipboard from 'react-copy-to-clipboard'
-import ComposerForm from '../composer/ComposerForm'
-import ComposerAliasForm from '../composer/ComposerAliasForm'
 
 import { Icon } from '../common/index'
 
@@ -131,35 +129,35 @@ class Output extends Component {
               </div>
               Success
             </div>
-            <div is="subtitle">
-              Share this anywhere on the web.
-            </div>
+            <div is="subtitle">Share this anywhere on the web.</div>
           </div>
           <div is="text">
             <textarea is="textarea" ref="textarea" value={ this.props.output } />
           </div>
-        <div is="actions">
-          <CopyToClipboard
-            text={ this.props.output }
-            onCopy={ () => {
-              this.setState({ copied: true })
-              this.props.clearSelectedKeys()
-              setTimeout(() => this.handleCancel(), 1500)
-            } }
-          >
-            <a is="link confirm">
-              { this.state.copied ?
-                'Copied ...Closing'
-              :
-                'Copy & Close'
-              }
-            </a>
-          </CopyToClipboard>
-          <div>
-            <a is="link cancel" onClick={ ()=>{
-              this.setState({copied: true})
-              this.handleCancel()
-            } }>nevermind</a>
+          <div is="actions">
+            <CopyToClipboard
+              text={ this.props.output }
+              onCopy={ () => {
+                this.setState({ copied: true })
+                this.props.clearSelectedKeys()
+                setTimeout(() => this.handleCancel(), 1500)
+              } }
+            >
+              <a is="link confirm">
+                { this.state.copied ?
+                  'Copied ...Closing'
+                :
+                  'Copy & Close'
+                }</a>
+            </CopyToClipboard>
+            <div>
+              <a is="link cancel"
+                onClick={ () => {
+                  this.setState({ copied: true })
+                  this.handleCancel()
+                } }
+              >nevermind</a>
+            </div>
           </div>
         </div>
       </div>

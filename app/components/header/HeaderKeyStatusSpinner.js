@@ -2,8 +2,6 @@
 
 import React from 'react'
 
-// import colors from '../../assets/styles/variables/colors'
-
 const HeaderKeyStatusSpinner = () => {
   return (
     <div>

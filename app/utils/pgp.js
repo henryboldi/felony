@@ -1,9 +1,7 @@
 const openpgp = require('openpgp')
 openpgp.initWorker({ path: '../node_modules/openpgp/dist/openpgp.worker.min.js' })
-/* eslint-disable */
-openpgp.config.aead_protect = true
-openpgp.config.use_native = true
-/* eslint-enable */
+openpgp.config.aead_protect = true // eslint-disable-line
+openpgp.config.use_native = true // eslint-disable-line
 
 import keytar from 'keytar'
 
@@ -49,7 +47,7 @@ function getPrivateKeyPassphrase(privateKey) {
 export async function generateKey({ name, email = '' }, passphrase) {
   const key = await openpgp.generateKey({
     userIds: [{ name, email }],
-    numBits: 4096, 
+    numBits: 4096,
     passphrase,
   })
 

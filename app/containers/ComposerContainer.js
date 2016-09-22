@@ -1,10 +1,6 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
-import { toggleComposer,
-         // clearSelectedKeys,
-         toggleGeneratingKey,
-         addKey,
-         setOutput } from '../actions/index'
+import { toggleComposer, toggleGeneratingKey, addKey, setOutput } from '../actions/index'
 import Composer from '../components/composer/Composer'
 
 const mapStateToProps = (state) => {

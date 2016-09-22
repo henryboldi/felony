@@ -1,23 +1,23 @@
-import React from 'react'
-const DevTools = require('./DevTools')
+import React, { Component, PropTypes } from 'react'
 
-const App = (props) => {
-  return (
-    <div>
-      { props.children }
-      {
-        (() => {
-          if (process.env.NODE_ENV !== 'production') {
-            <DevTools />
-          }
-        })()
-      }
-    </div>
-  )
+export default class App extends Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+  }
+
+  render() {
+    return (
+      <div>
+        { this.props.children }
+        {
+          (() => {
+            if (process.env.NODE_ENV !== 'production') {
+              const DevTools = require('./DevTools')
+              return <DevTools />
+            }
+          })()
+        }
+      </div>
+    )
+  }
 }
-
-App.propTypes = {
-  children: React.PropTypes.element.isRequired,
-}
-
-export default App
