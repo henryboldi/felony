@@ -37,6 +37,19 @@ class FloatingButton extends Component {
 
   handleClose = () => this.setState({ isShowingActions: false })
 
+  renderFloatingButtonDiv(type) {
+    const action = type.toLowerCase()
+    const iconName = action.replace(/ /g, '-')
+
+    return (
+      <div is="item" onClick={ () => this.props.showComposer(action) }>
+        <FloatingButtonItem label={ type }>
+          <Icon name={ iconName } />
+        </FloatingButtonItem>
+      </div>
+    )
+  }
+
   render() {
     return (<div
       is="wrap"
@@ -45,26 +58,10 @@ class FloatingButton extends Component {
       { this.state.isShowingActions ?
         <div>
           <div is="buttons">
-            <div is="item" onClick={ this.props.showComposer.bind(this, 'add key') }>
-              <FloatingButtonItem label="Add Key">
-                <Icon name="add-key" />
-              </FloatingButtonItem>
-            </div>
-            <div is="item" onClick={ this.props.showComposer.bind(this, 'verify') }>
-              <FloatingButtonItem label="Verify">
-                <Icon name="verify" />
-              </FloatingButtonItem>
-            </div>
-            <div is="item" onClick={ this.props.showComposer.bind(this, 'sign') }>
-              <FloatingButtonItem label="Sign">
-                <Icon name="sign" />
-              </FloatingButtonItem>
-            </div>
-            <div is="item" onClick={ this.props.showComposer.bind(this, 'decrypt') }>
-              <FloatingButtonItem size="large" label="Decrypt" >
-                <Icon name="decrypt" />
-              </FloatingButtonItem>
-            </div>
+            { this.renderFloatingButtonDiv('Add Key') }
+            { this.renderFloatingButtonDiv('Verify') }
+            { this.renderFloatingButtonDiv('Sign') }
+            { this.renderFloatingButtonDiv('Decrypt') }
           </div>
         </div>
         :
