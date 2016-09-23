@@ -15,7 +15,7 @@ class ComposerAliasFormTextArea extends Component {
           outline: 'none',
           width: '100%',
           boxSizing: 'border-box',
-          height: '150px',
+          height: '120px',
           padding: '10px 3%',
           color: '#333',
           borderRadius: '5px',
