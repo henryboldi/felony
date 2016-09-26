@@ -73,6 +73,28 @@ export async function readArmored(armoredKey) {
   }
 }
 
+export async function readArmoredPrivate(armoredKey) {
+  const massagedKey = massagePGP(armoredKey)
+  const key = await openpgp.key.readArmored(massagedKey)
+
+  if (key.err) {
+    console.log('invalid key!')
+    return key
+  }
+
+  const userStr = key.keys[0].users[0].userId.userid
+  const email = userStr.substring(userStr.lastIndexOf('<') + 1, userStr.lastIndexOf('>'))
+  const name = userStr.substring(0, userStr.lastIndexOf(' '))
+  const publicKeyArmored = key.keys[0].toPublic().armor()
+
+  return {
+    name,
+    email,
+    privateKeyArmored: massagedKey,
+    publicKeyArmored,
+  }
+}
+
 export async function encrypt(message, selectedKeys, privateKeyArmored) {
   const publicKeysArmored = getPublicKeysFromKeychain(selectedKeys)
   const publicKeys = []
