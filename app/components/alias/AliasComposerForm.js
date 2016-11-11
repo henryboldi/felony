@@ -1,12 +1,10 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
 import colors from '../../assets/styles/variables/colors'
 
 class AliasComposer extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         text: {
@@ -57,11 +55,10 @@ class AliasComposer extends Component {
 
   render() {
     return (
-      <div is="wrap" ref="wrap">
+      <div is="wrap">
         <div is="text">
           <textarea
             is="textarea"
-            ref="textarea"
             placeholder={ this.props.placeholder }
             onKeyDown={ this.handleKeyDown }
           />

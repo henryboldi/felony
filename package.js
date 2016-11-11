@@ -1,25 +1,22 @@
-/* eslint strict: 0, no-shadow: 0, no-unused-vars: 0, no-console: 0 */
-'use strict'
+/* eslint-disable no-console */
+import 'babel-polyfill'
+import os from 'os'
+import webpack from 'webpack'
+import packager from 'electron-packager'
+import electronInstaller from 'electron-winstaller'
+import del from 'del'
+import { exec } from 'child_process'
+import electronCfg from './webpack.config.electron'
+import cfg from './webpack.config.production'
+import pkg from './package.json'
 
-require('babel-polyfill')
-const os = require('os')
-const webpack = require('webpack')
-const electronCfg = require('./webpack.config.electron.js')
-const cfg = require('./webpack.config.production.js')
-const packager = require('electron-packager')
-const del = require('del')
-const exec = require('child_process').exec
 const argv = require('minimist')(process.argv.slice(2))
-const pkg = require('./package.json')
+
 const deps = Object.keys(pkg.dependencies)
 const devDeps = Object.keys(pkg.devDependencies)
-const electronInstaller = require('electron-winstaller');
-
 const appName = argv.name || argv.n || pkg.productName
 const shouldUseAsar = argv.asar || argv.a || false
 const shouldBuildAll = argv.all || false
-
-console.log(electronCfg)
 
 const DEFAULT_OPTS = {
   dir: './',
@@ -33,7 +30,7 @@ const DEFAULT_OPTS = {
   ].concat(devDeps.map(name => `/node_modules/${ name }($|/)`))
   .concat(
     deps.filter(name => !electronCfg.default.externals.includes(name))
-      .map(name => `/node_modules/${ name }($|/)`)
+      .map(name => `/node_modules/${ name }($|/)`),
   ),
 }
 
@@ -76,14 +73,14 @@ function startPack() {
   build(electronCfg.default)
     .then(() => build(cfg.default))
     .then(() => del('release'))
-    .then(paths => {
+    .then(() => {
       if (shouldBuildAll) {
         // build for all platforms
         const archs = ['ia32', 'x64']
         const platforms = ['linux', 'win32', 'darwin']
 
-        platforms.forEach(plat => {
-          archs.forEach(arch => {
+        platforms.forEach((plat) => {
+          archs.forEach((arch) => {
             pack(plat, arch, log(plat, arch))
           })
         })
@@ -92,7 +89,7 @@ function startPack() {
         pack(os.platform(), os.arch(), log(os.platform(), os.arch()))
       }
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(err)
     })
 }
@@ -134,17 +131,17 @@ function pack(plat, arch, cb) {
 }
 
 function log(plat, arch) {
-  return (err, filepath) => {
+  return (err) => {
     if (err) return console.error(err)
     console.log(`${ plat }-${ arch } finished`)
     if (`${ plat }-${ arch }` === 'win32-x64') {
-      var resultPromise = electronInstaller.createWindowsInstaller({
+      const resultPromise = electronInstaller.createWindowsInstaller({
         appDirectory: 'release/win32-x64/Felony-win32-x64',
         outputDirectory: 'release/win32-x64-installer',
         authors: 'Henry Boldizsar',
         exe: 'Felony.exe',
-      });
-      resultPromise.then(() => console.log("It worked!"), (e) => console.log(`No dice: ${e.message}`));
+      })
+      resultPromise.then(() => console.log('It worked!'), e => console.log(`No dice: ${ e.message }`))
     }
   }
 }

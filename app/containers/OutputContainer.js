@@ -4,7 +4,6 @@ import Output from '../components/output/Output'
 
 const mapStateToProps = (state) => {
   const output = state.uiReducer.get('output')
-  console.log('output!!!!!!!', output)
   let isShowingOutput = false
   if (output.length > 1) {
     isShowingOutput = true
@@ -35,7 +34,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const OutputContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Output)
 
 export default OutputContainer

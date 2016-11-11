@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
@@ -9,7 +7,7 @@ import colors from '../../assets/styles/variables/colors'
 import { spacing, sizing } from '../../assets/styles/variables/utils'
 
 class KeychainListKey extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         item: {
@@ -40,7 +38,6 @@ class KeychainListKey extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div onClick={ this.handleClick } is="item">
         <div is="user">

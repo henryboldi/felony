@@ -1,14 +1,10 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
 import { User } from '../common/index'
 
-import { generateKey } from '../../utils/pgp'
-
 class Alias extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         user: {

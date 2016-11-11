@@ -47,7 +47,7 @@ function getPrivateKeyPassphrase(privateKey) {
 export async function generateKey({ name, email = '' }, passphrase) {
   const key = await openpgp.generateKey({
     userIds: [{ name, email }],
-    numBits: 4096, 
+    numBits: 4096,
     passphrase,
   })
 

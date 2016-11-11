@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import CopyToClipboard from 'react-copy-to-clipboard'
@@ -10,7 +8,7 @@ import colors from '../../assets/styles/variables/colors'
 
 class HeaderKeyCopy extends Component {
 
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         copy: {
@@ -23,31 +21,33 @@ class HeaderKeyCopy extends Component {
   }
 
   render() {
-    return (<div is="copy">
-      <CopyToClipboard
-        text={ this.props.alias.publicKeyArmored }
-        onCopy={ () => {
-          this.props.toggleIsCopied()
-          setTimeout(() => {
+    return (
+      <div is="copy">
+        <CopyToClipboard
+          text={ this.props.alias.publicKeyArmored }
+          onCopy={ () => {
             this.props.toggleIsCopied()
-          }, 2000)
-        } }
-      >
-        { this.props.isCopied ?
-          <Icon
-            name="check"
-            color={ colors.green }
-          />
-        :
+            setTimeout(() => {
+              this.props.toggleIsCopied()
+            }, 2000)
+          } }
+        >
+          { this.props.isCopied ?
+            <Icon
+              name="check"
+              color={ colors.green }
+            />
+          :
           <a>
             <Icon
               name="copy"
               color={ colors.primary }
             />
           </a>
-        }
-      </CopyToClipboard>
-    </div>)
+          }
+        </CopyToClipboard>
+      </div>
+    )
   }
 }
 

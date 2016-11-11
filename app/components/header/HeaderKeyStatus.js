@@ -1,7 +1,4 @@
-'use strict'
-
 import React, { Component } from 'react'
-import ReactCSS from 'reactcss'
 
 import HeaderKeyCopy from './HeaderKeyCopy'
 import HeaderKeyStatusSpinner from './HeaderKeyStatusSpinner'
@@ -9,14 +6,6 @@ import HeaderKeyStatusTooltip from './HeaderKeyStatusTooltip'
 
 class HeaderKeyStatus extends Component {
   state = { isShowingTooltip: false }
-
-  classes() {
-    return {
-      'default': {
-
-      },
-    }
-  }
 
   setTooltip = (b) => {
     this.setState({ isShowingTooltip: b })
@@ -31,16 +20,17 @@ class HeaderKeyStatus extends Component {
   }
 
   render() {
-    return (<div>
-      <div
-        onMouseEnter={ this.handleMouseEnter }
-        onMouseLeave={ this.handleMouseLeave }
-      >
-        { this.props.isGeneratingKey ?
-          <div>
-            <HeaderKeyStatusSpinner />
-          </div>
-        :
+    return (
+      <div>
+        <div
+          onMouseEnter={ this.handleMouseEnter }
+          onMouseLeave={ this.handleMouseLeave }
+        >
+          { this.props.isGeneratingKey ?
+            <div>
+              <HeaderKeyStatusSpinner />
+            </div>
+          :
           <div>
             <HeaderKeyCopy
               alias={ this.props.alias }
@@ -48,20 +38,21 @@ class HeaderKeyStatus extends Component {
               toggleIsCopied={ this.props.toggleIsCopied }
             />
           </div>
-        }
-        { this.state.isShowingTooltip ?
-          <div>
-            <HeaderKeyStatusTooltip
-              isGeneratingKey={ this.props.isGeneratingKey }
-              isCopied={ this.props.isCopied }
-            />
-          </div>
-        :
-          null
-        }
+          }
+          { this.state.isShowingTooltip ?
+            <div>
+              <HeaderKeyStatusTooltip
+                isGeneratingKey={ this.props.isGeneratingKey }
+                isCopied={ this.props.isCopied }
+              />
+            </div>
+          :
+            null
+          }
+        </div>
       </div>
-    </div>)
+    )
   }
 }
 
-export default ReactCSS(HeaderKeyStatus)
+export default HeaderKeyStatus
