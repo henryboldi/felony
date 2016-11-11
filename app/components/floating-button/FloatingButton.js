@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
@@ -11,7 +9,7 @@ import FloatingButtonItem from './FloatingButtonItem'
 class FloatingButton extends Component {
   state = { isShowingActions: false }
 
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         wrap: {

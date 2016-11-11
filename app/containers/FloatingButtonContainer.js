@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const FloatingButtonContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(FloatingButton)
 
 export default FloatingButtonContainer

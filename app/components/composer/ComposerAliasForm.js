@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import keytar from 'keytar'
@@ -16,10 +14,10 @@ class ComposerAliasForm extends Component {
     submitted: false,
     invalidName: false,
     invalidEmail: false,
-    invalidPassphrase: false
+    invalidPassphrase: false,
   }
 
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         wrap: {
@@ -105,29 +103,29 @@ class ComposerAliasForm extends Component {
   }
 
   handleKeyDown = (e) => {
-    if(e.keyCode === 13){
-      this.handleConfirm();
+    if (e.keyCode === 13) {
+      this.handleConfirm()
     }
   }
 
   handleConfirm = async () => {
-    const name = this.refs.form[0].value
-    const email = this.refs.form[1].value
-    const passphrase = this.refs.form[2].value
+    const name = this.form[0].value
+    const email = this.form[1].value
+    const passphrase = this.form[2].value
 
-    if(name === "" || email === "" || passphrase === ""){
-      this.setState({invalidName: false, invalidEmail: false, invalidPassphrase: false});
+    if (name === '' || email === '' || passphrase === '') {
+      this.setState({ invalidName: false, invalidEmail: false, invalidPassphrase: false })
 
-      if(name === ""){
-        this.setState({invalidName: true});
+      if (name === '') {
+        this.setState({ invalidName: true })
       }
-      if(email === ""){
-        this.setState({invalidEmail: true});
+      if (email === '') {
+        this.setState({ invalidEmail: true })
       }
-      if(passphrase === ""){
-        this.setState({invalidPassphrase: true});
+      if (passphrase === '') {
+        this.setState({ invalidPassphrase: true })
       }
-      return;
+      return
     }
 
     const notification = {
@@ -135,43 +133,39 @@ class ComposerAliasForm extends Component {
       body: 'Copy your public key by clicking the icon to the right of your name.',
     }
 
-    console.log(name, email, passphrase)
     this.props.toggleGeneratingKey()
     this.setState({ submitted: true })
     await this.props.addKey({ id: 999, name, privateKeyArmored: 'generating' })
     const key = await generateKey({ name, email }, passphrase)
     key.avatar = 9
     key.id = 999
-    console.log(key)
 
-    new Notification(notification.title, notification)
+    new Notification(notification.title, notification) // eslint-disable-line no-new
     keytar.addPassword('felony', `${ name } <${ email }>`, passphrase)
     await this.props.addKey(key)
     this.props.toggleGeneratingKey()
-
-    console.log('added key!')
   }
 
   render() {
     return (
-      <div is="wrap" ref="wrap">
+      <div is="wrap">
         <img
+          alt="Welcome"
           is="welcome"
           src="assets/images/logo@2x.png"
         />
         <object
           type="image/svg+xml"
           data="assets/images/slant.svg"
-        ></object>
+        />
         <div is="bgGrey">
           { !this.state.submitted ?
             <div>
               <p is="instructions">To get started, generate your keys.</p>
-              <form is="form" ref="form">
+              <form is="form" ref={ form => (this.form = form) }>
                 <div is="formItem">
                   <ComposerAliasFormInput
                     type="text"
-                    ref="textarea"
                     placeholder={ 'Name' }
                     onKeyDown={ this.handleKeyDown }
                     error={ this.state.invalidName }
@@ -180,7 +174,6 @@ class ComposerAliasForm extends Component {
                 <div is="formItem">
                   <ComposerAliasFormInput
                     type="email"
-                    ref="textarea"
                     placeholder={ 'Email' }
                     onKeyDown={ this.handleKeyDown }
                     error={ this.state.invalidEmail }
@@ -190,7 +183,6 @@ class ComposerAliasForm extends Component {
                   <ComposerAliasFormInput
                     type="password"
                     is="input"
-                    ref="textarea"
                     placeholder={ 'Passphrase' }
                     onKeyDown={ this.handleKeyDown }
                     error={ this.state.invalidPassphrase }
@@ -205,9 +197,9 @@ class ComposerAliasForm extends Component {
               </div>
             </div>
           :
-            <ComposerAliasSuccess
-              handleCancel={ this.props.handleCancel }
-            />
+          <ComposerAliasSuccess
+            handleCancel={ this.props.handleCancel }
+          />
           }
         </div>
       </div>

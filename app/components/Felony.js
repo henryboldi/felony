@@ -1,5 +1,3 @@
-'use strict'
-
 import 'normalize.css'
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
@@ -20,7 +18,7 @@ export class Felony extends Component {
     selected: [], // replaced with redux
   }
 
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         app: {
