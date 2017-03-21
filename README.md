@@ -12,11 +12,11 @@
 You can download compiled versions of Felony for Windows, macOS, and Linux from https://github.com/henryboldi/felony/releases. The app is currently in its pre-release stage, so it hasn't been fully tested on all platforms. Confirmed to be working on Mac, as that's what the developers own.
 
 ## Here's how it works...
-###1. Add public keys to your buddies list
+### 1. Add public keys to your buddies list
 A public key is like a username - Adding someone’s public key to your buddies list lets you send them messages. You can find other public keys on markets like Keybase.io and Darknet.
-###2. Encrypt a message
+### 2. Encrypt a message
 Select a recipient from your buddies list and compose a message. Only your chosen recipient(s) can read the message. Encrypted messages can be used to send sensitive information, such as an address, document, or anything intended to be read only by intended recipients.
-###3. Send the encrypted message anywhere
+### 3. Send the encrypted message anywhere
 You can send the encrypted message on any website! Send encrypted messages over Facebook Messenger, Twitter DMs, YouTube, Instagram, or anywhere else. **Felony is security when and where you want it.**
 
 ## Running Locally
