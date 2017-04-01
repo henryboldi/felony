@@ -1,5 +1,5 @@
-import { ADD_KEY, SET_KEYCHAIN } from '../constants/KeychainConstants'
 import { OrderedMap, Record } from 'immutable'
+import { ADD_KEY, SET_KEYCHAIN } from '../constants/KeychainConstants'
 
 const KeyRecord = Record({
   id: '',
@@ -27,11 +27,11 @@ const keychainReducer = (state = initialState, action) => {
           publicKeyArmored: action.key.publicKeyArmored,
           privateKeyArmored: action.key.privateKeyArmored || null,
           avatar: action.key.avatar,
-        })
+        }),
       )
     case SET_KEYCHAIN:
       return state.withMutations((st) => {
-        for (let key of action.keychain) {
+        for (const key of action.keychain) { // eslint-disable-line
           st.setIn(
             ['keychain', key.id],
             new KeyRecord({
@@ -41,7 +41,7 @@ const keychainReducer = (state = initialState, action) => {
               publicKeyArmored: key.publicKeyArmored,
               privateKeyArmored: key.privateKeyArmored || null,
               avatar: key.avatar,
-            })
+            }),
           )
         }
       })

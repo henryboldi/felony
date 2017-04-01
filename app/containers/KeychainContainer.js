@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
+import _ from 'lodash'
 import { addKey, fetchKeychain, selectKey, showComposerWithType } from '../actions/index'
 import Keychain from '../components/keychain/Keychain'
-import _ from 'lodash'
 
 const mapStateToProps = (state) => {
   return {
     // For `KeychainList` component
-    keychain: _.filter(state.keychainReducer.get('keychain').toJS(), key => {
+    keychain: _.filter(state.keychainReducer.get('keychain').toJS(), (key) => {
       return key.privateKeyArmored === null
     }),
     selectedKeychain: state.uiReducer.get('selectedKeychain').toJS(),
@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const KeychainContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Keychain)
 
 export default KeychainContainer

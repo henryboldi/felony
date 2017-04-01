@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
@@ -8,7 +6,7 @@ import colors from '../../assets/styles/variables/colors'
 class ComposerFormSubmit extends Component {
   state = { value: this.props.value }
 
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         confirm: {

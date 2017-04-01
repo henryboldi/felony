@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import dynamics from 'dynamics.js'
@@ -8,7 +6,7 @@ import colors from '../../assets/styles/variables/colors'
 import FloatingButtonItemLabel from './FloatingButtonItemLabel'
 
 class FloatingButtonItem extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     const floatingButtonSize = 40
 
     return {
@@ -60,7 +58,7 @@ class FloatingButtonItem extends Component {
   }
 
   componentDidMount = () => {
-    dynamics.animate(this.refs.wrap, {
+    dynamics.animate(this.wrap, {
       scale: 1,
     }, {
       type: dynamics.spring,
@@ -70,19 +68,23 @@ class FloatingButtonItem extends Component {
   }
 
   render() {
-    return (<div is="wrap" ref="wrap">
-      { this.props.label &&
-        <div is="label">
-          <FloatingButtonItemLabel
-            label={ this.props.label }
-            hover={ this.props.hover }
-          />
-        </div>
-      }
-      <a is="button">
-        <span is="buttonContent">{ this.props.children }</ span>
-      </a>
-    </div>)
+    return (
+      <div is="wrap" ref={ wrap => (this.wrap = wrap) }>
+        { this.props.label &&
+          <div is="label">
+            <FloatingButtonItemLabel
+              label={ this.props.label }
+              hover={ this.props.hover }
+            />
+          </div>
+        }
+        <a is="button">
+          <span is="buttonContent">
+            { this.props.children }
+          </span>
+        </a>
+      </div>
+    )
   }
 }
 

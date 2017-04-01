@@ -1,27 +1,35 @@
 <!-- Fill out this template so we can get a good understanding of your intended message. -->
 
 #### What's this issue about?
-<!-- Provide a brief, one or two sentence description of your issue here. -->
+<!-- Provide a brief, one or two sentence summary of your issue here. -->
 
-<!-- READ the next two lines before continuing. -->
-<!-- IF REPORTING A BUG, use lines 12-22, and delete everything past line 23 before continuing. -->
-<!-- IF REQUESTING A FEATURE, use lines 25-27, and delete lines 12-22.
+<!--
+** Read the next two lines before continuing. **
+IF REPORTING A BUG, delete everything past the Feature Request heading before continuing.
+IF REQUESTING A FEATURE, delete the Bug Report section.
+-->
 
 <!-- Bug Report -->
+<!--
+NOTE: Please be sure to attach a logfile if available.  Here's where you can find the logfile:
+Linux: ~/.config/Felony/log.log
+OS X: ~/Library/Logs/Felony/log.log
+Windows: $HOME/AppData/Roaming/Felony/log.log
+-->
 
 #### Expected behavior
-What were you expecting/what's supposed to happen?
+<!-- What were you expecting/what's supposed to happen? -->
 
 #### Actual behavior
-Tell us what actually happened.
+<!-- Tell us what actually happened. -->
 
 #### Steps to reproduce
-Tell us how exactly we can reproduce this bug.
+<!-- Tell us how exactly we can reproduce this bug. -->
 
 #### Environment
-Tell us your exact environment, including your OS version and any other relevant information.
+<!-- Tell us your exact environment, including your OS version and any other relevant information. -->
 
 
 <!-- Feature Request -->
 #### About the Feature
-What specifically do you want to see?  Give us as many details as possible.
+<!-- What specifically do you want to see?  Give us as many details as possible. -->

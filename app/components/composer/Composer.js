@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
@@ -9,7 +7,7 @@ import ComposerAliasForm from './ComposerAliasForm'
 import colors from '../../assets/styles/variables/colors'
 
 class Composer extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         wrap: {
@@ -42,17 +40,17 @@ class Composer extends Component {
 
   render() {
     return (
-      <div is="wrap" ref="wrap">
+      <div is="wrap">
         { this.props.composerType === 'alias' ?
           <ComposerAliasForm
             handleCancel={ this.handleCancel }
-            {...this.props }
+            { ...this.props }
           />
         :
-          <ComposerForm
-            handleCancel={ this.handleCancel }
-            {...this.props }
-          />
+        <ComposerForm
+          handleCancel={ this.handleCancel }
+          { ...this.props }
+        />
         }
 
       </div>

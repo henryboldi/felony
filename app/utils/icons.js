@@ -1,4 +1,4 @@
-'use strict' /* eslint max-len: 0 */
+/* eslint max-len: 0 */
 
 const store = {
   'more': `<svg style="width:100%;height:100%" viewBox="0 0 24 24">
@@ -22,9 +22,6 @@ const store = {
   'plus': `<svg style="width:100%;height:100%" viewBox="0 0 24 24">
     <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
   </svg>`, // materialdesignicons.com plus
-  'check': `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-  </svg>`,
   'copy': `<svg style="width:20px;height:20px" viewBox="0 0 24 24">
     <path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
     </svg>`,
@@ -33,6 +30,6 @@ const store = {
   </svg>`,
 }
 
-export const getIcon = (name) => {
-  return store.hasOwnProperty(name) ? store[name] : 'n/a'
+export const getIcon = (name) => { // eslint-disable-line import/prefer-default-export
+  return {}.hasOwnProperty.call(store, name) ? store[name] : 'n/a'
 }

@@ -8,15 +8,17 @@
 [![David](https://david-dm.org/henryboldi/felony.svg)]()
 [![Build Status](https://travis-ci.org/henryboldi/felony.svg?branch=master)](https://travis-ci.org/henryboldi/felony)
 
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fhenryboldi%2Ffelony.svg?size=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fhenryboldi%2Ffelony?ref=badge_large)
+
 ## Download Felony
 You can download compiled versions of Felony for Windows, macOS, and Linux from https://github.com/henryboldi/felony/releases. The app is currently in its pre-release stage, so it hasn't been fully tested on all platforms. Confirmed to be working on Mac, as that's what the developers own.
 
 ## Here's how it works...
-###1. Add public keys to your buddies list
+### 1. Add public keys to your buddies list
 A public key is like a username - Adding someone’s public key to your buddies list lets you send them messages. You can find other public keys on markets like Keybase.io and Darknet.
-###2. Encrypt a message
+### 2. Encrypt a message
 Select a recipient from your buddies list and compose a message. Only your chosen recipient(s) can read the message. Encrypted messages can be used to send sensitive information, such as an address, document, or anything intended to be read only by intended recipients.
-###3. Send the encrypted message anywhere
+### 3. Send the encrypted message anywhere
 You can send the encrypted message on any website! Send encrypted messages over Facebook Messenger, Twitter DMs, YouTube, Instagram, or anywhere else. **Felony is security when and where you want it.**
 
 ## Running Locally
@@ -37,11 +39,10 @@ For more information check out [electron-react-boilerplate](https://github.com/c
 ## Feature Requests
 Have an idea for a feature you'd love to see in Felony? Create an issue and tag it as a feature request.
 
-> 100% inline styles via [ReactCSS](http://reactcss.com/)
-
-
 ## Maintainers
 
 Maintained with ❤️ by [Sanil](https://github.com/TechyPeople), [Frank](https://github.com/frankcash), [Krish](https://github.com/KrishMunot), [Daniel](https://github.com/Arthelon), [Sameer](https://github.com/samkho10), Ivy, and [Willow](https://github.com/istx25).
 
-Created by [Henry](https://github.com/henryboldi).
+Created by [Henry](https://github.com/henryboldi) & [Case](https://github.com/casesandberg).
+
+> 100% inline styles via [ReactCSS](http://reactcss.com/)
