@@ -156,7 +156,7 @@ class Output extends Component {
                   this.handleCancel()
                 } }
               >
-                nevermind
+                never mind
               </a>
 
             </div>

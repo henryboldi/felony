@@ -224,7 +224,7 @@ class ComposerForm extends Component {
             value={ props.acceptLabel }
           />
           ) }
-          <a is="link cancel" onClick={ this.props.handleCancel }>nevermind</a>
+          <a is="link cancel" onClick={ this.props.handleCancel }>never mind</a>
         </div>
       </div>
     )
