@@ -34,6 +34,10 @@ To build for all platforms
 ```
 npm run package-all
 ```
+If there is an error of version mismatch in Electron run
+```
+node_modules/.bin/electron-rebuild
+```
 For more information check out [electron-react-boilerplate](https://github.com/chentsulin/electron-react-boilerplate), which we used as a starting point.
 
 ## Feature Requests
