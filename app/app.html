@@ -9,6 +9,7 @@
           const link = document.createElement('link');
           link.rel = 'stylesheet';
           link.href = '../dist/style.css';
+          link.setAttribute('async', '');
           document.write(link.outerHTML);
         }
       }());
@@ -20,6 +21,7 @@
       (function() {
         const script = document.createElement('script');
         script.src = (process.env.HOT) ? 'http://localhost:3000/dist/bundle.js' : '../dist/bundle.js';
+        script.setAttribute('async', '');
         document.write(script.outerHTML);
       }());
 

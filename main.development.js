@@ -47,7 +47,7 @@ if (process.env.NODE_ENV !== 'development') {
 const createWindow = () => {
   mainWindow = new BrowserWindow({
     'show': false,
-    'resizable': false,
+    'resizable': true,
     'width': 295,
     'height': 435,
     'titleBarStyle': 'hidden',
