@@ -1,5 +1,5 @@
-![Felony Logo](http://i.imgur.com/gqG7XoQ.png)
-![Felony Screenshot](http://i.imgur.com/0e1ZOLp.png)
+![Felony Logo](https://i.imgur.com/gqG7XoQ.png)
+![Felony Screenshot](https://i.imgur.com/0e1ZOLp.png)
 
 **Felony is an open-source pgp keychain built on the modern web with Electron, React, and Redux.** Felony is the first PGP app that's easy for anyone to use, without a tutorial. Security++ to the greatest extreme!
 
