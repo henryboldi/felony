@@ -14,7 +14,7 @@ IF REQUESTING A FEATURE, delete the Bug Report section.
 NOTE: Please be sure to attach a logfile if available.  Here's where you can find the logfile:
 Linux: ~/.config/Felony/log.log
 OS X: ~/Library/Logs/Felony/log.log
-Windows: $HOME/AppData/Roaming/Felony/log.log
+Windows: %AppData%/Felony/log.log
 -->
 
 #### Expected behavior

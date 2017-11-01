@@ -16,4 +16,4 @@ If your log file contains any information please attach it.
 
 - Linux: ~/.config/Felony/log.log
 - OS X: ~/Library/Logs/Felony/log.log
-- Windows: $HOME/AppData/Roaming/Felony/log.log
+- Windows: %AppData%/Felony/log.log
