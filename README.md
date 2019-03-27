@@ -3,9 +3,7 @@
 
 **Felony is an open-source pgp keychain built on the modern web with Electron, React, and Redux.** Felony is the first PGP app that's easy for anyone to use, without a tutorial.
 
-[![GitHub release](https://img.shields.io/github/release/henryboldi/felony.svg?maxAge=2592000)]()
 [![Github All Releases](https://img.shields.io/github/downloads/henryboldi/felony/total.svg?maxAge=2592000)]()
-[![Build Status](https://travis-ci.org/henryboldi/felony.svg?branch=master)](https://travis-ci.org/henryboldi/felony)
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fhenryboldi%2Ffelony.svg?size=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fhenryboldi%2Ffelony?ref=badge_large)
 
