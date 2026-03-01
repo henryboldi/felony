@@ -1,15 +1,11 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import dynamics from 'dynamics.js'
 
-import { Icon } from '../common/index'
-
 import colors from '../../assets/styles/variables/colors'
 
 class HeaderKeyStatusTooltip extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         tooltip: {
@@ -42,7 +38,7 @@ class HeaderKeyStatusTooltip extends Component {
   }
 
   componentDidMount = () => {
-    dynamics.animate(this.refs.tooltip, {
+    dynamics.animate(this.tooltip, {
       translateY: 0,
       opacity: 1,
     }, {
@@ -54,13 +50,13 @@ class HeaderKeyStatusTooltip extends Component {
 
   render() {
     return (
-      <div is="tooltip" ref="tooltip">
-        <div is="arrow"></div>
-        { this.props.isGeneratingKey ?
+      <div is="tooltip" ref={ tooltip => (this.tooltip = tooltip) }>
+        <div is="arrow" />
+        { this.props.isGeneratingKey ? (
           <p>{ 'Generating Keys: <2min' }</p>
-        :
-          <p>{ this.props.isCopied ? 'Copied!' : 'Copy Public Key' }</p>
-        }
+        ) : (
+        <p>{ this.props.isCopied ? 'Copied!' : 'Copy Public Key' }</p>
+        ) }
       </div>
     )
   }

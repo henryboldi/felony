@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
@@ -8,7 +6,7 @@ import ComposerFormSubmit from './ComposerFormSubmit'
 import colors from '../../assets/styles/variables/colors'
 
 class ComposerAliasSuccess extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         title: {
@@ -63,7 +61,14 @@ class ComposerAliasSuccess extends Component {
       <div>
         <p is="title">Your keys are generating.</p>
         <p is="body">In the meantime, support easy to use encryption 😊</p>
-        <iframe is="iframe" src="https://ghbtns.com/github-btn.html?user=henryboldi&repo=felony&type=star&count=true&size=large" frameBorder="0" scrolling="0" width="160px" height="30px"></iframe>
+        <iframe
+          is="iframe"
+          src="https://ghbtns.com/github-btn.html?user=henryboldi&repo=felony&type=star&count=true&size=large"
+          frameBorder="0"
+          scrolling="0"
+          width="160px"
+          height="30px"
+        />
         <div is="actions">
           <ComposerFormSubmit
             onClick={ this.props.handleCancel }

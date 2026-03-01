@@ -1,5 +1,4 @@
-/* eslint no-console: 0 */
-
+/* eslint-disable no-console */
 import express from 'express'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
@@ -20,7 +19,7 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler))
 
-app.listen(PORT, 'localhost', err => {
+app.listen(PORT, 'localhost', (err) => {
   if (err) {
     console.error(err)
     return

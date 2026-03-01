@@ -1,20 +1,9 @@
-'use strict'
-
 import React, { Component } from 'react'
-import ReactCSS from 'reactcss'
 
-class Decrypt extends Component {
-  classes() {
-    return {
-      'default': {
-
-      },
-    }
-  }
-
+class Decrypt extends Component { // eslint-disable-line
   render() {
-    return <div></div>
+    return <div />
   }
 }
 
-export default ReactCSS(Decrypt)
+export default Decrypt

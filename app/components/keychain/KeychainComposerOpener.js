@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import dynamics from 'dynamics.js'
@@ -7,7 +5,7 @@ import dynamics from 'dynamics.js'
 import colors from '../../assets/styles/variables/colors'
 
 class KeychainComposerOpener extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         opener: {
@@ -52,7 +50,7 @@ class KeychainComposerOpener extends Component {
   }
 
   moveOpener(y, style, duration, friction) {
-    dynamics.animate(this.refs.opener, {
+    dynamics.animate(this.opener, {
       translateY: y,
     }, {
       type: dynamics[style],
@@ -63,7 +61,11 @@ class KeychainComposerOpener extends Component {
 
   render() {
     return (
-      <div is="opener" ref="opener" onClick={ this.handleClick }>
+      <div
+        is="opener"
+        ref={ opener => (this.opener = opener) }
+        onClick={ this.handleClick }
+      >
         <div is="button">Write a Message</div>
       </div>
     )

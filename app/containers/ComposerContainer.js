@@ -1,11 +1,11 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
-import { toggleComposer, clearSelectedKeys, toggleGeneratingKey, addKey, setOutput } from '../actions/index'
+import { toggleComposer, toggleGeneratingKey, addKey, setOutput } from '../actions/index'
 import Composer from '../components/composer/Composer'
 
 const mapStateToProps = (state) => {
   const keychain = state.keychainReducer.get('keychain').toJS()
-  const aliases = _.filter(keychain, key => {
+  const aliases = _.filter(keychain, (key) => {
     return key.privateKeyArmored !== null
   })
   const first = aliases[0] || null
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
     selectedKeychain: _.values(_.pick(keychain, (value, key) => {
       return state.uiReducer.get('selectedKeychain').toJS()[key]
     })),
-    keychain: _.filter(keychain, key => {
+    keychain: _.filter(keychain, (key) => {
       return key.privateKeyArmored === null
     }),
     alias: first,
@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const ComposerContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Composer)
 
 export default ComposerContainer

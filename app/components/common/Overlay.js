@@ -1,10 +1,9 @@
-'use strict'
-
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
 class Overlay extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         overlay: {

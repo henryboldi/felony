@@ -1,17 +1,13 @@
-'use strict'
-
 import React, { Component } from 'react'
 
-import colors from '../../assets/styles/variables/colors'
-
-class HeaderKeyStatusSpinner extends Component {
+class HeaderKeyStatusSpinner extends Component { // eslint-disable-line
 
   render() {
     return (
       <div>
         <div className="spinner">
-          <div className="double-bounce1"></div>
-          <div className="double-bounce2"></div>
+          <div className="double-bounce1" />
+          <div className="double-bounce2" />
         </div>
       </div>
     )

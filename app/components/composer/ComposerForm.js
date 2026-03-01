@@ -1,8 +1,5 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
-import ReactDOM from 'react-dom'
 import { readArmored, encrypt, decrypt, sign, verify } from '../../utils/pgp'
 
 import { Icon } from '../common/index'
@@ -12,7 +9,7 @@ import colors from '../../assets/styles/variables/colors'
 
 class ComposerForm extends Component {
 
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         wrap: {
@@ -95,63 +92,51 @@ class ComposerForm extends Component {
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (!this.props.isShowingComposerForm && nextProps.isShowingComposerForm) {
-  //     dynamics.animate(this.refs.wrap, {
-  //       translateY: 0,
-  //       opacity: 1,
-  //     }, {
-  //       type: dynamics.spring,
-  //       duration: 100,
-  //       frequency: 110,
-  //       friction: 400,
-  //     })
-  //   }
-  // }
-
-  _pgp = (pgpFn, ...options) => {
+  pgp = (pgpFn, ...options) => {
     return () => {
-      const data = this.refs.textarea.value
+      const data = this.textarea.value
       const output = pgpFn(data, ...options)
       return output
     }
   }
 
-  readKey = this._pgp(readArmored)
+  readKey = this.pgp(readArmored)
 
   getRandomInt = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min
+    return Math.floor(Math.random() * ((max - min) + 1)) + min
   }
 
   handleAddKey = async () => {
     const avatar = this.getRandomInt(1, 23)
     const key = await this.readKey()
     key.avatar = avatar
-
-    console.log(key)
     await this.props.addKey(key)
   }
 
   handleEncrypt = async () => {
-    const encryptMessage = await this._pgp(encrypt, this.props.selectedKeychain, this.props.alias.privateKeyArmored)()
+    const encryptMessage = await this.pgp(
+      encrypt,
+      this.props.selectedKeychain,
+      this.props.alias.privateKeyArmored,
+    )()
     this.props.setOutput(encryptMessage)
   }
 
   handleDecrypt = async () => {
-    const message = await this._pgp(decrypt, this.props.alias.privateKeyArmored)()
+    const message = await this.pgp(decrypt, this.props.alias.privateKeyArmored)()
     this.props.setOutput(message)
   }
 
   handleSign = async () => {
-    const signedMessage = await this._pgp(sign, this.props.alias.privateKeyArmored)()
+    const signedMessage = await this.pgp(sign, this.props.alias.privateKeyArmored)()
     this.props.setOutput(signedMessage)
   }
 
   handleVerify = async () => {
-    const match = await this._pgp(verify, this.props.keychain)()
-    if(typeof match.name === "undefined"){
+    const match = await this.pgp(verify, this.props.keychain)()
+    if (typeof match.name === 'undefined') {
       this.props.setOutput('The author of this message appears to not be in your contact list')
-    }else{
+    } else {
       this.props.setOutput(`Signed message is verified to match: ${ match.name } <${ match.email }>`)
     }
   }
@@ -203,9 +188,8 @@ class ComposerForm extends Component {
 
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.isShowingComposer) {
-      const textarea = ReactDOM.findDOMNode(this.refs.textarea)
-      textarea.value = ''
-      textarea.focus()
+      this.textarea.value = ''
+      this.textarea.focus()
     }
   }
 
@@ -213,7 +197,7 @@ class ComposerForm extends Component {
     const props = this.getProps()
 
     return (
-      <div is="wrap" ref="wrap">
+      <div is="wrap">
         <div is="head">
           <div is="title">
             <div is="icon">
@@ -226,7 +210,7 @@ class ComposerForm extends Component {
         <div is="text">
           <textarea
             is="textarea"
-            ref="textarea"
+            ref={ textarea => (this.textarea = textarea) }
             placeholder={ props.placeholder }
             onKeyDown={ this.props.handleKeyDown }
           />
@@ -235,10 +219,10 @@ class ComposerForm extends Component {
           { this.props.isGeneratingKey ? (
             <a is="link confirm">Generating Key... Pls wait</a>
           ) : (
-            <ComposerFormSubmit
-              onClick={ props.onAccept }
-              value={ props.acceptLabel }
-            />
+          <ComposerFormSubmit
+            onClick={ props.onAccept }
+            value={ props.acceptLabel }
+          />
           ) }
           <a is="link cancel" onClick={ this.props.handleCancel }>nevermind</a>
         </div>

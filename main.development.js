@@ -1,12 +1,13 @@
-import { app, BrowserWindow, Menu, shell, autoUpdater } from 'electron'
-const { version } = require('./package.json')
+import { app, BrowserWindow, Menu, shell, autoUpdater } from 'electron' // eslint-disable-line
 import open from 'open'
+
+const { version } = require('./package.json')
 
 let menu
 let template
 let mainWindow = null
 
-const feedUrl = `https://felony-app-update.herokuapp.com/update/${process.platform}_${process.arch}/${version}`
+const feedUrl = `https://felony-app-update.herokuapp.com/update/${ process.platform }_${ process.arch }/${ version }`
 
 if (process.env.NODE_ENV !== 'development') {
   autoUpdater.setFeedURL(feedUrl)
@@ -23,7 +24,6 @@ if (process.env.NODE_ENV !== 'development') {
 
     autoUpdater.on('checking-for-update', () => {
       check = false
-      console.log('checking')
     })
 
     autoUpdater.on('update-available', () => {
@@ -39,7 +39,7 @@ if (process.env.NODE_ENV !== 'development') {
       autoUpdater.quitAndInstall()
     })
   } catch (err) {
-    console.log('error', err)
+    console.log('error', err) // eslint-disable-line no-console
   }
 }
 
@@ -146,7 +146,7 @@ const createWindow = () => {
         label: 'Toggle Full Screen',
         accelerator: 'Ctrl+Command+F',
         click() {
-          if (!!mainWindow) {
+          if (mainWindow) {
             mainWindow.setFullScreen(!mainWindow.isFullScreen())
           }
         },
@@ -160,7 +160,7 @@ const createWindow = () => {
         label: 'Toggle Full Screen',
         accelerator: 'Ctrl+Command+F',
         click() {
-          if (!!mainWindow) {
+          if (mainWindow) {
             mainWindow.setFullScreen(!mainWindow.isFullScreen())
           }
         },
@@ -233,7 +233,7 @@ const createWindow = () => {
         label: 'Toggle &Full Screen',
         accelerator: 'F11',
         click() {
-          if (!!mainWindow) {
+          if (mainWindow) {
             mainWindow.setFullScreen(!mainWindow.isFullScreen())
           }
         },
@@ -247,7 +247,7 @@ const createWindow = () => {
         label: 'Toggle &Full Screen',
         accelerator: 'F11',
         click() {
-          if (!!mainWindow) {
+          if (mainWindow) {
             mainWindow.setFullScreen(!mainWindow.isFullScreen())
           }
         },
@@ -282,7 +282,7 @@ const createWindow = () => {
 }
 
 if (process.env.NODE_ENV === 'development') {
-  require('electron-debug')()
+  require('electron-debug')() // eslint-disable-line global-require
 }
 
 app.on('window-all-closed', () => {

@@ -1,15 +1,7 @@
-import {
-  TOGGLE_COMPOSER,
-  TOGGLE_GENERATING_KEY,
-  TOGGLE_IS_COPIED,
-  SHOW_COMPOSER_WITH_TYPE,
-  SELECT_KEY,
-  CLEAR_SELECTED_KEYS,
-  SET_ACTIVE_ALIAS,
-  SET_OUTPUT,
-} from '../constants/UIConstants'
-
 import { OrderedMap } from 'immutable'
+import { TOGGLE_COMPOSER, TOGGLE_GENERATING_KEY, TOGGLE_IS_COPIED,
+         SHOW_COMPOSER_WITH_TYPE, SELECT_KEY, CLEAR_SELECTED_KEYS,
+         SET_ACTIVE_ALIAS, SET_OUTPUT } from '../constants/UIConstants'
 
 const initialState = OrderedMap({
   isShowingComposer: false,
@@ -31,14 +23,13 @@ const uiReducer = (state = initialState, action) => {
       return state.set('isCopied', !state.get('isCopied'))
     case SHOW_COMPOSER_WITH_TYPE:
       return state.set('composerType', action.data).set('isShowingComposer', true)
-    case SELECT_KEY:
+    case SELECT_KEY: {
       if (state.hasIn(['selectedKeychain', action.id])
         && state.getIn(['selectedKeychain', action.id]) === true) {
         return state.setIn(['selectedKeychain', action.id], false)
-      } else {
-        return state.setIn(['selectedKeychain', action.id], true)
       }
-
+      return state.setIn(['selectedKeychain', action.id], true)
+    }
     case CLEAR_SELECTED_KEYS:
       return state.setIn(['selectedKeychain'], OrderedMap({}))
 
@@ -46,7 +37,6 @@ const uiReducer = (state = initialState, action) => {
       return state.set('activeAlias', action.activeAlias)
 
     case SET_OUTPUT:
-      console.log('seeeeeeting output!!!>>>>>>', action.output)
       return state.set('output', action.output)
 
     default:

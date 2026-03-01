@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
@@ -10,7 +8,7 @@ import Alias from '../alias/Alias'
 import HeaderKeyStatus from './HeaderKeyStatus'
 
 class Header extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         header: {
@@ -42,8 +40,7 @@ class Header extends Component {
   counter = 0
 
   componentDidUpdate = (prevProps) => {
-    console.log(prevProps.alias.privateKeyArmored)
-    this.counter++
+    this.counter = this.counter + 1
     if (prevProps.alias.privateKeyArmored !== this.props.alias.privateKeyArmored
       && this.counter < 3) {
       this.props.toggleComposer()
@@ -54,12 +51,12 @@ class Header extends Component {
     return (
       <div is="header">
         <Alias
-          {...this.props }
+          { ...this.props }
         />
         <div is="actions">
           <div is="icon">
             <HeaderKeyStatus
-              {...this.props }
+              { ...this.props }
             />
           </div>
         </div>

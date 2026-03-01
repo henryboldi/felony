@@ -1,12 +1,10 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
 import colors from '../../assets/styles/variables/colors'
 
 class FloatingButtonItemLabel extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         wrap: {

@@ -13,7 +13,7 @@ function applyFelonyBranding(openpgpBrandedKey) {
   let output
   output = openpgpBrandedKey.replace(/Version: OpenPGP\.js [^<]\d\.\d\.\d/g,
     'Version: 🔑 Felony (PGP made easy) v0.0.1')
-  output = output.replace('Comment: http://openpgpjs.org', 'Comment: 👀 How do I use this? --> http://felony.io 😉')
+  output = output.replace('Comment: http://openpgpjs.org', 'Comment: How do I use this? https://github.com/henryboldi/felony')
   return output
 }
 
@@ -47,7 +47,7 @@ function getPrivateKeyPassphrase(privateKey) {
 export async function generateKey({ name, email = '' }, passphrase) {
   const key = await openpgp.generateKey({
     userIds: [{ name, email }],
-    numBits: 2048, // should up RSA key size to 4096?
+    numBits: 4096,
     passphrase,
   })
 

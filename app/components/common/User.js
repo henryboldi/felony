@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 
@@ -9,7 +7,7 @@ import colors from '../../assets/styles/variables/colors'
 import Avatar from './Avatar'
 
 class User extends Component {
-  classes() {
+  classes() { // eslint-disable-line
     return {
       'default': {
         user: {

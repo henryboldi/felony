@@ -14,5 +14,5 @@ render(
   <Provider store={ store }>
     <Felony />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 )

@@ -25,19 +25,5 @@ export function showComposerWithType(type) {
 }
 
 export function setOutput(output) {
-  console.log('inside ui actions', output)
   return { type: types.SET_OUTPUT, output }
 }
-
-// export function setActiveAlias(keyId) {
-//   return async function (dispatch) {
-//     try {
-//       delete db.object.activeAlias
-//       await db.write()
-//       const activeAlias = await db('activeAlias').insert(keyId)
-//       return dispatch({ type: types.SET_ACTIVE_ALIAS, activeAlias })
-//     } catch (err) {
-//       console.log(err)
-//     }
-//   }
-// }

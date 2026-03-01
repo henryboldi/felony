@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
+import _ from 'lodash'
 import { showComposerWithType, toggleIsCopied, toggleComposer } from '../actions/index'
 import Header from '../components/header/Header'
-import _ from 'lodash'
 
 const mapStateToProps = (state) => {
-  const aliases = _.filter(state.keychainReducer.get('keychain').toJS(), key => {
+  const aliases = _.filter(state.keychainReducer.get('keychain').toJS(), (key) => {
     return key.privateKeyArmored !== null
   })
   const first = aliases[0] || {
@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const HeaderContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Header)
 
 export default HeaderContainer

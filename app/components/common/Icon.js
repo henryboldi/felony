@@ -1,5 +1,4 @@
-'use strict'
-
+/* eslint-disable react/no-danger */
 import React, { Component } from 'react'
 import ReactCSS from 'reactcss'
 import { getIcon } from '../../utils/icons'
@@ -17,7 +16,7 @@ class Icon extends Component {
   }
 
   render() {
-    return <div is="icon" dangerouslySetInnerHTML={ { __html: getIcon(this.props.name) } } />
+    return <div is="icon" dangerouslySetInnerHTML={{ __html: getIcon(this.props.name) }} />
   }
 }
 
